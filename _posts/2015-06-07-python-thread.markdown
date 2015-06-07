@@ -10,6 +10,7 @@ Simple snippet to spawn a thread in python using a decorator
 
 import threading
 
+
 def spawn(func):
     thread = threading.Thread(target=func)
     thread.start()
@@ -39,6 +40,7 @@ pool = thread_pool(8)
 
 results = pool.map(urllib2.open, urls)
 
-pool.close() pool.join()
+pool.close()
+pool.join()
 
 {% endhighlight %}

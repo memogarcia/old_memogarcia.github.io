@@ -66,6 +66,7 @@
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">threading</span>
 
+
 <span class="k">def</span> <span class="nf">spawn</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">func</span><span class="p">)</span>
     <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
@@ -90,7 +91,8 @@
 
 <span class="n">results</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">open</span><span class="p">,</span> <span class="n">urls</span><span class="p">)</span>
 
-<span class="n">pool</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="n">pool</span><span class="o">.</span><span class="n">join</span><span class="p">()</span></code></pre></div>
+<span class="n">pool</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">pool</span><span class="o">.</span><span class="n">join</span><span class="p">()</span></code></pre></div>
 
   </article>
 
