@@ -23,3 +23,22 @@ task.join()
 
 {% endhighlight %}
 
+
+Using thread pools https://docs.python.org/dev/library/multiprocessing.html#multiprocessing.pool.Pool
+
+{% highlight python %}
+
+import urllib2
+from multiprocessing.dummy import Pool as thread_pool
+
+
+urls = ["python.org",]
+
+# number of threads
+pool = thread_pool(8)
+
+results = pool.map(urllib2.open, urls)
+
+pool.close() pool.join()
+
+{% endhighlight %}
