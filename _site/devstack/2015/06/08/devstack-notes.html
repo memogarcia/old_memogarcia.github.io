@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Spawn threads in python</title>
-  <meta name="description" content="Simple snippet to spawn a thread in python using a decorator">
+  <title>Devstack notes</title>
+  <meta name="description" content="Clone devstack">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://memogarcia.me/python/threads/snippets/2015/06/07/python-thread.html">
+  <link rel="canonical" href="http://memogarcia.me/devstack/2015/06/08/devstack-notes.html">
   <link rel="alternate" type="application/rss+xml" title="Memo Garcia" href="http://memogarcia.me/feed.xml" />
 </head>
 
@@ -57,42 +57,46 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Spawn threads in python</h1>
-    <p class="post-meta">Jun 7, 2015</p>
+    <h1 class="post-title">Devstack notes</h1>
+    <p class="post-meta">Jun 8, 2015</p>
   </header>
 
   <article class="post-content">
-    <p>Simple snippet to spawn a thread in python using a decorator</p>
+    <p><a href="http://docs.openstack.org/developer/devstack/">Clone devstack</a></p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">threading</span>
+<p>Make sure your vm network configuration is on bridge</p>
 
+<p>set the proxies and no_proxies</p>
 
-<span class="k">def</span> <span class="nf">spawn</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-    <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">func</span><span class="p">)</span>
-    <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">thread</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">export </span><span class="nv">no_proxy</span><span class="o">=</span>localhost,127.0.0.1,&lt;your_ip&gt;</code></pre></div>
 
-<span class="nd">@spawn</span>
-<span class="k">def</span> <span class="nf">task</span><span class="p">():</span>
-    <span class="k">pass</span>
+<p>Change connection protocol from git to https in stackrc</p>
 
-<span class="n">task</span><span class="o">.</span><span class="n">join</span><span class="p">()</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">GIT_BASE</span><span class="o">=</span><span class="k">${</span><span class="nv">GIT_BASE</span><span class="k">:-</span><span class="nv">https</span><span class="p">://git.openstack.org</span><span class="k">}</span></code></pre></div>
 
-<p>Using thread pools <a href="https://docs.python.org/dev/library/multiprocessing.html#multiprocessing.pool.Pool">multiprocessing pool</a></p>
+<p>If your ubuntu version is not supported run this:</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">urllib2</span>
-<span class="kn">from</span> <span class="nn">multiprocessing.dummy</span> <span class="kn">import</span> <span class="n">Pool</span> <span class="k">as</span> <span class="n">thread_pool</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">FORCE</span><span class="o">=</span>yes ./stack.sh</code></pre></div>
 
+<p>enable swift</p>
 
-<span class="n">urls</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;python.org&quot;</span><span class="p">,]</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># create local.conf in devstack folder</span>
+<span class="o">[[</span><span class="nb">local</span><span class="p">|</span>localrc<span class="o">]]</span>
+<span class="c">#FIXED_RANGE=192.168.20.0/24</span>
+<span class="c">#NETWORK_GATEWAY=192.168.20.1a</span>
+<span class="nv">LOGDAYS</span><span class="o">=</span>1
+<span class="nv">LOGFILE</span><span class="o">=</span><span class="nv">$DEST</span>/logs/stack.sh.log
+<span class="nv">SCREEN_LOGDIR</span><span class="o">=</span><span class="nv">$DEST</span>/logs/screen
+<span class="nv">ADMIN_PASSWORD</span><span class="o">=</span>quiet
+<span class="nv">DATABASE_PASSWORD</span><span class="o">=</span><span class="nv">$ADMIN_PASSWORD</span>
+<span class="nv">RABBIT_PASSWORD</span><span class="o">=</span><span class="nv">$ADMIN_PASSWORD</span>
+<span class="nv">SERVICE_PASSWORD</span><span class="o">=</span><span class="nv">$ADMIN_PASSWORD</span>
+<span class="nv">SERVICE_TOKEN</span><span class="o">=</span>a682f596-76f3-11e3-b3b2-e716f9080d50
 
-<span class="c"># number of threads</span>
-<span class="n">pool</span> <span class="o">=</span> <span class="n">thread_pool</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-
-<span class="n">results</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">open</span><span class="p">,</span> <span class="n">urls</span><span class="p">)</span>
-
-<span class="n">pool</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="n">pool</span><span class="o">.</span><span class="n">join</span><span class="p">()</span></code></pre></div>
+<span class="nv">SWIFT_REPLICAS</span><span class="o">=</span>1
+<span class="nv">SWIFT_DATA_DIR</span><span class="o">=</span><span class="nv">$DEST</span>/data/swift
+<span class="nv">SWIFT_HASH</span><span class="o">=</span>66a3d6b56c1f479c8b4e70ab5c2000f5
+enable_service s-proxy s-object s-container s-account</code></pre></div>
 
   </article>
 

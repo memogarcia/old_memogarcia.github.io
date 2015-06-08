@@ -25,7 +25,7 @@ task.join()
 {% endhighlight %}
 
 
-Using thread pools https://docs.python.org/dev/library/multiprocessing.html#multiprocessing.pool.Pool
+Using thread pools [multiprocessing pool](https://docs.python.org/dev/library/multiprocessing.html#multiprocessing.pool.Pool)
 
 {% highlight python %}
 
