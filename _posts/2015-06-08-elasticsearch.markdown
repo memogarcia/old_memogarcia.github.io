@@ -22,3 +22,9 @@ Install .deb file
 {% highlight bash %}
 sudo dpkg -i elasticsearch.deb
 {% endhighlight %}
+
+Start elasticsearch
+
+{% highlight bash %}
+sudo /etc/init.d/elasticsearch start
+{% endhighlight %}
