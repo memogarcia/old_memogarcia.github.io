@@ -5,13 +5,41 @@
     <description></description>
     <link>http://memogarcia.me/</link>
     <atom:link href="http://memogarcia.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 07 Jun 2015 23:26:26 +0100</pubDate>
-    <lastBuildDate>Sun, 07 Jun 2015 23:26:26 +0100</lastBuildDate>
+    <pubDate>Mon, 08 Jun 2015 10:07:20 +0100</pubDate>
+    <lastBuildDate>Mon, 08 Jun 2015 10:07:20 +0100</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
         <title>Terminator configuration</title>
         <description>&lt;p&gt;Simple terminator configuration&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;~/.config/terminator/config&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;global_config&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;keybindings&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;new_tab&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &amp;lt;Primary&amp;gt;t
+  &lt;span class=&quot;nv&quot;&gt;copy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &amp;lt;Primary&amp;gt;c
+  &lt;span class=&quot;nv&quot;&gt;paste&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &amp;lt;Primary&amp;gt;v
+  &lt;span class=&quot;nv&quot;&gt;next_tab&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &amp;lt;Primary&amp;gt;Tab
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;profiles&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt;default&lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;scrollbar_position&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; hidden
+    &lt;span class=&quot;nv&quot;&gt;palette&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;background_image&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; None
+    &lt;span class=&quot;nv&quot;&gt;foreground_color&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;#d8d3c4&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;scroll_on_output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; False
+    &lt;span class=&quot;nv&quot;&gt;show_titlebar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; False
+    &lt;span class=&quot;nv&quot;&gt;background_color&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;#002b36&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;scrollback_infinite&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; True
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;layouts&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt;default&lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;[[[&lt;/span&gt;child1&lt;span class=&quot;o&quot;&gt;]]]&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Terminal
+      &lt;span class=&quot;nv&quot;&gt;parent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; window0
+    &lt;span class=&quot;o&quot;&gt;[[[&lt;/span&gt;window0&lt;span class=&quot;o&quot;&gt;]]]&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Window
+      &lt;span class=&quot;nv&quot;&gt;parent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;plugins&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 </description>
         <pubDate>Sun, 07 Jun 2015 20:55:11 +0100</pubDate>
