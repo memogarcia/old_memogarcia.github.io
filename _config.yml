@@ -10,3 +10,5 @@ github_username:  memogarcia
 
 # Build settings
 markdown: kramdown
+
+comments: true
