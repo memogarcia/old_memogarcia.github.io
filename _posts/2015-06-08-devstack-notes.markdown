@@ -7,6 +7,10 @@ categories: devstack
 
 [Clone devstack](http://docs.openstack.org/developer/devstack/)
 
+{% highlight bash %}
+git clone https://git.openstack.org/openstack-dev/devstack
+{% endhighlight %}
+
 Make sure your vm network configuration is on bridge
 
 
