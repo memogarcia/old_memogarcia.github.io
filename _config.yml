@@ -12,8 +12,3 @@ github_username:  memogarcia
 markdown: kramdown
 
 comments: true
-
-analytics :
-  provider : google 
-  google : 
-      tracking_id : 'UA-63826874-1'
