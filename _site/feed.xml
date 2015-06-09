@@ -5,9 +5,425 @@
     <description></description>
     <link>http://memogarcia.me/</link>
     <atom:link href="http://memogarcia.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 09 Jun 2015 17:11:14 +0100</pubDate>
-    <lastBuildDate>Tue, 09 Jun 2015 17:11:14 +0100</lastBuildDate>
+    <pubDate>Tue, 09 Jun 2015 21:11:41 +0100</pubDate>
+    <lastBuildDate>Tue, 09 Jun 2015 21:11:41 +0100</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Rsync</title>
+        <description>&lt;p&gt;Rsync can almost completely replace cp and scp, furthermore interrupted transfers are efficiently restarted. A trailing slash (and the absence thereof) has different meanings, the man page is good… Here some examples:
+Copy the directories with full content:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;rsync -a /home/colin/ /backup/colin/                &lt;span class=&quot;c&quot;&gt;# &amp;quot;archive&amp;quot; mode. e.g keep the same&lt;/span&gt;
+rsync -a /var/ /var_bak/
+rsync -aR --delete-during /home/user/ /backup/      &lt;span class=&quot;c&quot;&gt;# use relative (see below)&lt;/span&gt;
+/opt/local/bin/rsync -azv --iconv&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;UTF-8-MAC,UTF-8 ~/Music/flac/ me@server:/dst/
+                           &lt;span class=&quot;c&quot;&gt;# convert filenames OSX UTF8 to Windows UTF8&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Same as before but over the network and with compression. Rsync uses SSH for the transport per default and will use the ssh key if they are set. Use “:” as with SCP. A typical remote copy:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;rsync -axSRzv /home/user/ user@server:/backup/user/ &lt;span class=&quot;c&quot;&gt;# Copy to remote&lt;/span&gt;
+rsync -a &lt;span class=&quot;s1&quot;&gt;&amp;#39;user@server:My\ Documents&amp;#39;&lt;/span&gt; My&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;Documents  &lt;span class=&quot;c&quot;&gt;# Quote AND escape spaces for the remote shell&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Exclude any directory tmp within /home/user/ and keep the relative folders hierarchy, that is the remote directory will have the structure /backup/home/user/. This is typically used for backups.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;rsync -azR --exclude&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;tmp/ /home/user/ user@server:/backup/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Use port 20022 for the ssh connection:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;rsync -az -e &lt;span class=&quot;s1&quot;&gt;&amp;#39;ssh -p 20022&amp;#39;&lt;/span&gt; /home/colin/ user@server:/backup/colin/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Using the rsync daemon (used with “::”) is much faster, but not encrypted over ssh. The location of /backup is defined by the configuration in /etc/rsyncd.conf. The variable RSYNC_PASSWORD can be set to avoid the need to enter the password manually.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;rsync -axSRz /home/ ruser@hostname::rmodule/backup/
+rsync -axSRz ruser@hostname::rmodule/backup/ /home/    &lt;span class=&quot;c&quot;&gt;# To copy back&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Some important options:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;-a, --archive       archive mode&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; same as -rlptgoD &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;no -H&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+-r, --recursive       recurse into directories
+-R, --relative       use relative path names
+-H, --hard-links       preserve hard links
+-S, --sparse       handle sparse files efficiently
+-x, --one-file-system       dont cross file system boundaries
+--exclude&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;PATTERN       exclude files matching PATTERN
+--delete-during       receiver deletes during xfer, not before
+--delete-after       receiver deletes after transfer, not before&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</description>
+        <pubDate>Tue, 09 Jun 2015 22:01:00 +0100</pubDate>
+        <link>http://memogarcia.me/linux/rsync/2015/06/09/rsync.html</link>
+        <guid isPermaLink="true">http://memogarcia.me/linux/rsync/2015/06/09/rsync.html</guid>
+        
+        
+        <category>linux</category>
+        
+        <category>rsync</category>
+        
+      </item>
+    
+      <item>
+        <title>SSH</title>
+        <description>&lt;h2 id=&quot;ssh-scp&quot;&gt;SSH SCP&lt;/h2&gt;
+
+&lt;h1 id=&quot;public-key-authentication&quot;&gt;Public key authentication&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh-keygen -t dsa -N &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+cat ~/.ssh/id_dsa.pub &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; ssh you@host-server &lt;span class=&quot;s2&quot;&gt;&amp;quot;cat - &amp;gt;&amp;gt; ~/.ssh/authorized_keys2&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;check-fingerprint&quot;&gt;Check fingerprint&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub      &lt;span class=&quot;c&quot;&gt;# For RSA key&lt;/span&gt;
+&lt;span class=&quot;m&quot;&gt;2048&lt;/span&gt; 61:33:be:9b:ae:6c:36:31:fd:83:98:b7:99:2d:9f:cd /etc/ssh/ssh_host_rsa_key.pub
+ssh-keygen -l -f /etc/ssh/ssh_host_dsa_key.pub      &lt;span class=&quot;c&quot;&gt;# For DSA key (default)&lt;/span&gt;
+&lt;span class=&quot;m&quot;&gt;2048&lt;/span&gt; 14:4a:aa:d9:73:25:46:6d:0a:48:35:c7:f4:16:d4:ee /etc/ssh/ssh_host_dsa_key.pub&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;secure-file-transfer-sft&quot;&gt;Secure file transfer (SFT)&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;scp file.txt host-two:/tmp
+scp joe@host-two:/www/*.html /www/tmp
+scp -r joe@host-two:/www /www/tmp&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;tunneling&quot;&gt;Tunneling&lt;/h1&gt;
+
+&lt;p&gt;SSH tunneling allows to forward or reverse forward a port over the SSH connection, thus securing the traffic and accessing ports which would otherwise be blocked. This only works with TCP. The general nomenclature for forward and reverse is:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh -L localport:desthost:destport user@gate  &lt;span class=&quot;c&quot;&gt;# desthost as seen from the gate&lt;/span&gt;
+ssh -R destport:desthost:localport user@gate  &lt;span class=&quot;c&quot;&gt;# forwards your localport to destination&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# desthost:localport as seen from the client initiating the tunnel&lt;/span&gt;
+ssh -X user@gate   &lt;span class=&quot;c&quot;&gt;# To force X forwarding&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This will connect to gate and forward the local port to the host desthost:destport. Note desthost is the destination host as seen by the gate, so if the connection is to the gate, then desthost is localhost. More than one port forward is possible.
+Direct forward on the gate&lt;/p&gt;
+
+&lt;p&gt;Let say we want to access the CVS (port 2401) and http (port 80) which are running on the gate. This is the simplest example, desthost is thus localhost, and we use the port 8080 locally instead of 80 so we don’t need to be root. Once the ssh session is open, both services are accessible on the local ports.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh -L 2401:localhost:2401 -L 8080:localhost:80 user@gate&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Tue, 09 Jun 2015 22:00:00 +0100</pubDate>
+        <link>http://memogarcia.me/linux/ssh/2015/06/09/ssh.html</link>
+        <guid isPermaLink="true">http://memogarcia.me/linux/ssh/2015/06/09/ssh.html</guid>
+        
+        
+        <category>linux</category>
+        
+        <category>ssh</category>
+        
+      </item>
+    
+      <item>
+        <title>Linux commands</title>
+        <description>&lt;h1 id=&quot;kernel-and-system-information&quot;&gt;Kernel and system information&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;uname -a                           &lt;span class=&quot;c&quot;&gt;# Get the kernel version (and BSD version)&lt;/span&gt;
+uptime                             &lt;span class=&quot;c&quot;&gt;# Show how long the system has been running + load&lt;/span&gt;
+hostname                           &lt;span class=&quot;c&quot;&gt;# system&amp;#39;s host name&lt;/span&gt;
+man hier                           &lt;span class=&quot;c&quot;&gt;# Description of the file system hierarchy&lt;/span&gt;
+last reboot                        &lt;span class=&quot;c&quot;&gt;# Show system reboot history&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;hardware-information&quot;&gt;Hardware information&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;dmesg                              &lt;span class=&quot;c&quot;&gt;# Detected hardware and boot messages&lt;/span&gt;
+lsdev                              &lt;span class=&quot;c&quot;&gt;# information about installed hardware&lt;/span&gt;
+cat /proc/cpuinfo                  &lt;span class=&quot;c&quot;&gt;# CPU model&lt;/span&gt;
+cat /proc/meminfo                  &lt;span class=&quot;c&quot;&gt;# Hardware memory&lt;/span&gt;
+grep MemTotal /proc/meminfo        &lt;span class=&quot;c&quot;&gt;# Display the physical memory&lt;/span&gt;
+watch -n1 &lt;span class=&quot;s1&quot;&gt;&amp;#39;cat /proc/interrupts&amp;#39;&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;# Watch changeable interrupts continuously&lt;/span&gt;
+free -m                            &lt;span class=&quot;c&quot;&gt;# Used and free memory (-m for MB)&lt;/span&gt;
+cat /proc/devices                  &lt;span class=&quot;c&quot;&gt;# Configured devices&lt;/span&gt;
+lspci -tv                          &lt;span class=&quot;c&quot;&gt;# Show PCI devices&lt;/span&gt;
+lsusb -tv                          &lt;span class=&quot;c&quot;&gt;# Show USB devices&lt;/span&gt;
+lshal                              &lt;span class=&quot;c&quot;&gt;# Show a list of all devices with their properties&lt;/span&gt;
+dmidecode                          &lt;span class=&quot;c&quot;&gt;# Show DMI/SMBIOS: hw info from the BIOS&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;load-statistics-and-messages&quot;&gt;Load, statistics and messages&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;top                                &lt;span class=&quot;c&quot;&gt;# display and update the top cpu processes&lt;/span&gt;
+mpstat &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;                           &lt;span class=&quot;c&quot;&gt;# display processors related statistics&lt;/span&gt;
+vmstat &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;                           &lt;span class=&quot;c&quot;&gt;# display virtual memory statistics&lt;/span&gt;
+iostat &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;                           &lt;span class=&quot;c&quot;&gt;# display I/O statistics (2 s intervals)&lt;/span&gt;
+systat -vmstat &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;                   &lt;span class=&quot;c&quot;&gt;# BSD summary of system statistics (1 s intervals)&lt;/span&gt;
+systat -tcp &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;                      &lt;span class=&quot;c&quot;&gt;# BSD tcp connections (try also -ip)&lt;/span&gt;
+systat -netstat &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;                  &lt;span class=&quot;c&quot;&gt;# BSD active network connections&lt;/span&gt;
+systat -ifstat &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;                   &lt;span class=&quot;c&quot;&gt;# BSD network traffic through active interfaces&lt;/span&gt;
+systat -iostat &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;                   &lt;span class=&quot;c&quot;&gt;# BSD CPU and and disk throughput&lt;/span&gt;
+ipcs -a                            &lt;span class=&quot;c&quot;&gt;# information on System V interprocess&lt;/span&gt;
+tail -n &lt;span class=&quot;m&quot;&gt;500&lt;/span&gt; /var/log/messages      &lt;span class=&quot;c&quot;&gt;# Last 500 kernel/syslog messages&lt;/span&gt;
+tail /var/log/warn                 &lt;span class=&quot;c&quot;&gt;# System warnings messages see syslog.conf&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;users&quot;&gt;Users&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;id                                 &lt;span class=&quot;c&quot;&gt;# Show the active user id with login and group&lt;/span&gt;
+last                               &lt;span class=&quot;c&quot;&gt;# Show last logins on the system&lt;/span&gt;
+who                                &lt;span class=&quot;c&quot;&gt;# Show who is logged on the system&lt;/span&gt;
+groupadd admin                     &lt;span class=&quot;c&quot;&gt;# Add group &amp;quot;admin&amp;quot; and user colin (Linux/Solaris)&lt;/span&gt;
+useradd -c &lt;span class=&quot;s2&quot;&gt;&amp;quot;Memo Garcia&amp;quot;&lt;/span&gt; -g admin -m memo
+usermod -a -G &amp;lt;group&amp;gt; &amp;lt;user&amp;gt;       &lt;span class=&quot;c&quot;&gt;# Add existing user to group (Debian)&lt;/span&gt;
+groupmod -A &amp;lt;user&amp;gt; &amp;lt;group&amp;gt;         &lt;span class=&quot;c&quot;&gt;# Add existing user to group (SuSE)&lt;/span&gt;
+userdel memo                       &lt;span class=&quot;c&quot;&gt;# Delete user colin (Linux/Solaris)&lt;/span&gt;
+adduser memo                       &lt;span class=&quot;c&quot;&gt;# FreeBSD add user joe (interactive)&lt;/span&gt;
+rmuser memo                        &lt;span class=&quot;c&quot;&gt;# FreeBSD delete user joe (interactive)&lt;/span&gt;
+pw groupadd admin                  &lt;span class=&quot;c&quot;&gt;# Use pw on FreeBSD&lt;/span&gt;
+pw groupmod admin -m newmember     &lt;span class=&quot;c&quot;&gt;# Add a new member to a group&lt;/span&gt;
+pw useradd memo -c &lt;span class=&quot;s2&quot;&gt;&amp;quot;Memo Garcia&amp;quot;&lt;/span&gt; -g admin -m -s /bin/tcsh
+pw userdel memo&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; pw groupdel admin
+
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Sorry no login now&amp;quot;&lt;/span&gt; &amp;gt; /etc/nologin  &lt;span class=&quot;c&quot;&gt;# prevent logins in the system but root&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Encrypted passwords are stored in /etc/shadow for Linux. &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# If the master.passwd is modified manually (say to delete a password),&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# to rebuild the database run::&lt;/span&gt;
+pwd_mkdb -p master.passwd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;limits&quot;&gt;Limits&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;ulimit&lt;/span&gt; -n &lt;span class=&quot;m&quot;&gt;10240&lt;/span&gt;                    &lt;span class=&quot;c&quot;&gt;# This is only valid within the shell&lt;/span&gt;
+
+cat /etc/security/limits.conf
+*   hard    nproc   &lt;span class=&quot;m&quot;&gt;250&lt;/span&gt;              &lt;span class=&quot;c&quot;&gt;# Limit user processes&lt;/span&gt;
+asterisk hard nofile &lt;span class=&quot;m&quot;&gt;409600&lt;/span&gt;          &lt;span class=&quot;c&quot;&gt;# Limit application open files&lt;/span&gt;
+
+sysctl -a                          &lt;span class=&quot;c&quot;&gt;# View all system limits&lt;/span&gt;
+sysctl fs.file-max                 &lt;span class=&quot;c&quot;&gt;# View max open files limit&lt;/span&gt;
+sysctl fs.file-max&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;102400&lt;/span&gt;          &lt;span class=&quot;c&quot;&gt;# Change max open files limit&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;1024 50000&amp;quot;&lt;/span&gt; &amp;gt; /proc/sys/net/ipv4/ip_local_port_range  &lt;span class=&quot;c&quot;&gt;# port range&lt;/span&gt;
+cat /etc/sysctl.conf
+fs.file-max&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;102400&lt;/span&gt;                   &lt;span class=&quot;c&quot;&gt;# Permanent entry in sysctl.conf&lt;/span&gt;
+cat /proc/sys/fs/file-nr           &lt;span class=&quot;c&quot;&gt;# How many file descriptors are in use&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;reset-root-password&quot;&gt;Reset root password&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# At the boot loader (lilo or grub), enter the following boot option:&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/bin/sh
+
+&lt;span class=&quot;c&quot;&gt;# The kernel will mount the root partition and init will start the &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# bourne shell instead of rc and then a runlevel. Use the command &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# passwd at the prompt to change the password and then reboot. &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Forget the single user mode as you need the password for that.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# If, after booting, the root partition is mounted read only, remount it rw:&lt;/span&gt;
+
+mount -o remount,rw /
+passwd                             &lt;span class=&quot;c&quot;&gt;# or delete the root password (/etc/shadow)&lt;/span&gt;
+sync&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; mount -o remount,ro /        &lt;span class=&quot;c&quot;&gt;# sync before to remount read only&lt;/span&gt;
+reboot&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;kernel-modules&quot;&gt;Kernel modules&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;lsmod                              &lt;span class=&quot;c&quot;&gt;# List all modules loaded in the kernel&lt;/span&gt;
+modprobe isdn                      &lt;span class=&quot;c&quot;&gt;# To load a module (here isdn)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;compile-kernel&quot;&gt;Compile kernel&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /usr/src/linux
+make mrproper                      &lt;span class=&quot;c&quot;&gt;# Clean everything, including config files&lt;/span&gt;
+make oldconfig                     &lt;span class=&quot;c&quot;&gt;# Reuse the old .config if existent&lt;/span&gt;
+make menuconfig                    &lt;span class=&quot;c&quot;&gt;# or xconfig (Qt) or gconfig (GTK)&lt;/span&gt;
+make                               &lt;span class=&quot;c&quot;&gt;# Create a compressed kernel image&lt;/span&gt;
+make modules                       &lt;span class=&quot;c&quot;&gt;# Compile the modules&lt;/span&gt;
+make modules_install               &lt;span class=&quot;c&quot;&gt;# Install the modules&lt;/span&gt;
+make install                       &lt;span class=&quot;c&quot;&gt;# Install the kernel&lt;/span&gt;
+reboot&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;repair-grub&quot;&gt;Repair grub&lt;/h1&gt;
+
+&lt;p&gt;So you broke grub? Boot from a live cd, [find your linux partition under /dev and use fdisk to find the linux partion] mount the linux partition, add /proc and /dev and use grub-install /dev/xyz. Suppose linux lies on /dev/sda6:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;mount /dev/sda6 /mnt               &lt;span class=&quot;c&quot;&gt;# mount the linux partition on /mnt&lt;/span&gt;
+mount --bind /proc /mnt/proc       &lt;span class=&quot;c&quot;&gt;# mount the proc subsystem into /mnt&lt;/span&gt;
+mount --bind /dev /mnt/dev         &lt;span class=&quot;c&quot;&gt;# mount the devices into /mnt&lt;/span&gt;
+chroot /mnt                        &lt;span class=&quot;c&quot;&gt;# change root to the linux partition&lt;/span&gt;
+grub-install /dev/sda              &lt;span class=&quot;c&quot;&gt;# reinstall grub with your old settings&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;misc-mac&quot;&gt;Misc Mac&lt;/h1&gt;
+
+&lt;p&gt;Disable OSX virtual memory (repeat with load to re-enable). Faster system, but a little risky.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.dynamic_pager.plist
+sleep 3600&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; pmset sleepnow           &lt;span class=&quot;c&quot;&gt;# go to standby in one hour (OSX)&lt;/span&gt;
+defaults write -g com.apple.mouse.scaling -float 8
+                                     &lt;span class=&quot;c&quot;&gt;# OSX mouse acceleration (use -1 to reverse)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;processes&quot;&gt;Processes&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ps -auxefw                         &lt;span class=&quot;c&quot;&gt;# Extensive list of all running process&lt;/span&gt;
+ps axww &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep cron
+  &lt;span class=&quot;m&quot;&gt;586&lt;/span&gt;  ??  Is     0:01.48 /usr/sbin/cron -s
+ps axjf                            &lt;span class=&quot;c&quot;&gt;# All processes in a tree format (Linux)&lt;/span&gt;
+ps aux &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep &lt;span class=&quot;s1&quot;&gt;&amp;#39;ss[h]&amp;#39;&lt;/span&gt;              &lt;span class=&quot;c&quot;&gt;# Find all ssh pids without the grep pid&lt;/span&gt;
+pgrep -l sshd                      &lt;span class=&quot;c&quot;&gt;# Find the PIDs of processes by (part of) name&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$$&lt;/span&gt;                            &lt;span class=&quot;c&quot;&gt;# The PID of your shell&lt;/span&gt;
+fuser -va 22/tcp                   &lt;span class=&quot;c&quot;&gt;# List processes using port 22 (Linux)&lt;/span&gt;
+pmap PID                           &lt;span class=&quot;c&quot;&gt;# Memory map of process (hunt memory leaks) (Linux)&lt;/span&gt;
+fuser -va /home                    &lt;span class=&quot;c&quot;&gt;# List processes accessing the /home partition&lt;/span&gt;
+strace df                          &lt;span class=&quot;c&quot;&gt;# Trace system calls and signals&lt;/span&gt;
+truss df                           &lt;span class=&quot;c&quot;&gt;# same as above on FreeBSD/Solaris/Unixware&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;priority&quot;&gt;Priority&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;renice -5 &lt;span class=&quot;m&quot;&gt;586&lt;/span&gt;                      &lt;span class=&quot;c&quot;&gt;# Stronger priority&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# nice changes the CPU scheduler&lt;/span&gt;
+nice -n -5 top                     &lt;span class=&quot;c&quot;&gt;# Stronger priority (/usr/bin/nice)&lt;/span&gt;
+nice -n &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt; top                      &lt;span class=&quot;c&quot;&gt;# Weaker priority (/usr/bin/nice)&lt;/span&gt;
+nice +5 top                        &lt;span class=&quot;c&quot;&gt;# tcsh builtin nice (same as above!)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# ionice changes the IO scheduler&lt;/span&gt;
+ionice c3 -p123                    &lt;span class=&quot;c&quot;&gt;# set idle class for pid 123 (Linux only)&lt;/span&gt;
+ionice -c2 -n0 firefox             &lt;span class=&quot;c&quot;&gt;# Run firefox with best effort and high priority&lt;/span&gt;
+ionice -c3 -p&lt;span class=&quot;nv&quot;&gt;$$&lt;/span&gt;                    &lt;span class=&quot;c&quot;&gt;# Set the actual shell to idle priority&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;background-and-foreground&quot;&gt;Background and foreground&lt;/h1&gt;
+
+&lt;p&gt;When started from a shell, processes can be brought in the background and back to the foreground with [Ctrl]-[Z] (^Z), bg and fg. List the processes with jobs. When needed detach from the terminal with disown.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ping cb.vu &amp;gt; ping.log
+^Z                                   &lt;span class=&quot;c&quot;&gt;# ping is suspended (stopped) with [Ctrl]-[Z]&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;bg&lt;/span&gt;                                 &lt;span class=&quot;c&quot;&gt;# put in background and continues running&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;jobs&lt;/span&gt; -l                            &lt;span class=&quot;c&quot;&gt;# List processes in background&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;  - &lt;span class=&quot;m&quot;&gt;36232&lt;/span&gt; Running                       ping cb.vu &amp;gt; ping.log
+    &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;  + &lt;span class=&quot;m&quot;&gt;36233&lt;/span&gt; Suspended &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;tty output&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;        top
+&lt;span class=&quot;nb&quot;&gt;fg&lt;/span&gt; %2                              &lt;span class=&quot;c&quot;&gt;# Bring process 2 back in foreground&lt;/span&gt;
+
+make                               &lt;span class=&quot;c&quot;&gt;# start a long compile job but need to leave the terminal&lt;/span&gt;
+^Z                                   &lt;span class=&quot;c&quot;&gt;# suspended (stopped) with [Ctrl]-[Z]&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;bg&lt;/span&gt;                                 &lt;span class=&quot;c&quot;&gt;# put in background and continues running&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;disown&lt;/span&gt; -h %1                       &lt;span class=&quot;c&quot;&gt;# detatch process from terminal, won&amp;#39;t be killed at logout&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;top&quot;&gt;Top&lt;/h1&gt;
+
+&lt;p&gt;The program top displays running information of processes. See also the program htop from htop.sourceforge.net (a more powerful version of top) which runs on Linux.
+While top is running press the key h for a help overview. Useful keys are:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;u &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;user name&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; To display only the processes belonging to the user. Use + or blank to see all users
+k &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;pid&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Kill the process with pid.
+&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; To display all processors statistics &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Linux only&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+R Toggle normal/reverse sort.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;signalskill&quot;&gt;Signals/Kill&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ping -i &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt; cb.vu &amp;gt; ping.log &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; 4712
+&lt;span class=&quot;nb&quot;&gt;kill&lt;/span&gt; -s TERM &lt;span class=&quot;m&quot;&gt;4712&lt;/span&gt;                  &lt;span class=&quot;c&quot;&gt;# same as kill -15 4712&lt;/span&gt;
+killall -1 httpd                   &lt;span class=&quot;c&quot;&gt;# Kill HUP processes by exact name&lt;/span&gt;
+pkill -9 http                      &lt;span class=&quot;c&quot;&gt;# Kill TERM processes by (part of) name&lt;/span&gt;
+pkill -TERM -u www                 &lt;span class=&quot;c&quot;&gt;# Kill TERM processes owned by www&lt;/span&gt;
+fuser -k -TERM -m /home            &lt;span class=&quot;c&quot;&gt;# Kill every process accessing /home (to umount)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Important signals are:&lt;/span&gt;
+    &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;       HUP &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;hang up&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;       INT &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;interrupt&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;       QUIT &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;quit&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;m&quot;&gt;9&lt;/span&gt;       KILL &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;non-catchable, non-ignorable &lt;span class=&quot;nb&quot;&gt;kill&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;m&quot;&gt;15&lt;/span&gt;     TERM &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;software termination signal&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;file-system&quot;&gt;File system&lt;/h2&gt;
+
+&lt;h1 id=&quot;permissions&quot;&gt;Permissions&lt;/h1&gt;
+
+&lt;p&gt;Change permission and ownership with chmod and chown. The default umask can be changed for all users in /etc/profile for Linux. The default umask is usually 022. The umask is subtracted from 777, thus umask 022 results in a permission 0f 755.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; --x execute                        &lt;span class=&quot;c&quot;&gt;# Mode 764 = exec/read/write | read/write | read&lt;/span&gt;
+&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; -w- write                          &lt;span class=&quot;c&quot;&gt;# For:       |--  Owner  --|   |- Group-|   |Oth|&lt;/span&gt;
+&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt; r-- &lt;span class=&quot;nb&quot;&gt;read&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ugo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;a                              &lt;span class=&quot;nv&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;user, &lt;span class=&quot;nv&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;group, &lt;span class=&quot;nv&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;others, &lt;span class=&quot;nv&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;everyone
+  
+chmod &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;OPTION&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; MODE&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;,MODE&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; FILE    &lt;span class=&quot;c&quot;&gt;# MODE is of the form [ugoa]*([-+=]([rwxXst]))&lt;/span&gt;
+chmod &lt;span class=&quot;m&quot;&gt;640&lt;/span&gt; /var/log/maillog         &lt;span class=&quot;c&quot;&gt;# Restrict the log -rw-r-----&lt;/span&gt;
+chmod &lt;span class=&quot;nv&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;rw,g&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;r,o&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; /var/log/maillog &lt;span class=&quot;c&quot;&gt;# Same as above&lt;/span&gt;
+chmod -R o-r /home/*               &lt;span class=&quot;c&quot;&gt;# Recursive remove other readable for all users&lt;/span&gt;
+chmod u+s /path/to/prog            &lt;span class=&quot;c&quot;&gt;# Set SUID bit on executable (know what you do!)&lt;/span&gt;
+find / -perm -u+s -print           &lt;span class=&quot;c&quot;&gt;# Find all programs with the SUID bit&lt;/span&gt;
+chown user:group /path/to/file     &lt;span class=&quot;c&quot;&gt;# Change the user and group ownership of a file&lt;/span&gt;
+chgrp group /path/to/file          &lt;span class=&quot;c&quot;&gt;# Change the group ownership of a file&lt;/span&gt;
+chmod &lt;span class=&quot;m&quot;&gt;640&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;find ./ -type f -print&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# Change permissions to 640 for all files&lt;/span&gt;
+chmod &lt;span class=&quot;m&quot;&gt;751&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;find ./ -type d -print&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# Change permissions to 751 for all directories&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;disk-information&quot;&gt;Disk information&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;hdparm -I /dev/sda                 &lt;span class=&quot;c&quot;&gt;# information about the IDE/ATA disk (Linux)&lt;/span&gt;
+fdisk /dev/ad2                     &lt;span class=&quot;c&quot;&gt;# Display and manipulate the partition table&lt;/span&gt;
+smartctl -a /dev/ad2               &lt;span class=&quot;c&quot;&gt;# Display the disk SMART info&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;system-mount-pointsdisk-usage&quot;&gt;System mount points/Disk usage&lt;/h2&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;mount &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; column -t                  &lt;span class=&quot;c&quot;&gt;# Show mounted file-systems on the system&lt;/span&gt;
+df                                 &lt;span class=&quot;c&quot;&gt;# display free disk space and mounted devices&lt;/span&gt;
+cat /proc/partitions               &lt;span class=&quot;c&quot;&gt;# Show all registered partitions (Linux)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;disk-usage&quot;&gt;Disk usage&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;du -sh *                           &lt;span class=&quot;c&quot;&gt;# Directory sizes as listing&lt;/span&gt;
+du -csh                            &lt;span class=&quot;c&quot;&gt;# Total directory size of the current directory&lt;/span&gt;
+du -ks * &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; sort -n -r              &lt;span class=&quot;c&quot;&gt;# Sort everything by size in kilobytes&lt;/span&gt;
+ls -lSr                            &lt;span class=&quot;c&quot;&gt;# Show files, biggest last&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;who-has-which-files-opened&quot;&gt;Who has which files opened&lt;/h1&gt;
+
+&lt;p&gt;This is useful to find out which file is blocking a partition which has to be unmounted and gives a typical error of:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;umount /home/
+umount: unmount of /home             &lt;span class=&quot;c&quot;&gt;# umount impossible because a file is locking home&lt;/span&gt;
+   failed: Device busy
+
+
+fuser -m /home                     &lt;span class=&quot;c&quot;&gt;# List processes accessing /home&lt;/span&gt;
+lsof /home
+
+COMMAND   PID    USER   FD   TYPE DEVICE    SIZE     NODE NAME
+tcsh    &lt;span class=&quot;m&quot;&gt;29029&lt;/span&gt; memo    cwd    DIR   0,18   &lt;span class=&quot;m&quot;&gt;12288&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;1048587&lt;/span&gt; /home/memo &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;guam:/home&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+lsof    &lt;span class=&quot;m&quot;&gt;29140&lt;/span&gt; memo    cwd    DIR   0,18   &lt;span class=&quot;m&quot;&gt;12288&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;1048587&lt;/span&gt; /home/memo &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;guam:/home&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;mountremount-a-file-system&quot;&gt;Mount/remount a file system&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;mount -t auto /dev/cdrom /mnt/cdrom   &lt;span class=&quot;c&quot;&gt;# typical cdrom mount command&lt;/span&gt;
+mount /dev/hdc -t iso9660 -r /cdrom   &lt;span class=&quot;c&quot;&gt;# typical IDE&lt;/span&gt;
+mount /dev/scd0 -t iso9660 -r /cdrom  &lt;span class=&quot;c&quot;&gt;# typical SCSI cdrom&lt;/span&gt;
+mount /dev/sdc0 -t ntfs-3g /windows   &lt;span class=&quot;c&quot;&gt;# typical SCSI&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;remount&quot;&gt;remount&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;mount -o remount,ro /              &lt;span class=&quot;c&quot;&gt;# Linux&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;virtualbox&quot;&gt;virtualbox&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;VBoxManage 
+
+&lt;span class=&quot;c&quot;&gt;# allow share on the host&lt;/span&gt;
+VBoxManage sharedfolder add &lt;span class=&quot;s2&quot;&gt;&amp;quot;GuestName&amp;quot;&lt;/span&gt; --name &lt;span class=&quot;s2&quot;&gt;&amp;quot;share&amp;quot;&lt;/span&gt; --hostpath &lt;span class=&quot;s2&quot;&gt;&amp;quot;C:\hostshare&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;add-swap-on-the-fly&quot;&gt;Add swap on the fly&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;dd &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/zero &lt;span class=&quot;nv&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/swap2gb &lt;span class=&quot;nv&quot;&gt;bs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1024k &lt;span class=&quot;nv&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2000
+mkswap /swap2gb                    &lt;span class=&quot;c&quot;&gt;# create the swap area&lt;/span&gt;
+swapon /swap2gb                    &lt;span class=&quot;c&quot;&gt;# activate the swap. It now in use&lt;/span&gt;
+swapoff /swap2gb                   &lt;span class=&quot;c&quot;&gt;# when done deactivate the swap&lt;/span&gt;
+rm /swap2gb&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;mount-an-image&quot;&gt;Mount an image&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;hdiutil mount image.iso                               &lt;span class=&quot;c&quot;&gt;# OS X&lt;/span&gt;
+mount -t iso9660 -o loop file.iso /mnt                &lt;span class=&quot;c&quot;&gt;# Mount a CD image&lt;/span&gt;
+mount -t ext3 -o loop file.img /mnt                   &lt;span class=&quot;c&quot;&gt;# Mount an image with ext3 fs&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;disk-perfomance&quot;&gt;Disk perfomance&lt;/h1&gt;
+
+&lt;p&gt;Read and write a 1 GB file on partition ad4s3c (/home)&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;time &lt;/span&gt;dd &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/ad4s3c &lt;span class=&quot;nv&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/null &lt;span class=&quot;nv&quot;&gt;bs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1024k &lt;span class=&quot;nv&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1000
+&lt;span class=&quot;nb&quot;&gt;time &lt;/span&gt;dd &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/zero &lt;span class=&quot;nv&quot;&gt;bs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1024k &lt;span class=&quot;nv&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1000&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/1Gb.file
+hdparm -tT /dev/hda      &lt;span class=&quot;c&quot;&gt;# Linux only&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Tue, 09 Jun 2015 20:23:00 +0100</pubDate>
+        <link>http://memogarcia.me/linux/shell/2015/06/09/linux-commands.html</link>
+        <guid isPermaLink="true">http://memogarcia.me/linux/shell/2015/06/09/linux-commands.html</guid>
+        
+        
+        <category>linux</category>
+        
+        <category>shell</category>
+        
+      </item>
     
       <item>
         <title>Disable FileSystem redirection on Windows</title>
@@ -452,19 +868,6 @@ enable_service s-proxy s-object s-container s-account&lt;/code&gt;&lt;/pre&gt;&l
         <category>threads</category>
         
         <category>snippets</category>
-        
-      </item>
-    
-      <item>
-        <title>Love</title>
-        <description>&lt;p&gt;Have you ever been in love? Horrible isn’t it? It makes you so vulnerable. It opens your chest and it opens up your heart and it means that someone can get inside you and mess you up. You build up all these defenses, you build up a whole suit of armor, so that nothing can hurt you, then one stupid person, no different from any other stupid person, wanders into your stupid life…You give them a piece of you. They didn’t ask for it. They did something dumb one day, like kiss you or smile at you, and then your life isn’t your own anymore. Love takes hostages. It gets inside you. It eats you out and leaves you crying in the darkness, so simple a phrase like ‘maybe we should be just friends’ turns into a glass splinter working its way into your heart. It hurts. Not just in the imagination. Not just in the mind. It’s a soul-hurt, a real gets-inside-you-and-rips-you-apart pain. I hate love.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 07 Jun 2015 20:55:11 +0100</pubDate>
-        <link>http://memogarcia.me/love/2015/06/07/love.html</link>
-        <guid isPermaLink="true">http://memogarcia.me/love/2015/06/07/love.html</guid>
-        
-        
-        <category>love</category>
         
       </item>
     
