@@ -1,0 +1,40 @@
+---
+layout: post
+title:  "Google maps"
+date:   2015-06-10 21:00:00
+categories: maps js
+---
+
+Insert a map in your website
+
+using [NProgress.js](http://ricostacruz.com/nprogress/)
+
+{% highlight javascript %}
+
+function initialize(latitude, longitude) {
+
+    "use strict";
+
+    var map_canvas = document.getElementById('map_canvas');
+
+    var map_options = {
+        center: new google.maps.LatLng(latitude, longitude),
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        disableDefaultUI: true
+    };
+    var latlng = new google.maps.LatLng(latitude, longitude);
+    var map = new google.maps.Map(map_canvas, map_options)
+
+    map.set('styles', []);
+
+    var marker = new google.maps.Marker({
+      position: latlng,
+      map: map,
+    });
+    
+    NProgress.done()
+}
+
+
+{% endhighlight %}

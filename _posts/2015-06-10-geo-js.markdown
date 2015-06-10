@@ -1,0 +1,36 @@
+---
+layout: post
+title:  "Geolocation in the browser with javascript"
+date:   2015-06-10 21:00:00
+categories: geolocation js
+---
+
+Get your current location
+
+using [NProgress.js](http://ricostacruz.com/nprogress/)
+
+{% highlight javascript %}
+
+function findMe() {
+    "use strict";
+    NProgress.start()
+    if (!navigator.geolocation) {
+        console.log("geolocation not available");
+        return;
+    }
+
+    function success(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        google.maps.event.addDomListener(window,
+        'load',
+        initialize(latitude, longitude));
+    }
+    function error() {
+        console.error("Unable to retrieve your location");
+    }
+    var options = {timeout: 60000};
+    navigator.geolocation.getCurrentPosition(success, error, options);
+}
+
+{% endhighlight %}
