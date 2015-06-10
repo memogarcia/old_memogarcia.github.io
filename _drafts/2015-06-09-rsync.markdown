@@ -11,7 +11,7 @@ Copy the directories with full content:
 
 {% highlight bash %}
 
-rsync -a /home/colin/ /backup/colin/                # "archive" mode. e.g keep the same
+rsync -a /home/memo/ /backup/memo/                # "archive" mode. e.g keep the same
 rsync -a /var/ /var_bak/
 rsync -aR --delete-during /home/user/ /backup/      # use relative (see below)
 /opt/local/bin/rsync -azv --iconv=UTF-8-MAC,UTF-8 ~/Music/flac/ me@server:/dst/
@@ -38,7 +38,7 @@ rsync -azR --exclude=tmp/ /home/user/ user@server:/backup/
 
 Use port 20022 for the ssh connection:
 {% highlight bash %}
-rsync -az -e 'ssh -p 20022' /home/colin/ user@server:/backup/colin/
+rsync -az -e 'ssh -p 20022' /home/memo/ user@server:/backup/memo/
 {% endhighlight %}
 
 Using the rsync daemon (used with "::") is much faster, but not encrypted over ssh. The location of /backup is defined by the configuration in /etc/rsyncd.conf. The variable RSYNC_PASSWORD can be set to avoid the need to enter the password manually.

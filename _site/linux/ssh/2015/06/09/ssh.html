@@ -64,18 +64,6 @@
   <article class="post-content">
     <h2 id="ssh-scp">SSH SCP</h2>
 
-<h1 id="public-key-authentication">Public key authentication</h1>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ssh-keygen -t dsa -N <span class="s1">&#39;&#39;</span>
-cat ~/.ssh/id_dsa.pub <span class="p">|</span> ssh you@host-server <span class="s2">&quot;cat - &gt;&gt; ~/.ssh/authorized_keys2&quot;</span></code></pre></div>
-
-<h1 id="check-fingerprint">Check fingerprint</h1>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub      <span class="c"># For RSA key</span>
-<span class="m">2048</span> 61:33:be:9b:ae:6c:36:31:fd:83:98:b7:99:2d:9f:cd /etc/ssh/ssh_host_rsa_key.pub
-ssh-keygen -l -f /etc/ssh/ssh_host_dsa_key.pub      <span class="c"># For DSA key (default)</span>
-<span class="m">2048</span> 14:4a:aa:d9:73:25:46:6d:0a:48:35:c7:f4:16:d4:ee /etc/ssh/ssh_host_dsa_key.pub</code></pre></div>
-
 <h1 id="secure-file-transfer-sft">Secure file transfer (SFT)</h1>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">scp file.txt host-two:/tmp

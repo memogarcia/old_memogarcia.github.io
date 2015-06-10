@@ -7,27 +7,6 @@ categories: linux ssh
 
 ## SSH SCP
 
-# Public key authentication
-
-{% highlight bash %}
-
-ssh-keygen -t dsa -N ''
-cat ~/.ssh/id_dsa.pub | ssh you@host-server "cat - >> ~/.ssh/authorized_keys2"
-
-{% endhighlight %}
-
-
-# Check fingerprint
-
-{% highlight bash %}
-
-ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub      # For RSA key
-2048 61:33:be:9b:ae:6c:36:31:fd:83:98:b7:99:2d:9f:cd /etc/ssh/ssh_host_rsa_key.pub
-ssh-keygen -l -f /etc/ssh/ssh_host_dsa_key.pub      # For DSA key (default)
-2048 14:4a:aa:d9:73:25:46:6d:0a:48:35:c7:f4:16:d4:ee /etc/ssh/ssh_host_dsa_key.pub
-
-{% endhighlight %}
-
 
 # Secure file transfer (SFT)
 
