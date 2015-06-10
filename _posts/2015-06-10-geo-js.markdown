@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Geolocation in the browser with javascript"
-date:   2015-06-10 21:00:00
+date:   2015-06-10 10:00:00
 categories: geolocation js
 ---
 
