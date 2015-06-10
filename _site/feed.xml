@@ -5,8 +5,8 @@
     <description></description>
     <link>http://memogarcia.me/</link>
     <atom:link href="http://memogarcia.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 10 Jun 2015 10:36:53 +0100</pubDate>
-    <lastBuildDate>Wed, 10 Jun 2015 10:36:53 +0100</lastBuildDate>
+    <pubDate>Wed, 10 Jun 2015 15:47:54 +0100</pubDate>
+    <lastBuildDate>Wed, 10 Jun 2015 15:47:54 +0100</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -87,6 +87,19 @@
         <category>geolocation</category>
         
         <category>js</category>
+        
+      </item>
+    
+      <item>
+        <title>Death dove inside</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/images/expected.jpg&quot; alt=&quot;Death dove&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 10 Jun 2015 17:00:00 +0100</pubDate>
+        <link>http://memogarcia.me/funny/2015/06/10/death-dove.html</link>
+        <guid isPermaLink="true">http://memogarcia.me/funny/2015/06/10/death-dove.html</guid>
+        
+        
+        <category>funny</category>
         
       </item>
     
@@ -792,52 +805,6 @@ enable_service s-proxy s-object s-container s-account&lt;/code&gt;&lt;/pre&gt;&l
         
         
         <category>devstack</category>
-        
-      </item>
-    
-      <item>
-        <title>Terminator configuration</title>
-        <description>&lt;p&gt;Simple terminator configuration&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;~/.config/terminator/config&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;global_config&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;keybindings&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;new_tab&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &amp;lt;Primary&amp;gt;t
-  &lt;span class=&quot;nv&quot;&gt;copy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &amp;lt;Primary&amp;gt;c
-  &lt;span class=&quot;nv&quot;&gt;paste&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &amp;lt;Primary&amp;gt;v
-  &lt;span class=&quot;nv&quot;&gt;next_tab&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &amp;lt;Primary&amp;gt;Tab
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;profiles&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt;default&lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;scrollbar_position&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; hidden
-    &lt;span class=&quot;nv&quot;&gt;palette&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;background_image&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; None
-    &lt;span class=&quot;nv&quot;&gt;foreground_color&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;#d8d3c4&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;scroll_on_output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; False
-    &lt;span class=&quot;nv&quot;&gt;show_titlebar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; False
-    &lt;span class=&quot;nv&quot;&gt;background_color&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;#002b36&amp;quot;&lt;/span&gt;
-    &lt;span class=&quot;nv&quot;&gt;scrollback_infinite&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; True
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;layouts&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt;default&lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;[[[&lt;/span&gt;child1&lt;span class=&quot;o&quot;&gt;]]]&lt;/span&gt;
-      &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Terminal
-      &lt;span class=&quot;nv&quot;&gt;parent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; window0
-    &lt;span class=&quot;o&quot;&gt;[[[&lt;/span&gt;window0&lt;span class=&quot;o&quot;&gt;]]]&lt;/span&gt;
-      &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Window
-      &lt;span class=&quot;nv&quot;&gt;parent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;plugins&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Sun, 07 Jun 2015 20:55:11 +0100</pubDate>
-        <link>http://memogarcia.me/terminator/configuration/linux/2015/06/07/terminator.html</link>
-        <guid isPermaLink="true">http://memogarcia.me/terminator/configuration/linux/2015/06/07/terminator.html</guid>
-        
-        
-        <category>terminator</category>
-        
-        <category>configuration</category>
-        
-        <category>linux</category>
         
       </item>
     
