@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Install elasticsearch</title>
-  <meta name="description" content="Install OpenJDK (or java)">
+  <title>Sync date and time in ubuntu</title>
+  <meta name="description" content="This is very common when you pause a vm">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://memogarcia.me/elasticsearch/2015/06/08/elasticsearch.html">
+  <link rel="canonical" href="http://memogarcia.me/ubuntu/linux/datetime/2015/06/11/datetime-ubuntu.html">
   <link rel="alternate" type="application/rss+xml" title="Memo Garcia" href="http://memogarcia.me/feed.xml" />
 </head>
 
@@ -57,28 +57,18 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Install elasticsearch</h1>
-    <p class="post-meta">Jun 8, 2015</p>
+    <h1 class="post-title">Sync date and time in ubuntu</h1>
+    <p class="post-meta">Jun 11, 2015</p>
   </header>
 
   <article class="post-content">
-    <p>Install OpenJDK (or java)</p>
+    <p>This is very common when you pause a vm</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install openjdk-7-jre</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo ntpdate ntp.ubuntu.com</code></pre></div>
 
-<p>Download elasticsearch from:</p>
+<p>Or if you need to change the date</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">https://www.elastic.co/downloads/elasticsearch</code></pre></div>
-
-<p>Install .deb file</p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo dpkg -i elasticsearch.deb</code></pre></div>
-
-<p>Start elasticsearch</p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo /etc/init.d/elasticsearch start
-<span class="c"># or</span>
-sudo service elasticsearch start</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo date --set <span class="s2">&quot;11 Jun 2015 14:49:00&quot;</span></code></pre></div>
 
   </article>
 

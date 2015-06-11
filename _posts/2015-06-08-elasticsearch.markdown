@@ -27,4 +27,6 @@ Start elasticsearch
 
 {% highlight bash %}
 sudo /etc/init.d/elasticsearch start
+# or
+sudo service elasticsearch start
 {% endhighlight %}
