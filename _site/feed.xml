@@ -5,9 +5,28 @@
     <description></description>
     <link>http://memogarcia.me/</link>
     <atom:link href="http://memogarcia.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 15 Jun 2015 15:41:52 +0100</pubDate>
-    <lastBuildDate>Mon, 15 Jun 2015 15:41:52 +0100</lastBuildDate>
+    <pubDate>Tue, 16 Jun 2015 15:18:08 +0100</pubDate>
+    <lastBuildDate>Tue, 16 Jun 2015 15:18:08 +0100</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Backup and Restore for Openstack</title>
+        <description>
+</description>
+        <pubDate>Mon, 15 Jun 2015 16:42:00 +0100</pubDate>
+        <link>http://memogarcia.me/backup/restore/openstack/freezer/2015/06/15/how-to-backup-openstack.html</link>
+        <guid isPermaLink="true">http://memogarcia.me/backup/restore/openstack/freezer/2015/06/15/how-to-backup-openstack.html</guid>
+        
+        
+        <category>backup</category>
+        
+        <category>restore</category>
+        
+        <category>openstack</category>
+        
+        <category>freezer</category>
+        
+      </item>
     
       <item>
         <title>Git configurations</title>
@@ -23,17 +42,6 @@
         <category>git</category>
         
         <category>configuration</category>
-        
-      </item>
-    
-      <item>
-        <title>How To Backup Openstack</title>
-        <description>
-</description>
-        <pubDate>Mon, 15 Jun 2015 00:00:00 +0100</pubDate>
-        <link>http://memogarcia.me/2015/06/15/how-to-backup-openstack.html</link>
-        <guid isPermaLink="true">http://memogarcia.me/2015/06/15/how-to-backup-openstack.html</guid>
-        
         
       </item>
     
