@@ -33,11 +33,10 @@ FORCE=yes ./stack.sh
 {% endhighlight %}
 
 
-enable swift
-
+Create local.conf in devstack folder
 
 {% highlight bash %}
-# create local.conf in devstack folder
+
 [[local|localrc]]
 #FIXED_RANGE=192.168.20.0/24
 #NETWORK_GATEWAY=192.168.20.1a
@@ -50,8 +49,15 @@ RABBIT_PASSWORD=$ADMIN_PASSWORD
 SERVICE_PASSWORD=$ADMIN_PASSWORD
 SERVICE_TOKEN=a682f596-76f3-11e3-b3b2-e716f9080d50
 
+{% endhighlight %}
+
+Enable swift
+
+{% highlight bash %}
+
 SWIFT_REPLICAS=1
 SWIFT_DATA_DIR=$DEST/data/swift
 SWIFT_HASH=66a3d6b56c1f479c8b4e70ab5c2000f5
 enable_service s-proxy s-object s-container s-account
+
 {% endhighlight %}
