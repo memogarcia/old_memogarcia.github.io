@@ -5,8 +5,8 @@
     <description></description>
     <link>http://memogarcia.me/</link>
     <atom:link href="http://memogarcia.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 16 Jun 2015 18:07:26 +0100</pubDate>
-    <lastBuildDate>Tue, 16 Jun 2015 18:07:26 +0100</lastBuildDate>
+    <pubDate>Mon, 10 Aug 2015 10:27:26 +0100</pubDate>
+    <lastBuildDate>Mon, 10 Aug 2015 10:27:26 +0100</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -191,8 +191,8 @@
 &lt;h1 id=&quot;secure-file-transfer-sft&quot;&gt;Secure file transfer (SFT)&lt;/h1&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;scp file.txt host-two:/tmp
-scp joe@host-two:/www/*.html /www/tmp
-scp -r joe@host-two:/www /www/tmp&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+scp memo@host-two:/www/*.html /www/tmp
+scp -r memo@host-two:/www /www/tmp&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h1 id=&quot;tunneling&quot;&gt;Tunneling&lt;/h1&gt;
 
@@ -201,14 +201,13 @@ scp -r joe@host-two:/www /www/tmp&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh -L localport:desthost:destport user@gate  &lt;span class=&quot;c&quot;&gt;# desthost as seen from the gate&lt;/span&gt;
 ssh -R destport:desthost:localport user@gate  &lt;span class=&quot;c&quot;&gt;# forwards your localport to destination&lt;/span&gt;
     &lt;span class=&quot;c&quot;&gt;# desthost:localport as seen from the client initiating the tunnel&lt;/span&gt;
-ssh -X user@gate   &lt;span class=&quot;c&quot;&gt;# To force X forwarding&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+ssh -X user@gate   &lt;span class=&quot;c&quot;&gt;# To force X forwarding&lt;/span&gt;
 
-&lt;p&gt;This will connect to gate and forward the local port to the host desthost:destport. Note desthost is the destination host as seen by the gate, so if the connection is to the gate, then desthost is localhost. More than one port forward is possible.
-Direct forward on the gate&lt;/p&gt;
+ssh -D &lt;span class=&quot;m&quot;&gt;9999&lt;/span&gt; ubuntu@ip&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Let say we want to access the CVS (port 2401) and http (port 80) which are running on the gate. This is the simplest example, desthost is thus localhost, and we use the port 8080 locally instead of 80 so we don’t need to be root. Once the ssh session is open, both services are accessible on the local ports.&lt;/p&gt;
+&lt;p&gt;no strict checking&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh -L 2401:localhost:2401 -L 8080:localhost:80 user@gate&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh ubuntu@ip -i key.pem -o &lt;span class=&quot;nv&quot;&gt;StrictHostKeyChecking&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;no&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 </description>
         <pubDate>Tue, 09 Jun 2015 22:00:00 +0100</pubDate>

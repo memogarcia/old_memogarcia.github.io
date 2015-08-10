@@ -13,8 +13,8 @@ categories: linux ssh
 {% highlight bash %}
 
 scp file.txt host-two:/tmp
-scp joe@host-two:/www/*.html /www/tmp
-scp -r joe@host-two:/www /www/tmp
+scp memo@host-two:/www/*.html /www/tmp
+scp -r memo@host-two:/www /www/tmp
 
 {% endhighlight %}
 
@@ -30,13 +30,12 @@ ssh -R destport:desthost:localport user@gate  # forwards your localport to desti
     # desthost:localport as seen from the client initiating the tunnel
 ssh -X user@gate   # To force X forwarding
 
+ssh -D 9999 ubuntu@ip
+
 {% endhighlight %}
 
-This will connect to gate and forward the local port to the host desthost:destport. Note desthost is the destination host as seen by the gate, so if the connection is to the gate, then desthost is localhost. More than one port forward is possible.
-Direct forward on the gate
-
-Let say we want to access the CVS (port 2401) and http (port 80) which are running on the gate. This is the simplest example, desthost is thus localhost, and we use the port 8080 locally instead of 80 so we don't need to be root. Once the ssh session is open, both services are accessible on the local ports.
+no strict checking
 
 {% highlight bash %}
-ssh -L 2401:localhost:2401 -L 8080:localhost:80 user@gate
+ssh ubuntu@ip -i key.pem -o StrictHostKeyChecking=no
 {% endhighlight %}

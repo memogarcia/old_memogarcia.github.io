@@ -67,8 +67,8 @@
 <h1 id="secure-file-transfer-sft">Secure file transfer (SFT)</h1>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">scp file.txt host-two:/tmp
-scp joe@host-two:/www/*.html /www/tmp
-scp -r joe@host-two:/www /www/tmp</code></pre></div>
+scp memo@host-two:/www/*.html /www/tmp
+scp -r memo@host-two:/www /www/tmp</code></pre></div>
 
 <h1 id="tunneling">Tunneling</h1>
 
@@ -77,14 +77,13 @@ scp -r joe@host-two:/www /www/tmp</code></pre></div>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">ssh -L localport:desthost:destport user@gate  <span class="c"># desthost as seen from the gate</span>
 ssh -R destport:desthost:localport user@gate  <span class="c"># forwards your localport to destination</span>
     <span class="c"># desthost:localport as seen from the client initiating the tunnel</span>
-ssh -X user@gate   <span class="c"># To force X forwarding</span></code></pre></div>
+ssh -X user@gate   <span class="c"># To force X forwarding</span>
 
-<p>This will connect to gate and forward the local port to the host desthost:destport. Note desthost is the destination host as seen by the gate, so if the connection is to the gate, then desthost is localhost. More than one port forward is possible.
-Direct forward on the gate</p>
+ssh -D <span class="m">9999</span> ubuntu@ip</code></pre></div>
 
-<p>Let say we want to access the CVS (port 2401) and http (port 80) which are running on the gate. This is the simplest example, desthost is thus localhost, and we use the port 8080 locally instead of 80 so we don’t need to be root. Once the ssh session is open, both services are accessible on the local ports.</p>
+<p>no strict checking</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ssh -L 2401:localhost:2401 -L 8080:localhost:80 user@gate</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ssh ubuntu@ip -i key.pem -o <span class="nv">StrictHostKeyChecking</span><span class="o">=</span>no</code></pre></div>
 
 
   </article>

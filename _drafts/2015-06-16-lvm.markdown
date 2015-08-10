@@ -22,4 +22,3 @@ physical volume(s)  | /dev/sdb1  /dev/sdc1  /dev/sdd1  /dev/sde1            |
 you have phsycal volumes in which you can create volume groups and in each group you can create logical volumes
 
 physical  ==>  group volumes  ==>  logical volumes
-
