@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Powershell notes</title>
-  <meta name="description" content="Tail command equivalent in windows using powershell">
+  <meta name="description" content="Tail command equivalent">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://memogarcia.me/powershell/windows/2015/08/11/powershell.html">
@@ -62,9 +62,13 @@
   </header>
 
   <article class="post-content">
-    <p>Tail command equivalent in windows using powershell</p>
+    <p>Tail command equivalent</p>
 
 <div class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span class="nb">Get-Content</span> <span class="n">file</span><span class="p">.</span><span class="n">log</span> <span class="n">-Wait</span></code></pre></div>
+
+<p>touch equivalent</p>
+
+<div class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span class="nb">New-Item</span> <span class="n">file</span><span class="p">.</span><span class="n">log</span> <span class="n">-type</span> <span class="n">file</span></code></pre></div>
 
   </article>
 
