@@ -12,3 +12,12 @@ Change remote url to use git instead of https
 git remote set-url origin git@github.com:user/repo.git
 
 {% endhighlight %}
+
+
+Update .gitignore to add more entries
+
+{% highlight bash %}
+
+git rm -r --cached .
+
+{% endhighlight %}
