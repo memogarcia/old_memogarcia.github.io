@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Running horizon under SSL</title>
-  <meta name="description" content="Running OpenStack’s horizon under SSL.">
+  <title>Improving UX in OpenStack's Freezer</title>
+  <meta name="description" content="Pending stuff">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://memogarcia.me/horizon/ssl/2016/01/18/horizon-ssl.html">
+  <link rel="canonical" href="http://memogarcia.me/openstack/freezer/python/ux/2016/02/29/improving-freezer-ux.html">
   <link rel="alternate" type="application/rss+xml" title="Memo Garcia" href="http://memogarcia.me/feed.xml" />
 </head>
 
@@ -57,19 +57,55 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Running horizon under SSL</h1>
-    <p class="post-meta">Jan 18, 2016</p>
+    <h1 class="post-title">Improving UX in OpenStack's Freezer</h1>
+    <p class="post-meta">Feb 29, 2016</p>
   </header>
 
   <article class="post-content">
-    <p>Running OpenStack’s horizon under SSL.</p>
+    <h2 id="pending-stuff">Pending stuff</h2>
 
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">pip install django-extensions pyOpenSSL Werkzeug
+<ul>
+  <li>create an index for log files</li>
+</ul>
 
-<span class="c"># add django_extensions in INSTALLED_APPS in settings.py</span>
+<h2 id="overview">Overview</h2>
 
-python manage.py runserver_plus --cert cert</code></pre></div>
+<p><a href="https://wiki.openstack.org/wiki/Freezer">Freezer</a> is a backup and restore tool part of the OpenStack infrastructure which has been part of the big tent since liberty release.</p>
 
+<p>Freezer team is planning to grown this project into a complete <a href="https://review.openstack.org/#/c/278242/">disaster recovery</a> solution, but in order to do that a big refactoring needs to happen, which is to create plugin layers for all the components inside freezer, the idea is to be as much flexible and lean as possible but being modular implies having common interfaces between components and for the user as well. This post will cover that, how to make freezer usable for end users.</p>
+
+<h2 id="components">Components</h2>
+
+<p>freezer is composed of several components:</p>
+
+<ul>
+  <li><a href="https://github.com/openstack/freezer">freezer-agent</a></li>
+  <li><a href="https://github.com/openstack/freezer">freezer-scheduler</a></li>
+  <li><a href="https://github.com/openstack/freezer-api">freezer-api</a></li>
+  <li><a href="https://github.com/memogarcia/python-freezerclient">python-freezerclient</a></li>
+  <li><a href="https://github.com/openstack/freezer-web-ui">freezer-web-ui</a></li>
+</ul>
+
+<h2 id="architecture">Architecture</h2>
+
+<h2 id="user-experience">User Experience</h2>
+<ul>
+  <li>ideas:
+    <ul>
+      <li>job shortcuts</li>
+      <li>job templates (is this the same as shortcuts?)</li>
+      <li>python freezer client should install the agent and scheduler as a dependency</li>
+      <li>freezer-agent should only accept –config argument</li>
+      <li>freezer-scheduler should only accept: start, stop, abort jobs</li>
+      <li>all the interaction should be done by the ui or freezerclient</li>
+      <li>Improve the README for all projects
+        <ul>
+          <li>but let’s start with the ui and freezerclient</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
   </article>
 
