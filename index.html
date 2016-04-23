@@ -4,6 +4,21 @@ layout: default
 
 <div class="home">
 
+  <h1 class="page-heading">Projects</h1>
+
+  <ul class="post-list">
+    <li>
+      <h3>
+        <a class="post-link" href="https://github.com/memogarcia/pratai">Pratai, Event driven PaaS</a>
+      </h3>
+    </li>
+    <li>
+      <h3>
+        <a class="post-link" href="https://gitlab.com/memogarcia/tar_stream">tar_stream, Archive data in streams</a>
+      </h3>
+    </li>
+  </ul>
+
   <h1 class="page-heading">Posts</h1>
 
   <ul class="post-list">
@@ -11,10 +26,9 @@ layout: default
       <li>
         <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
-        <h2>
+        <h3>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-          <a href="{{ post.url }}#disqus_thread"></a>
-        </h2>
+        </h3>
       </li>
     {% endfor %}
   </ul>
