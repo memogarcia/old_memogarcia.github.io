@@ -9,7 +9,7 @@ categories: software engineering
 
 Programming isn't a passion or talent, is a acquired skill
 
-Programming is the conbination of lots of skills, communication, thinking, etc.
+Programming is the combination of lots of skills, communication, thinking, etc.
 
 * Not everything should be a class.
 * When a group of functions share a common state classes may be appropiate

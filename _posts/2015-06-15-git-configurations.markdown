@@ -21,3 +21,39 @@ Update .gitignore to add more entries
 git rm -r --cached .
 
 {% endhighlight %}
+
+
+Better logging
+
+{% highlight bash %}
+
+git log --oneline --graph
+
+{% endhighlight %}
+
+
+Check actual changes in a file
+
+{% highlight bash %}
+
+git log -p filename
+
+{% endhighlight %}
+
+
+Extract a file from another branch
+
+{% highlight bash %}
+
+git show some-branch:some-file.js
+
+{% endhighlight %}
+
+
+Create aliases for git commands
+
+{% highlight bash %}
+
+git config --global alias.l "log --oneline --graph"
+
+{% endhighlight %}
