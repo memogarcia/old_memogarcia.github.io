@@ -4,6 +4,5 @@ title: About
 permalink: /about/
 ---
 
-
-This blog posts are mean to be reference only. some sort of snippet
+This blog posts are meant to be reference only. some sort of snippet
 directory
