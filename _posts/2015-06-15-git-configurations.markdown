@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Git configurations"
+title:  "Git cheat sheet"
 date:   2015-06-15 12:30:00
 categories: git configuration
 ---
@@ -55,5 +55,14 @@ Create aliases for git commands
 {% highlight bash %}
 
 git config --global alias.l "log --oneline --graph"
+
+{% endhighlight %}
+
+
+Clone a specific branch
+
+{% highlight bash %}
+
+git clone -b branch repo
 
 {% endhighlight %}
