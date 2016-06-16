@@ -67,16 +67,16 @@ to C:/Windows/System32 automatically get redirected to the 32 bit
 version (C:/Windows/SysWow64), if you really do need to access the
 contents of System32, you need to disable the file system redirector first.</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">ctypes</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">ctypes</span>
 
 
 <span class="k">class</span> <span class="nc">DisableFileSystemRedirection</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    When a 32 bit program runs on a 64 bit operating system the paths</span>
-<span class="sd">    to C:/Windows/System32 automatically get redirected to the 32 bit</span>
-<span class="sd">    version (C:/Windows/SysWow64), if you really do need to access the</span>
-<span class="sd">    contents of System32, you need to disable the file system redirector first.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="s">"""
+    When a 32 bit program runs on a 64 bit operating system the paths
+    to C:/Windows/System32 automatically get redirected to the 32 bit
+    version (C:/Windows/SysWow64), if you really do need to access the
+    contents of System32, you need to disable the file system redirector first.
+    """</span>
 
     <span class="n">_disable</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">kernel32</span><span class="o">.</span><span class="n">Wow64DisableWow64FsRedirection</span>
     <span class="n">_revert</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">kernel32</span><span class="o">.</span><span class="n">Wow64RevertWow64FsRedirection</span>
@@ -87,12 +87,12 @@ contents of System32, you need to disable the file system redirector first.</p>
 
     <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_revert</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">old_value</span><span class="p">)</span></code></pre></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_revert</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">old_value</span><span class="p">)</span></code></pre></figure>
 
 <p>usage:</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">with</span> <span class="n">DisableFileSystemRedirection</span><span class="p">():</span>
-	<span class="k">pass</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">with</span> <span class="n">DisableFileSystemRedirection</span><span class="p">():</span>
+	<span class="k">pass</span></code></pre></figure>
 
   </article>
 

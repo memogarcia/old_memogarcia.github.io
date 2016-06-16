@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Geolocation in the browser with javascript</title>
-  <meta name="description" content="Get your current location">
+  <title>Facebook Graph API in Python</title>
+  <meta name="description" content="Overview">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://memogarcia.me/geolocation/js/2015/06/10/geo-js.html">
+  <link rel="canonical" href="http://memogarcia.me/facebook/api/python/graph/2016/03/24/facebook-grap-api-python.html">
   <link rel="alternate" type="application/rss+xml" title="Memo Garcia" href="http://memogarcia.me/feed.xml" />
 </head>
 
@@ -57,36 +57,12 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Geolocation in the browser with javascript</h1>
-    <p class="post-meta">Jun 10, 2015</p>
+    <h1 class="post-title">Facebook Graph API in Python</h1>
+    <p class="post-meta">Mar 24, 2016</p>
   </header>
 
   <article class="post-content">
-    <p>Get your current location</p>
-
-<p>using <a href="http://ricostacruz.com/nprogress/">NProgress.js</a></p>
-
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">findMe</span><span class="p">()</span> <span class="p">{</span>
-    <span class="s2">"use strict"</span><span class="p">;</span>
-    <span class="nx">NProgress</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"geolocation not available"</span><span class="p">);</span>
-        <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="kd">function</span> <span class="nx">success</span><span class="p">(</span><span class="nx">position</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">latitude</span> <span class="o">=</span> <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">latitude</span><span class="p">;</span>
-        <span class="kd">var</span> <span class="nx">longitude</span> <span class="o">=</span> <span class="nx">position</span><span class="p">.</span><span class="nx">coords</span><span class="p">.</span><span class="nx">longitude</span><span class="p">;</span>
-        <span class="nx">google</span><span class="p">.</span><span class="nx">maps</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">addDomListener</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span>
-        <span class="s1">'load'</span><span class="p">,</span>
-        <span class="nx">initialize</span><span class="p">(</span><span class="nx">latitude</span><span class="p">,</span> <span class="nx">longitude</span><span class="p">));</span>
-    <span class="p">}</span>
-    <span class="kd">function</span> <span class="nx">error</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Unable to retrieve your location"</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span><span class="na">timeout</span><span class="p">:</span> <span class="mi">60000</span><span class="p">};</span>
-    <span class="nx">navigator</span><span class="p">.</span><span class="nx">geolocation</span><span class="p">.</span><span class="nx">getCurrentPosition</span><span class="p">(</span><span class="nx">success</span><span class="p">,</span> <span class="nx">error</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
-<span class="p">}</span></code></pre></figure>
+    <h2 id="overview">Overview</h2>
 
   </article>
 
