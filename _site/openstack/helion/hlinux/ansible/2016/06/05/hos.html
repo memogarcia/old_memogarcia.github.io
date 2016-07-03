@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Git cheat sheetpro</title>
-  <meta name="description" content="Change remote url to use git instead of https">
+  <title>Helion OpenStack</title>
+  <meta name="description" content="Move the deployer from a virtual host to a physical host.">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://memogarcia.me/git/configuration/2015/06/15/git-configurations.html">
+  <link rel="canonical" href="http://memogarcia.me/openstack/helion/hlinux/ansible/2016/06/05/hos.html">
   <link rel="alternate" type="application/rss+xml" title="Memo Garcia" href="http://memogarcia.me/feed.xml" />
 </head>
 
@@ -57,38 +57,23 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Git cheat sheetpro</h1>
-    <p class="post-meta">Jun 15, 2015</p>
+    <h1 class="post-title">Helion OpenStack</h1>
+    <p class="post-meta">Jun 5, 2016</p>
   </header>
 
   <article class="post-content">
-    <p>Change remote url to use git instead of https</p>
+    <h1 id="move-the-deployer-from-a-virtual-host-to-a-physical-host">Move the deployer from a virtual host to a physical host.</h1>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git remote <span class="nb">set</span>-url origin git@github.com:user/repo.git</code></pre></div>
+<p>backup the following directories and files:</p>
 
-<p>Update .gitignore to add more entries</p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git rm -r --cached .</code></pre></div>
-
-<p>Better logging</p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git log --oneline --graph</code></pre></div>
-
-<p>Check actual changes in a file</p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git log -p filename</code></pre></div>
-
-<p>Extract a file from another branch</p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git show some-branch:some-file.js</code></pre></div>
-
-<p>Create aliases for git commands</p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git config --global alias.l <span class="s2">&quot;log --oneline --graph&quot;</span></code></pre></div>
-
-<p>Clone a specific branch</p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git clone -b branch repo</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">/home/
+/etc/passwd
+/etc/shadow
+/etc/group
+/etc/ssh/
+/etc/group
+/var/lib/cobbler/
+/srv/www/cobbler/</code></pre></div>
 
 
   </article>

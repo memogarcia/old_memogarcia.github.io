@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Git cheat sheetpro</title>
-  <meta name="description" content="Change remote url to use git instead of https">
+  <title>Virtualbox CLI</title>
+  <meta name="description" content="Install linux headers">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://memogarcia.me/git/configuration/2015/06/15/git-configurations.html">
+  <link rel="canonical" href="http://memogarcia.me/virtualbox/cli/configuration/2016/06/05/virtualbox-cli.html">
   <link rel="alternate" type="application/rss+xml" title="Memo Garcia" href="http://memogarcia.me/feed.xml" />
 </head>
 
@@ -57,38 +57,54 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Git cheat sheetpro</h1>
-    <p class="post-meta">Jun 15, 2015</p>
+    <h1 class="post-title">Virtualbox CLI</h1>
+    <p class="post-meta">Jun 5, 2016</p>
   </header>
 
   <article class="post-content">
-    <p>Change remote url to use git instead of https</p>
+    <p>Install linux headers</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git remote <span class="nb">set</span>-url origin git@github.com:user/repo.git</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install linux-headers-<span class="k">$(</span>uname -r<span class="k">)</span></code></pre></div>
 
-<p>Update .gitignore to add more entries</p>
+<p>Download Virtualbox</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git rm -r --cached .</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://download.virtualbox.org/virtualbox/5.0.20/VirtualBox-5.0.20-106931-Linux_amd64.run</code></pre></div>
 
-<p>Better logging</p>
+<p>Install Virtualbox</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git log --oneline --graph</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo sh VirtualBox-5.0.20-106931-Linux_amd64.run</code></pre></div>
 
-<p>Check actual changes in a file</p>
+<p>Create a Virtual Drive</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git log -p filename</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">vboxmanage createmedium disk --filename hd/hlinux.vdi --size <span class="m">100000</span> --format VDI --variant Standard</code></pre></div>
 
-<p>Extract a file from another branch</p>
+<p>Check the list of OS_Types</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git show some-branch:some-file.js</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">VBoxManage list ostypes</code></pre></div>
 
-<p>Create aliases for git commands</p>
+<p>Create the vm</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git config --global alias.l <span class="s2">&quot;log --oneline --graph&quot;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">vboxmanage createvm --name hlinux --ostype Debian_64 --uuid efb10300-2995-11e6-b5c1-0002a5d5c51b --basefolder hd --register</code></pre></div>
 
-<p>Clone a specific branch</p>
+<p>Register the vm</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git clone -b branch repo</code></pre></div>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">vboxmanage registervm /home/stack/.config/VirtualBox/hd/hlinux/hlinux.vbox</code></pre></div>
+
+<p>Modify the vm</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">VBoxManage storagectl efb10300-2995-11e6-b5c1-0002a5d5c51b --name <span class="s2">&quot;IDE Controller&quot;</span> --add ide
+
+VBoxManage storageattach efb10300-2995-11e6-b5c1-0002a5d5c51b --storagectl <span class="s2">&quot;IDE Controller&quot;</span> --port <span class="m">0</span> --device <span class="m">0</span> --type hdd --medium hlinux.vdi
+
+VBoxManage storageattach efb10300-2995-11e6-b5c1-0002a5d5c51b --storagectl <span class="s2">&quot;IDE Controller&quot;</span> --port <span class="m">1</span> --device <span class="m">0</span> --type dvddrive --medium /home/stack/Helion-Openstack-2.1.0.iso
+
+vboxmanage modifyvm efb10300-2995-11e6-b5c1-0002a5d5c51b --memory <span class="m">8096</span> --cpus 4
+
+vboxmanage modifyvm efb10300-2995-11e6-b5c1-0002a5d5c51b --nic1 bridged --bridgeadapter1 eth0</code></pre></div>
+
+<p>Start the vm</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">vboxmanage startvm hlinux --type headless</code></pre></div>
 
 
   </article>

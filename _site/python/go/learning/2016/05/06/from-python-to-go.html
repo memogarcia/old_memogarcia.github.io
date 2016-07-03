@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Git cheat sheetpro</title>
-  <meta name="description" content="Change remote url to use git instead of https">
+  <title>From python to go</title>
+  <meta name="description" content="basic workflow">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://memogarcia.me/git/configuration/2015/06/15/git-configurations.html">
+  <link rel="canonical" href="http://memogarcia.me/python/go/learning/2016/05/06/from-python-to-go.html">
   <link rel="alternate" type="application/rss+xml" title="Memo Garcia" href="http://memogarcia.me/feed.xml" />
 </head>
 
@@ -57,39 +57,69 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Git cheat sheetpro</h1>
-    <p class="post-meta">Jun 15, 2015</p>
+    <h1 class="post-title">From python to go</h1>
+    <p class="post-meta">May 6, 2016</p>
   </header>
 
   <article class="post-content">
-    <p>Change remote url to use git instead of https</p>
+    <h2 id="basic-workflow">basic workflow</h2>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git remote <span class="nb">set</span>-url origin git@github.com:user/repo.git</code></pre></div>
+<p>if</p>
 
-<p>Update .gitignore to add more entries</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">if</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="k">elif</span> <span class="bp">False</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">pass</span></code></pre></div>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git rm -r --cached .</code></pre></div>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+  <span class="nb">panic</span><span class="p">(</span><span class="s">&quot;error&quot;</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
 
-<p>Better logging</p>
+<p>for</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git log --oneline --graph</code></pre></div>
+<p>try catch</p>
 
-<p>Check actual changes in a file</p>
+<p>lists</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git log -p filename</code></pre></div>
+<p>classes</p>
 
-<p>Extract a file from another branch</p>
+<p>functions</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git show some-branch:some-file.js</code></pre></div>
+<p>dictionaries (or arrays)</p>
 
-<p>Create aliases for git commands</p>
+<p>logging</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git config --global alias.l <span class="s2">&quot;log --oneline --graph&quot;</span></code></pre></div>
+<p>imports</p>
 
-<p>Clone a specific branch</p>
+<h2 id="third-party-libraries">third party libraries</h2>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git clone -b branch repo</code></pre></div>
+<p>pip vs get</p>
 
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">pip install flask</code></pre></div>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">go get github.com/labstack/echo/...</code></pre></div>
+
+<h2 id="ides-and-tools">ides and tools</h2>
+
+<h2 id="profilers">profilers</h2>
+
+<h2 id="semi-advanced-stuff">semi advanced stuff</h2>
+
+<p>memory maps</p>
+
+<p>generators</p>
+
+<p>data structures</p>
+
+<p>pipelining</p>
+
+<p>stringio</p>
+
+<p>async await</p>
+
+<h2 id="deploy">deploy</h2>
 
   </article>
 

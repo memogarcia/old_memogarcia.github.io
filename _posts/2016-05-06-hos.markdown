@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "Helion OpenStack"
+date:   2016-06-05 12:30:00
+categories: OpenStack Helion hlinux Ansible
+---
+
+Move the deployer from a virtual host to a physical host.
+=========================================================
+
+backup the following directories and files:
+
+{% highlight bash %}
+
+/home/
+/etc/passwd
+/etc/shadow
+/etc/group
+/etc/ssh/
+/etc/group
+/var/lib/cobbler/
+/srv/www/cobbler/
+
+{% endhighlight %}
