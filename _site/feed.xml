@@ -5,9 +5,60 @@
     <description></description>
     <link>http://memogarcia.me/</link>
     <atom:link href="http://memogarcia.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 03 Jul 2016 16:53:19 +0100</pubDate>
-    <lastBuildDate>Sun, 03 Jul 2016 16:53:19 +0100</lastBuildDate>
+    <pubDate>Sun, 03 Jul 2016 17:30:54 +0100</pubDate>
+    <lastBuildDate>Sun, 03 Jul 2016 17:30:54 +0100</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Ansible</title>
+        <description>&lt;p&gt;Install Ansible&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# bew&lt;/span&gt;
+brew install ansible
+
+&lt;span class=&quot;c&quot;&gt;# or pip&lt;/span&gt;
+pip install ansible&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Create a host files to describe the machines you want to interact to.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;rasp&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+192.168.33.9&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Create a group_vars yaml file&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;mkdir group_vars
+vim group_vars/rasp&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;ansible_ssh_user&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;pi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Execute a command in the remote machine&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ansible dev -i hosts -m &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; -a &lt;span class=&quot;s2&quot;&gt;&amp;quot;uptime&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Send a script&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;mkdir scripts
+vim scripts/test&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;uptime
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;hello&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Execute the script in the remote machine&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ansible dev -i hosts -m script -a scripts/test&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Sun, 03 Jul 2016 13:30:00 +0100</pubDate>
+        <link>http://memogarcia.me/ansible/automation/2016/07/03/ansible.html</link>
+        <guid isPermaLink="true">http://memogarcia.me/ansible/automation/2016/07/03/ansible.html</guid>
+        
+        
+        <category>ansible</category>
+        
+        <category>automation</category>
+        
+      </item>
     
       <item>
         <title>Virtualbox CLI</title>
@@ -462,28 +513,6 @@ and &lt;a href=&quot;https://www.microsoft.com/en-us/download/details.aspx?id=44
         <category>python</category>
         
         <category>ux</category>
-        
-      </item>
-    
-      <item>
-        <title>Running horizon under SSL</title>
-        <description>&lt;p&gt;Running OpenStack’s horizon under SSL.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;pip install django-extensions pyOpenSSL Werkzeug
-
-&lt;span class=&quot;c&quot;&gt;# add django_extensions in INSTALLED_APPS in settings.py&lt;/span&gt;
-
-python manage.py runserver_plus --cert cert&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Mon, 18 Jan 2016 19:55:11 +0000</pubDate>
-        <link>http://memogarcia.me/horizon/ssl/2016/01/18/horizon-ssl.html</link>
-        <guid isPermaLink="true">http://memogarcia.me/horizon/ssl/2016/01/18/horizon-ssl.html</guid>
-        
-        
-        <category>horizon</category>
-        
-        <category>ssl</category>
         
       </item>
     

@@ -1,0 +1,82 @@
+---
+layout: post
+title:  "Ansible"
+date:   2016-07-03 12:30:00
+categories: Ansible automation
+---
+
+Install Ansible
+
+{% highlight bash %}
+
+# bew
+brew install ansible
+
+# or pip
+pip install ansible
+
+{% endhighlight %}
+
+
+Create a host files to describe the machines you want to interact to.
+
+{% highlight bash %}
+
+[rasp]
+192.168.33.9
+
+{% endhighlight %}
+
+
+Create a group_vars yaml file
+
+{% highlight bash %}
+
+mkdir group_vars
+vim group_vars/rasp
+
+{% endhighlight %}
+
+
+{% highlight yaml %}
+
+---
+ansible_ssh_user: pi
+
+{% endhighlight %}
+
+
+Execute a command in the remote machine
+
+{% highlight bash %}
+
+ansible dev -i hosts -m command -a "uptime"
+
+{% endhighlight %}
+
+
+Send a script
+
+{% highlight bash %}
+
+mkdir scripts
+vim scripts/test
+
+{% endhighlight %}
+
+
+{% highlight bash %}
+
+uptime
+echo "hello"
+
+{% endhighlight %}
+
+
+Execute the script in the remote machine
+
+{% highlight bash %}
+
+ansible dev -i hosts -m script -a scripts/test
+
+{% endhighlight %}
