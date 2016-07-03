@@ -66,3 +66,12 @@ Clone a specific branch
 git clone -b branch repo
 
 {% endhighlight %}
+
+
+Get statistics about a repo
+
+{% highlight bash %}
+
+git shortlog -sne --since '3 years ago'
+
+{% endhighlight %}
