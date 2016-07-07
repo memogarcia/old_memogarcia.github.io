@@ -80,3 +80,29 @@ Execute the script in the remote machine
 ansible dev -i hosts -m script -a scripts/test
 
 {% endhighlight %}
+
+## Configuration Management
+
+To deploy more complicated environments, we use the common ansible structure of files.
+
+{% highlight bash %}
+
+.
+├── group_vars
+│   └── all
+├── hosts
+├── roles
+│   └── common
+│       ├── files
+│       ├── handlers
+│       │   └── main.yml
+│       ├── tasks
+│       │   └── main.yml
+│       └── templates
+│           └── template.jinja2
+└── site.yml
+
+
+ansible-playbook -i hosts site.yml
+
+{% endhighlight %}

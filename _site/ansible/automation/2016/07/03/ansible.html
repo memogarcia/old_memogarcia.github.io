@@ -64,40 +64,62 @@
   <article class="post-content">
     <p>Install Ansible</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># bew</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># bew</span>
 brew install ansible
 
 <span class="c"># or pip</span>
-pip install ansible</code></pre></div>
+pip install ansible</code></pre></figure>
 
 <p>Create a host files to describe the machines you want to interact to.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>rasp<span class="o">]</span>
-192.168.33.9</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>rasp]
+192.168.33.9</code></pre></figure>
 
 <p>Create a group_vars yaml file</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir group_vars
-vim group_vars/rasp</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir group_vars
+vim group_vars/rasp</code></pre></figure>
 
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
-<span class="l-Scalar-Plain">ansible_ssh_user</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">pi</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="nn">---</span>
+<span class="s">ansible_ssh_user</span><span class="pi">:</span> <span class="s">pi</span></code></pre></figure>
 
 <p>Execute a command in the remote machine</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ansible dev -i hosts -m <span class="nb">command</span> -a <span class="s2">&quot;uptime&quot;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ansible dev -i hosts -m <span class="nb">command</span> -a <span class="s2">"uptime"</span></code></pre></figure>
 
 <p>Send a script</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir scripts
-vim scripts/test</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir scripts
+vim scripts/test</code></pre></figure>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">uptime
-<span class="nb">echo</span> <span class="s2">&quot;hello&quot;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">uptime
+<span class="nb">echo</span> <span class="s2">"hello"</span></code></pre></figure>
 
 <p>Execute the script in the remote machine</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ansible dev -i hosts -m script -a scripts/test</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ansible dev -i hosts -m script -a scripts/test</code></pre></figure>
+
+<h2 id="configuration-management">Configuration Management</h2>
+
+<p>To deploy more complicated environments, we use the common ansible structure of files.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">.
+├── group_vars
+│   └── all
+├── hosts
+├── roles
+│   └── common
+│       ├── files
+│       ├── handlers
+│       │   └── main.yml
+│       ├── tasks
+│       │   └── main.yml
+│       └── templates
+│           └── template.jinja2
+└── site.yml
+
+
+ansible-playbook -i hosts site.yml</code></pre></figure>
 
 
   </article>

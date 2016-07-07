@@ -66,24 +66,24 @@
 
 <h1 id="secure-file-transfer-sft">Secure file transfer (SFT)</h1>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">scp file.txt host-two:/tmp
-scp memo@host-two:/www/*.html /www/tmp
-scp -r memo@host-two:/www /www/tmp</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">scp file.txt host-two:/tmp
+scp memo@host-two:/www/<span class="k">*</span>.html /www/tmp
+scp -r memo@host-two:/www /www/tmp</code></pre></figure>
 
 <h1 id="tunneling">Tunneling</h1>
 
 <p>SSH tunneling allows to forward or reverse forward a port over the SSH connection, thus securing the traffic and accessing ports which would otherwise be blocked. This only works with TCP. The general nomenclature for forward and reverse is:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ssh -L localport:desthost:destport user@gate  <span class="c"># desthost as seen from the gate</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ssh -L localport:desthost:destport user@gate  <span class="c"># desthost as seen from the gate</span>
 ssh -R destport:desthost:localport user@gate  <span class="c"># forwards your localport to destination</span>
     <span class="c"># desthost:localport as seen from the client initiating the tunnel</span>
 ssh -X user@gate   <span class="c"># To force X forwarding</span>
 
-ssh -D <span class="m">9999</span> ubuntu@ip</code></pre></div>
+ssh -D 9999 ubuntu@ip</code></pre></figure>
 
 <p>no strict checking</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">ssh ubuntu@ip -i key.pem -o <span class="nv">StrictHostKeyChecking</span><span class="o">=</span>no</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ssh ubuntu@ip -i key.pem -o <span class="nv">StrictHostKeyChecking</span><span class="o">=</span>no</code></pre></figure>
 
 
   </article>

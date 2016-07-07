@@ -64,7 +64,7 @@
   <article class="post-content">
     <p>Timer decorator</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">time</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
 
 
@@ -74,64 +74,64 @@
         <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">finish</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s">&quot;Total time running {0}: {1} seconds&quot;</span>
+        <span class="k">print</span> <span class="p">(</span><span class="s">"Total time running {0}: {1} seconds"</span>
                <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">function</span><span class="o">.</span><span class="n">func_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">finish</span><span class="o">-</span><span class="n">start</span><span class="p">)))</span>
         <span class="k">return</span> <span class="n">result</span>
-    <span class="k">return</span> <span class="n">fn_timer</span></code></pre></div>
+    <span class="k">return</span> <span class="n">fn_timer</span></code></pre></figure>
 
 <p>Profiler decorator</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">profiler</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">profiler</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
     <span class="nd">@wraps</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">fn_profile</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">hp</span> <span class="o">=</span> <span class="n">hpy</span><span class="p">()</span>
-        <span class="k">print</span> <span class="s">&quot;Heap at the beginning of the function</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">hp</span><span class="o">.</span><span class="n">heap</span><span class="p">()</span>
+        <span class="k">print</span> <span class="s">"Heap at the beginning of the function</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">hp</span><span class="o">.</span><span class="n">heap</span><span class="p">()</span>
         <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">finish</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-        <span class="k">print</span> <span class="s">&quot;Heap at the end of the function</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">hp</span><span class="o">.</span><span class="n">heap</span><span class="p">()</span>
-        <span class="k">print</span> <span class="p">(</span><span class="s">&quot;Total time running {0}: {1} seconds&quot;</span>
+        <span class="k">print</span> <span class="s">"Heap at the end of the function</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">hp</span><span class="o">.</span><span class="n">heap</span><span class="p">()</span>
+        <span class="k">print</span> <span class="p">(</span><span class="s">"Total time running {0}: {1} seconds"</span>
                <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">function</span><span class="o">.</span><span class="n">func_name</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">finish</span><span class="o">-</span><span class="n">start</span><span class="p">)))</span>
-        <span class="k">print</span> <span class="s">&#39;++++++++++++++++++++++++++++++++++++++++++++++&#39;</span>
+        <span class="k">print</span> <span class="s">'++++++++++++++++++++++++++++++++++++++++++++++'</span>
         <span class="k">print</span>
         <span class="k">print</span>
         <span class="k">return</span> <span class="n">result</span>
-    <span class="k">return</span> <span class="n">fn_profile</span></code></pre></div>
+    <span class="k">return</span> <span class="n">fn_profile</span></code></pre></figure>
 
 <p>Unix implementation</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">time</span> -p file.py</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">time</span> -p file.py</code></pre></figure>
 
 <p>Cprofile module</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">python -m cProfile -s cumulative file.py</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">python -m cProfile -s cumulative file.py</code></pre></figure>
 
 <p>Line profiler</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">pip install line_profiler
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">pip install line_profiler
 <span class="c"># no need to import anything, just add</span>
 @profile
 
-kernprof -l -v file.py</code></pre></div>
+kernprof -l -v file.py</code></pre></figure>
 
 <p>Memory profiler</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">pip install memory_profiler
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">pip install memory_profiler
 pip install psutil
 @profile
 
-python -m memory_profiler file.py</code></pre></div>
+python -m memory_profiler file.py</code></pre></figure>
 
 <p>Grupy</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">pip install guppy
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">pip install guppy
 from guppy import hpy
-<span class="nv">hp</span> <span class="o">=</span> hpy<span class="o">()</span>
-print <span class="s2">&quot;Heap at the beginning of the function\n&quot;</span>, hp.heap<span class="o">()</span>
+hp <span class="o">=</span> hpy<span class="o">()</span>
+print <span class="s2">"Heap at the beginning of the function</span><span class="se">\n</span><span class="s2">"</span>, hp.heap<span class="o">()</span>
 <span class="c"># do stuff</span>
-print <span class="s2">&quot;Heap at the end of the function\n&quot;</span>, hp.heap<span class="o">()</span>
+print <span class="s2">"Heap at the end of the function</span><span class="se">\n</span><span class="s2">"</span>, hp.heap<span class="o">()</span>
 
-python file.py</code></pre></div>
+python file.py</code></pre></figure>
 
   </article>
 
