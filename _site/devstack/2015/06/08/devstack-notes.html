@@ -101,6 +101,108 @@
 <span class="nv">SWIFT_HASH</span><span class="o">=</span>66a3d6b56c1f479c8b4e70ab5c2000f5
 enable_service s-proxy s-object s-container s-account</code></pre></figure>
 
+<p>Simple script to configure devstack</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/env bash</span>
+
+git clone https://git.openstack.org/openstack-dev/devstack
+
+<span class="nv">HOST_IP</span><span class="o">=</span><span class="k">$(</span>hostname -I<span class="k">)</span>
+<span class="nv">ETH</span><span class="o">=(</span><span class="k">${</span><span class="nv">HOST_IP</span><span class="p">//;/ </span><span class="k">}</span><span class="o">)</span>
+ETH1 <span class="o">=</span> <span class="k">${</span><span class="nv">ETH</span><span class="p">[1]</span><span class="k">}</span>
+
+<span class="nb">export </span><span class="nv">DEST</span><span class="o">=</span>/opt/stack
+<span class="nb">export </span><span class="nv">ADMIN_PASSWORD</span><span class="o">=</span>quiet
+<span class="nb">export </span><span class="nv">GIT_BASE</span><span class="o">=</span><span class="k">${</span><span class="nv">GIT_BASE</span><span class="k">:-</span><span class="nv">https</span>://git.openstack.org<span class="k">}</span>
+
+sudo cat &gt;&gt; /home/vagrant/devstack/local.conf <span class="sh">&lt;&lt; E-O-L
+
+[[local|localrc]]
+#FIXED_RANGE=192.168.20.0/24
+#NETWORK_GATEWAY=192.168.20.1a
+LOGDAYS=1
+LOGFILE=$DEST/logs/stack.sh.log
+SCREEN_LOGDIR=$DEST/logs/screen
+ADMIN_PASSWORD=quiet
+DATABASE_PASSWORD=$ADMIN_PASSWORD
+RABBIT_PASSWORD=$ADMIN_PASSWORD
+SERVICE_PASSWORD=$ADMIN_PASSWORD
+SERVICE_TOKEN=a682f596-76f3-11e3-b3b2-e716f9080d50
+
+SWIFT_REPLICAS=1
+SWIFT_DATA_DIR=$DEST/data/swift
+SWIFT_HASH=66a3d6b56c1f479c8b4e70ab5c2000f5
+enable_service s-proxy s-object s-container s-account
+
+HOST_IP=$ETH1
+E-O-L
+
+cd devstack
+
+</span><span class="err">./stack.sh</span></code></pre></figure>
+
+<p>Set devstack with vagrant ubuntu 14.04</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/env bash</span>
+
+<span class="nb">set</span> -x
+
+<span class="nv">HOST_IPS</span><span class="o">=</span><span class="k">$(</span>hostname -I<span class="k">)</span>
+<span class="nv">HOST_IPS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$HOST_IPS</span><span class="k">)</span>
+<span class="nv">HOST_IPS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$HOST_IPS</span>|sed <span class="s1">'s/ /,/'</span><span class="k">)</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"P-R-O-X-Y"</span> <span class="o">]</span>; <span class="k">then
+    </span><span class="nb">exit </span>0;
+<span class="k">fi</span>
+
+<span class="c"># Proxy goes here</span>
+<span class="nv">PROXY</span><span class="o">=</span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
+
+sudo cat &gt;&gt; /etc/environment <span class="sh">&lt;&lt; E-O-L
+export http_proxy=$PROXY
+export https_proxy=$PROXY
+export HTTP_PROXY=$PROXY
+export HTTPS_PROXY=$PROXY
+export no_proxy=127.0.0.1,localhost,$HOST_IPS
+export NO_PROXY=127.0.0.1,localhost,$HOST_IPS
+E-O-L
+
+sudo cat &gt; /etc/apt/apt.conf.d/01proxies &lt;&lt; E-O-L
+Acquire::http::proxy "$PROXY";
+Acquire::https::proxy "$PROXY";
+E-O-L
+
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get install git-core -y
+
+git config --global http.proxy $PROXY
+git config --global https.proxy $PROXY
+
+</span><span class="err">exit 0;</span></code></pre></figure>
+
+<p>Vagrantfile</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># -*- mode: ruby -*-</span>
+<span class="c"># vi: set ft=ruby :</span>
+Vagrant.configure<span class="o">(</span>2<span class="o">)</span> <span class="k">do</span> |config|
+
+  config.vm.box <span class="o">=</span> <span class="s2">"trusty64"</span>
+
+  config.vm.network <span class="s2">"private_network"</span>, ip: <span class="s2">"192.168.33.20"</span>
+
+  config.vm.provider <span class="s2">"virtualbox"</span> <span class="k">do</span> |vb|
+
+     vb.memory <span class="o">=</span> <span class="s2">"4096"</span>
+	   vb.cpus <span class="o">=</span> 2
+  end
+  config.vm.provision :shell, path: <span class="s2">"set-proxy.sh"</span>, args: <span class="s2">"http://proxy.com:8080/"</span>, keep_color: <span class="nb">true
+  </span>config.vm.provision :shell, path: <span class="s2">"deploy-elasticsearch.sh"</span>, args: <span class="s2">""</span>, keep_color: <span class="nb">true
+  </span>config.vm.provision :shell, path: <span class="s2">"deploy-devstack.sh"</span>, args: <span class="s2">""</span>, keep_color: <span class="nb">true
+
+</span>end</code></pre></figure>
+
+
   </article>
 
   <div id="disqus_thread"></div>
