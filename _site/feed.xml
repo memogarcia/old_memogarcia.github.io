@@ -5,9 +5,56 @@
     <description></description>
     <link>http://memogarcia.me/</link>
     <atom:link href="http://memogarcia.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 08 Jul 2016 12:20:22 +0100</pubDate>
-    <lastBuildDate>Fri, 08 Jul 2016 12:20:22 +0100</lastBuildDate>
+    <pubDate>Tue, 12 Jul 2016 16:50:15 +0100</pubDate>
+    <lastBuildDate>Tue, 12 Jul 2016 16:50:15 +0100</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Elixir Intro</title>
+        <description>&lt;p&gt;Install Elixir&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# Add Erlang Solutions repo&lt;/span&gt;
+get https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo dpkg -i erlang-solutions_1.0_all.deb
+
+sudo apt-get update
+
+&lt;span class=&quot;c&quot;&gt;# Install erlang&lt;/span&gt;
+sudo apt-get install esl-erlang
+
+&lt;span class=&quot;c&quot;&gt;# Install elixir&lt;/span&gt;
+sudo apt-get install elixir
+
+&lt;span class=&quot;c&quot;&gt;# Interactive shell&lt;/span&gt;
+iex&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Atoms are constant literals&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# always start with :&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;:monday&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Booleans&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# &#39;===&#39; means they are the same value and the same type&lt;/span&gt;
+&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Tuples are used to denotate datatypes with a fixed number of items&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Usually the first item is the type of the tuple&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Memo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Lists&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Element&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</description>
+        <pubDate>Tue, 12 Jul 2016 13:30:00 +0100</pubDate>
+        <link>http://memogarcia.me/elixir/2016/07/12/elixir.html</link>
+        <guid isPermaLink="true">http://memogarcia.me/elixir/2016/07/12/elixir.html</guid>
+        
+        
+        <category>elixir</category>
+        
+      </item>
     
       <item>
         <title>Ansible</title>
@@ -520,28 +567,6 @@ possible running status:
         <category>python</category>
         
         <category>ux</category>
-        
-      </item>
-    
-      <item>
-        <title>Running horizon under SSL</title>
-        <description>&lt;p&gt;Running OpenStack’s horizon under SSL.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;pip install django-extensions pyOpenSSL Werkzeug
-
-&lt;span class=&quot;c&quot;&gt;# add django_extensions in INSTALLED_APPS in settings.py&lt;/span&gt;
-
-python manage.py runserver_plus --cert cert&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-</description>
-        <pubDate>Mon, 18 Jan 2016 19:55:11 +0000</pubDate>
-        <link>http://memogarcia.me/horizon/ssl/2016/01/18/horizon-ssl.html</link>
-        <guid isPermaLink="true">http://memogarcia.me/horizon/ssl/2016/01/18/horizon-ssl.html</guid>
-        
-        
-        <category>horizon</category>
-        
-        <category>ssl</category>
         
       </item>
     

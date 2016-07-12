@@ -77,7 +77,7 @@ ETH1 = ${ETH[1]}
 
 export DEST=/opt/stack
 export ADMIN_PASSWORD=quiet
-export GIT_BASE=${GIT_BASE:-https://git.openstack.org}
+export GIT_BASE=https://git.openstack.org
 
 sudo cat >> /home/vagrant/devstack/local.conf << E-O-L
 
