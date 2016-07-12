@@ -64,14 +64,14 @@
   <article class="post-content">
     <p>Delete data from a specific type</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl -XDELETE <span class="s1">'http://localhost:9200/freezer/backups/'</span></code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">curl -XDELETE <span class="s1">&#39;http://localhost:9200/freezer/backups/&#39;</span></code></pre></div>
 
 <p>Force an index to write data in all replicas</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl -XPOST <span class="s1">'http://localhost:9200/freezer/_refresh'</span></code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">curl -XPOST <span class="s1">&#39;http://localhost:9200/freezer/_refresh&#39;</span></code></pre></div>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># python</span>
-<span class="n">es</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="s">'freezer'</span><span class="p">)</span></code></pre></figure>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># python</span>
+<span class="n">es</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="s">&#39;freezer&#39;</span><span class="p">)</span></code></pre></div>
 
 
   </article>

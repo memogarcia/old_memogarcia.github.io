@@ -64,31 +64,31 @@
   <article class="post-content">
     <p>Hide and show items according to dropdown selection</p>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"action"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"backup"</span><span class="nt">&gt;</span>Backup<span class="nt">&lt;/option&gt;</span>
-  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"restore"</span><span class="nt">&gt;</span>Restore<span class="nt">&lt;/option&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;action&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;backup&quot;</span><span class="nt">&gt;</span>Backup<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;restore&quot;</span><span class="nt">&gt;</span>Restore<span class="nt">&lt;/option&gt;</span>
 <span class="nt">&lt;/select&gt;</span>
 
-<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"backup_input"</span> <span class="na">name=</span><span class="s">"backup_input"</span> <span class="na">value=</span><span class="s">"backup"</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"restore_input"</span> <span class="na">name=</span><span class="s">"restore_input"</span> <span class="na">value=</span><span class="s">"restore"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;backup_input&quot;</span> <span class="na">name=</span><span class="s">&quot;backup_input&quot;</span> <span class="na">value=</span><span class="s">&quot;backup&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;restore_input&quot;</span> <span class="na">name=</span><span class="s">&quot;restore_input&quot;</span> <span class="na">value=</span><span class="s">&quot;restore&quot;</span><span class="nt">/&gt;</span>
 
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://code.jquery.com/jquery-1.11.3.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://code.jquery.com/jquery-1.11.3.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 
-<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
 
 <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-	<span class="nx">$</span><span class="p">(</span><span class="s2">"#action"</span><span class="p">).</span><span class="nx">change</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-		<span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">"#action"</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'backup'</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nx">$</span><span class="p">(</span><span class="s2">"#restore_input"</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#action&quot;</span><span class="p">).</span><span class="nx">change</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#action&quot;</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;backup&#39;</span><span class="p">)</span> <span class="p">{</span>
+			<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#restore_input&quot;</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
 		<span class="p">}</span>
 		<span class="k">else</span> <span class="p">{</span>
-			<span class="nx">$</span><span class="p">(</span><span class="s2">"#restore_input"</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+			<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#restore_input&quot;</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
 		<span class="p">}</span>
 	<span class="p">});</span>
 
-	<span class="nx">$</span><span class="p">(</span><span class="s2">"#action"</span><span class="p">).</span><span class="nx">change</span><span class="p">();</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#action&quot;</span><span class="p">).</span><span class="nx">change</span><span class="p">();</span>
 <span class="p">});</span>
-<span class="nt">&lt;/script&gt;</span></code></pre></figure>
+<span class="nt">&lt;/script&gt;</span></code></pre></div>
 
   </article>
 

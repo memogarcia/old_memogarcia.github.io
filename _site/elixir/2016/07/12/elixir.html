@@ -64,7 +64,7 @@
   <article class="post-content">
     <p>Install Elixir</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Add Erlang Solutions repo</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Add Erlang Solutions repo</span>
 get https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb <span class="o">&amp;&amp;</span> sudo dpkg -i erlang-solutions_1.0_all.deb
 
 sudo apt-get update
@@ -76,26 +76,26 @@ sudo apt-get install esl-erlang
 sudo apt-get install elixir
 
 <span class="c"># Interactive shell</span>
-iex</code></pre></figure>
+iex</code></pre></div>
 
 <p>Atoms are constant literals</p>
 
-<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="c1"># always start with :</span>
-<span class="ss">:monday</span></code></pre></figure>
+<div class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="c1"># always start with :</span>
+<span class="ss">:monday</span></code></pre></div>
 
 <p>Booleans</p>
 
-<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="c1"># '===' means they are the same value and the same type</span>
-<span class="m">1</span> <span class="o">===</span> <span class="m">1</span></code></pre></figure>
+<div class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="c1"># &#39;===&#39; means they are the same value and the same type</span>
+<span class="mi">1</span> <span class="o">===</span> <span class="mi">1</span></code></pre></div>
 
 <p>Tuples are used to denotate datatypes with a fixed number of items</p>
 
-<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="c1"># Usually the first item is the type of the tuple</span>
-<span class="p">{</span><span class="ss">:person</span><span class="p">,</span> <span class="sd">"</span><span class="s2">Memo"</span><span class="p">}</span></code></pre></figure>
+<div class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="c1"># Usually the first item is the type of the tuple</span>
+<span class="p">{</span><span class="ss">:person</span><span class="p">,</span> <span class="s2">&quot;Memo&quot;</span><span class="p">}</span></code></pre></div>
 
 <p>Lists</p>
 
-<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="n">list</span> <span class="o">=</span> <span class="p">[</span><span class="no">Element</span> <span class="o">|</span> <span class="no">List</span><span class="p">]</span> <span class="ow">or</span> <span class="p">[]</span></code></pre></figure>
+<div class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="n">list</span> <span class="p">=</span> <span class="p">[</span><span class="nc">Element</span> <span class="p">|</span> <span class="nc">List</span><span class="p">]</span> <span class="ow">or</span> <span class="p">[]</span></code></pre></div>
 
 
   </article>

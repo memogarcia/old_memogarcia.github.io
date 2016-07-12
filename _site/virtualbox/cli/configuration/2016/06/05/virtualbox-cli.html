@@ -64,47 +64,47 @@
   <article class="post-content">
     <p>Install linux headers</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install linux-headers-<span class="k">$(</span>uname -r<span class="k">)</span></code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install linux-headers-<span class="k">$(</span>uname -r<span class="k">)</span></code></pre></div>
 
 <p>Download Virtualbox</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://download.virtualbox.org/virtualbox/5.0.20/VirtualBox-5.0.20-106931-Linux_amd64.run</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://download.virtualbox.org/virtualbox/5.0.20/VirtualBox-5.0.20-106931-Linux_amd64.run</code></pre></div>
 
 <p>Install Virtualbox</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo sh VirtualBox-5.0.20-106931-Linux_amd64.run</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo sh VirtualBox-5.0.20-106931-Linux_amd64.run</code></pre></div>
 
 <p>Create a Virtual Drive</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">vboxmanage createmedium disk --filename hd/hlinux.vdi --size 100000 --format VDI --variant Standard</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">vboxmanage createmedium disk --filename hd/hlinux.vdi --size <span class="m">100000</span> --format VDI --variant Standard</code></pre></div>
 
 <p>Check the list of OS_Types</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">VBoxManage list ostypes</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">VBoxManage list ostypes</code></pre></div>
 
 <p>Create the vm</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">vboxmanage createvm --name hlinux --ostype Debian_64 --uuid efb10300-2995-11e6-b5c1-0002a5d5c51b --basefolder hd --register</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">vboxmanage createvm --name hlinux --ostype Debian_64 --uuid efb10300-2995-11e6-b5c1-0002a5d5c51b --basefolder hd --register</code></pre></div>
 
 <p>Register the vm</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">vboxmanage registervm /home/stack/.config/VirtualBox/hd/hlinux/hlinux.vbox</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">vboxmanage registervm /home/stack/.config/VirtualBox/hd/hlinux/hlinux.vbox</code></pre></div>
 
 <p>Modify the vm</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">VBoxManage storagectl efb10300-2995-11e6-b5c1-0002a5d5c51b --name <span class="s2">"IDE Controller"</span> --add ide
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">VBoxManage storagectl efb10300-2995-11e6-b5c1-0002a5d5c51b --name <span class="s2">&quot;IDE Controller&quot;</span> --add ide
 
-VBoxManage storageattach efb10300-2995-11e6-b5c1-0002a5d5c51b --storagectl <span class="s2">"IDE Controller"</span> --port 0 --device 0 --type hdd --medium hlinux.vdi
+VBoxManage storageattach efb10300-2995-11e6-b5c1-0002a5d5c51b --storagectl <span class="s2">&quot;IDE Controller&quot;</span> --port <span class="m">0</span> --device <span class="m">0</span> --type hdd --medium hlinux.vdi
 
-VBoxManage storageattach efb10300-2995-11e6-b5c1-0002a5d5c51b --storagectl <span class="s2">"IDE Controller"</span> --port 1 --device 0 --type dvddrive --medium /home/stack/Helion-Openstack-2.1.0.iso
+VBoxManage storageattach efb10300-2995-11e6-b5c1-0002a5d5c51b --storagectl <span class="s2">&quot;IDE Controller&quot;</span> --port <span class="m">1</span> --device <span class="m">0</span> --type dvddrive --medium /home/stack/Helion-Openstack-2.1.0.iso
 
-vboxmanage modifyvm efb10300-2995-11e6-b5c1-0002a5d5c51b --memory 8096 --cpus 4
+vboxmanage modifyvm efb10300-2995-11e6-b5c1-0002a5d5c51b --memory <span class="m">8096</span> --cpus 4
 
-vboxmanage modifyvm efb10300-2995-11e6-b5c1-0002a5d5c51b --nic1 bridged --bridgeadapter1 eth0</code></pre></figure>
+vboxmanage modifyvm efb10300-2995-11e6-b5c1-0002a5d5c51b --nic1 bridged --bridgeadapter1 eth0</code></pre></div>
 
 <p>Start the vm</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">vboxmanage startvm hlinux --type headless</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">vboxmanage startvm hlinux --type headless</code></pre></div>
 
 
   </article>

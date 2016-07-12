@@ -66,130 +66,130 @@
 
 <p>Create a powershell script (vss.ps1)</p>
 
-<figure class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span class="k">param</span><span class="o">([</span><span class="kt">String</span><span class="o">]</span><span class="nv">$volume</span><span class="o">=</span><span class="s2">""</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-powershell" data-lang="powershell"><span class="k">param</span><span class="p">(</span><span class="no">[String]</span><span class="nv">$volume</span><span class="p">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
-<span class="nv">$shadow</span> <span class="o">=</span> <span class="nb">get-wmiobject </span>win32_shadowcopy
+<span class="nv">$shadow</span> <span class="p">=</span> <span class="nb">get-wmiobject</span> <span class="n">win32_shadowcopy</span>
 
-<span class="c1"># get static method</span>
-<span class="nv">$class</span><span class="o">=[</span>WMICLASS]<span class="s2">"root</span><span class="se">\c</span><span class="s2">imv2:win32_shadowcopy"</span>
+<span class="c"># get static method</span>
+<span class="nv">$class</span><span class="p">=</span><span class="no">[WMICLASS]</span><span class="s2">&quot;root\cimv2:win32_shadowcopy&quot;</span>
 
-<span class="c1"># create a new shadow copy</span>
-<span class="nv">$s1</span> <span class="o">=</span> <span class="nv">$class</span>.create<span class="o">(</span><span class="nv">$volume</span>, <span class="s2">"ClientAccessible"</span><span class="o">)</span>
+<span class="c"># create a new shadow copy</span>
+<span class="nv">$s1</span> <span class="p">=</span> <span class="nv">$class</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="nv">$volume</span><span class="p">,</span> <span class="s2">&quot;ClientAccessible&quot;</span><span class="p">)</span>
 
-<span class="c1"># get shadow ID</span>
-<span class="nv">$s2</span> <span class="o">=</span> <span class="nb">gwmi </span>Win32_ShadowCopy | ? <span class="o">{</span> <span class="nv">$_</span>.ID -eq <span class="nv">$s1</span>.ShadowID <span class="o">}</span>
+<span class="c"># get shadow ID</span>
+<span class="nv">$s2</span> <span class="p">=</span> <span class="n">gwmi</span> <span class="n">Win32_ShadowCopy</span> <span class="p">|</span> <span class="p">?</span> <span class="p">{</span> <span class="nv">$_</span><span class="p">.</span><span class="n">ID</span> <span class="o">-eq</span> <span class="nv">$s1</span><span class="p">.</span><span class="n">ShadowID</span> <span class="p">}</span>
 
-<span class="nv">$d</span>  <span class="o">=</span> <span class="nv">$s2</span>.DeviceObject + <span class="s2">"</span><span class="se">\"</span><span class="s2">
+<span class="nv">$d</span>  <span class="p">=</span> <span class="nv">$s2</span><span class="p">.</span><span class="n">DeviceObject</span> <span class="p">+</span> <span class="s2">&quot;\&quot;</span>
 
-# create a symlink for the shadow path
-cmd /c mklink /d </span><span class="nv">$volume</span><span class="se">\s</span><span class="s2">hadowcopy "</span><span class="nv">$d</span><span class="s2">"
+<span class="c"># create a symlink for the shadow path</span>
+<span class="n">cmd</span> <span class="p">/</span><span class="n">c</span> <span class="n">mklink</span> <span class="p">/</span><span class="n">d</span> <span class="nv">$volume</span><span class="p">\</span><span class="n">shadowcopy</span> <span class="s2">&quot;$d&quot;</span>
 
-echo "</span>shadow id:<span class="s2">" </span><span class="nv">$s2</span></code></pre></figure>
+<span class="n">echo</span> <span class="s2">&quot;shadow id:&quot;</span> <span class="nv">$s2</span></code></pre></div>
 
 <p>helper for suprocess</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">create_subprocess</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
-    <span class="s">"""
-    Create a new subprocess in the OS
-    :param cmd: command to execute in the subprocess
-    :return: the output and errors of the subprocess
-    """</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">create_subprocess</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a new subprocess in the OS</span>
+<span class="sd">    :param cmd: command to execute in the subprocess</span>
+<span class="sd">    :return: the output and errors of the subprocess</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span>
                                <span class="n">stdin</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
                                <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
                                <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">process</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span></code></pre></figure>
+    <span class="k">return</span> <span class="n">process</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span></code></pre></div>
 
 <p>create a snapshot with python</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">vss_create_shadow_copy</span><span class="p">(</span><span class="n">volume</span><span class="p">):</span>
-    <span class="s">"""
-    Create a new shadow copy for the specified volume
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">vss_create_shadow_copy</span><span class="p">(</span><span class="n">volume</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a new shadow copy for the specified volume</span>
 
-    Windows registry path for vss:
-    HKEY_LOCAL_MACHINE</span><span class="err">\</span><span class="s">System</span><span class="err">\</span><span class="s">CurrentControlSet</span><span class="err">\</span><span class="s">Services</span><span class="err">\</span><span class="s">VSS</span><span class="err">\</span><span class="s">Settings
+<span class="sd">    Windows registry path for vss:</span>
+<span class="sd">    HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\VSS\Settings</span>
 
-    MaxShadowCopies
-    Windows is limited in how many shadow copies can create per volume.
-    The default amount of shadow copies is 64, the minimum is 1 and the maxi-
-    mum is 512, if you want to change the default value you need to add/edit
-    the key MaxShadowCopies and set the amount of shadow copies per volume.
+<span class="sd">    MaxShadowCopies</span>
+<span class="sd">    Windows is limited in how many shadow copies can create per volume.</span>
+<span class="sd">    The default amount of shadow copies is 64, the minimum is 1 and the maxi-</span>
+<span class="sd">    mum is 512, if you want to change the default value you need to add/edit</span>
+<span class="sd">    the key MaxShadowCopies and set the amount of shadow copies per volume.</span>
 
-    MinDiffAreaFileSize
-    The minimum size of the shadow copy storage area is a per-computer setting
-    that can be specified by using the MinDiffAreaFileSize registry value.
+<span class="sd">    MinDiffAreaFileSize</span>
+<span class="sd">    The minimum size of the shadow copy storage area is a per-computer setting</span>
+<span class="sd">    that can be specified by using the MinDiffAreaFileSize registry value.</span>
 
-    If the MinDiffAreaFileSize registry value is not set, the minimum size of
-    the shadow copy storage area is 32 MB for volumes that are smaller than
-    500 MB and 320 MB for volumes that are larger than 500 MB.
+<span class="sd">    If the MinDiffAreaFileSize registry value is not set, the minimum size of</span>
+<span class="sd">    the shadow copy storage area is 32 MB for volumes that are smaller than</span>
+<span class="sd">    500 MB and 320 MB for volumes that are larger than 500 MB.</span>
 
-    If you have not set a maximum size, there is no limit to the amount
-    of space that can be used.
+<span class="sd">    If you have not set a maximum size, there is no limit to the amount</span>
+<span class="sd">    of space that can be used.</span>
 
-    If the MinDiffAreaFileSize registry value does not exist, the backup
-    application can create it under the following registry key:
+<span class="sd">    If the MinDiffAreaFileSize registry value does not exist, the backup</span>
+<span class="sd">    application can create it under the following registry key:</span>
 
-    HKEY_LOCAL_MACHINE</span><span class="err">\</span><span class="s">System</span><span class="err">\</span><span class="s">CurrentControlSet</span><span class="err">\</span><span class="s">Services</span><span class="err">\</span><span class="s">VolSnap
+<span class="sd">    HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\VolSnap</span>
 
 
-    Freezer create a shadow copy for each time the client runs it's been
-    removed after the backup is complete.
+<span class="sd">    Freezer create a shadow copy for each time the client runs it&#39;s been</span>
+<span class="sd">    removed after the backup is complete.</span>
 
-    :param volume: The letter of the windows volume e.g. c:</span><span class="se">\\</span><span class="s">
-    :return: shadow_id: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-    :return: shadow_path: shadow copy path
-    """</span>
+<span class="sd">    :param volume: The letter of the windows volume e.g. c:\\</span>
+<span class="sd">    :return: shadow_id: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX</span>
+<span class="sd">    :return: shadow_path: shadow copy path</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">shadow_path</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="n">shadow_id</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="k">with</span> <span class="n">DisableFileSystemRedirection</span><span class="p">():</span>
-        <span class="n">script</span> <span class="o">=</span> <span class="s">'vss.ps1'</span>  <span class="c"># powershell script</span>
-        <span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span> <span class="o">=</span> <span class="n">create_subprocess</span><span class="p">([</span><span class="s">'powershell.exe'</span><span class="p">,</span>
-                                        <span class="s">'-executionpolicy'</span><span class="p">,</span> <span class="s">'unrestricted'</span><span class="p">,</span>
-                                        <span class="s">'-command'</span><span class="p">,</span> <span class="n">script</span><span class="p">,</span>
-                                        <span class="s">'-volume'</span><span class="p">,</span> <span class="n">volume</span><span class="p">])</span>
-        <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="s">''</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="nb">Exception</span><span class="p">(</span><span class="s">'[*] Error creating a new shadow copy on {0}'</span>
-                            <span class="s">', error {1}'</span> <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">volume</span><span class="p">,</span> <span class="n">err</span><span class="p">))</span>
+        <span class="n">script</span> <span class="o">=</span> <span class="s">&#39;vss.ps1&#39;</span>  <span class="c"># powershell script</span>
+        <span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span> <span class="o">=</span> <span class="n">create_subprocess</span><span class="p">([</span><span class="s">&#39;powershell.exe&#39;</span><span class="p">,</span>
+                                        <span class="s">&#39;-executionpolicy&#39;</span><span class="p">,</span> <span class="s">&#39;unrestricted&#39;</span><span class="p">,</span>
+                                        <span class="s">&#39;-command&#39;</span><span class="p">,</span> <span class="n">script</span><span class="p">,</span>
+                                        <span class="s">&#39;-volume&#39;</span><span class="p">,</span> <span class="n">volume</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;[*] Error creating a new shadow copy on {0}&#39;</span>
+                            <span class="s">&#39;, error {1}&#39;</span> <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">volume</span><span class="p">,</span> <span class="n">err</span><span class="p">))</span>
 
-        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">out</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">):</span>
-            <span class="k">if</span> <span class="s">'symbolic'</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-                <span class="n">shadow_path</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'&gt;&gt;'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-            <span class="k">if</span> <span class="s">'__RELPATH'</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-                <span class="n">shadow_id</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'='</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">+</span> <span class="s">'}'</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">out</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s">&#39;symbolic&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="n">shadow_path</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;&gt;&gt;&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="s">&#39;__RELPATH&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="n">shadow_id</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;=&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;}&#39;</span>
                 <span class="n">shadow_id</span> <span class="o">=</span> <span class="n">shadow_id</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">'[*] Created shadow copy {0}'</span><span class="o">.</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;[*] Created shadow copy {0}&#39;</span><span class="o">.</span>
                      <span class="n">format</span><span class="p">(</span><span class="n">shadow_id</span><span class="p">))</span>
 
-        <span class="k">return</span> <span class="n">shadow_path</span><span class="p">,</span> <span class="n">shadow_id</span></code></pre></figure>
+        <span class="k">return</span> <span class="n">shadow_path</span><span class="p">,</span> <span class="n">shadow_id</span></code></pre></div>
 
 <p>Delete a shadow copy</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">vss_delete_shadow_copy</span><span class="p">(</span><span class="n">shadow_id</span><span class="p">,</span> <span class="n">volume</span><span class="p">):</span>
-    <span class="s">"""
-    Delete a shadow copy from the volume with the given shadow_id
-    :param shadow_id: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-    :return: bool
-    """</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">vss_delete_shadow_copy</span><span class="p">(</span><span class="n">shadow_id</span><span class="p">,</span> <span class="n">volume</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Delete a shadow copy from the volume with the given shadow_id</span>
+<span class="sd">    :param shadow_id: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX</span>
+<span class="sd">    :return: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">with</span> <span class="n">DisableFileSystemRedirection</span><span class="p">():</span>
-        <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s">'vssadmin'</span><span class="p">,</span> <span class="s">'delete'</span><span class="p">,</span> <span class="s">'shadows'</span><span class="p">,</span>
-               <span class="s">'/shadow={0}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">shadow_id</span><span class="p">),</span> <span class="s">'/quiet'</span><span class="p">]</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;vssadmin&#39;</span><span class="p">,</span> <span class="s">&#39;delete&#39;</span><span class="p">,</span> <span class="s">&#39;shadows&#39;</span><span class="p">,</span>
+               <span class="s">&#39;/shadow={0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">shadow_id</span><span class="p">),</span> <span class="s">&#39;/quiet&#39;</span><span class="p">]</span>
         <span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span> <span class="o">=</span> <span class="n">create_subprocess</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="s">''</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="nb">Exception</span><span class="p">(</span><span class="s">'[*] Error deleting shadow copy with id {0}'</span>
-                            <span class="s">', error {1}'</span> <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">shadow_id</span><span class="p">,</span> <span class="n">err</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;[*] Error deleting shadow copy with id {0}&#39;</span>
+                            <span class="s">&#39;, error {1}&#39;</span> <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">shadow_id</span><span class="p">,</span> <span class="n">err</span><span class="p">))</span>
 
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">volume</span><span class="p">,</span> <span class="s">'shadowcopy'</span><span class="p">))</span>
-        <span class="k">except</span> <span class="nb">Exception</span><span class="p">:</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">'Failed to delete shadow copy symlink {0}'</span><span class="o">.</span>
-                          <span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">volume</span><span class="p">,</span> <span class="s">'shadowcopy'</span><span class="p">)))</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">volume</span><span class="p">,</span> <span class="s">&#39;shadowcopy&#39;</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s">&#39;Failed to delete shadow copy symlink {0}&#39;</span><span class="o">.</span>
+                          <span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">volume</span><span class="p">,</span> <span class="s">&#39;shadowcopy&#39;</span><span class="p">)))</span>
 
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">'[*] Deleting shadow copy {0}'</span><span class="o">.</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;[*] Deleting shadow copy {0}&#39;</span><span class="o">.</span>
                      <span class="n">format</span><span class="p">(</span><span class="n">shadow_id</span><span class="p">))</span>
 
-        <span class="k">return</span> <span class="bp">True</span></code></pre></figure>
+        <span class="k">return</span> <span class="bp">True</span></code></pre></div>
 
   </article>
 

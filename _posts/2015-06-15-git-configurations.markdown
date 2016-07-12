@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Git cheat sheetpro"
+title:  "Git cheat sheet"
 date:   2015-06-15 12:30:00
 categories: git configuration
 ---

@@ -64,25 +64,25 @@
   <article class="post-content">
     <p><a href="http://docs.openstack.org/developer/devstack/">Clone devstack</a></p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git clone https://git.openstack.org/openstack-dev/devstack</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git clone https://git.openstack.org/openstack-dev/devstack</code></pre></div>
 
 <p>Make sure your vm network configuration is on bridge</p>
 
 <p>set the proxies and no_proxies</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">export </span><span class="nv">no_proxy</span><span class="o">=</span>localhost,127.0.0.1,&lt;your_ip&gt;</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">export </span><span class="nv">no_proxy</span><span class="o">=</span>localhost,127.0.0.1,&lt;your_ip&gt;</code></pre></div>
 
 <p>Change connection protocol from git to https in stackrc</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">GIT_BASE</span><span class="o">=</span><span class="k">${</span><span class="nv">GIT_BASE</span><span class="k">:-</span><span class="nv">https</span>://git.openstack.org<span class="k">}</span></code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">GIT_BASE</span><span class="o">=</span><span class="k">${</span><span class="nv">GIT_BASE</span><span class="k">:-</span><span class="nv">https</span><span class="p">://git.openstack.org</span><span class="k">}</span></code></pre></div>
 
 <p>If your ubuntu version is not supported run this:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">FORCE</span><span class="o">=</span>yes ./stack.sh</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">FORCE</span><span class="o">=</span>yes ./stack.sh</code></pre></div>
 
 <p>Create local.conf in devstack folder</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[[</span><span class="nb">local</span>|localrc]]
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[[</span><span class="nb">local</span><span class="p">|</span>localrc<span class="o">]]</span>
 <span class="c">#FIXED_RANGE=192.168.20.0/24</span>
 <span class="c">#NETWORK_GATEWAY=192.168.20.1a</span>
 <span class="nv">LOGDAYS</span><span class="o">=</span>1
@@ -92,115 +92,115 @@
 <span class="nv">DATABASE_PASSWORD</span><span class="o">=</span><span class="nv">$ADMIN_PASSWORD</span>
 <span class="nv">RABBIT_PASSWORD</span><span class="o">=</span><span class="nv">$ADMIN_PASSWORD</span>
 <span class="nv">SERVICE_PASSWORD</span><span class="o">=</span><span class="nv">$ADMIN_PASSWORD</span>
-<span class="nv">SERVICE_TOKEN</span><span class="o">=</span>a682f596-76f3-11e3-b3b2-e716f9080d50</code></pre></figure>
+<span class="nv">SERVICE_TOKEN</span><span class="o">=</span>a682f596-76f3-11e3-b3b2-e716f9080d50</code></pre></div>
 
 <p>Enable swift</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">SWIFT_REPLICAS</span><span class="o">=</span>1
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">SWIFT_REPLICAS</span><span class="o">=</span>1
 <span class="nv">SWIFT_DATA_DIR</span><span class="o">=</span><span class="nv">$DEST</span>/data/swift
 <span class="nv">SWIFT_HASH</span><span class="o">=</span>66a3d6b56c1f479c8b4e70ab5c2000f5
-enable_service s-proxy s-object s-container s-account</code></pre></figure>
+enable_service s-proxy s-object s-container s-account</code></pre></div>
 
 <p>Simple script to configure devstack</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/env bash</span>
 
 git clone https://git.openstack.org/openstack-dev/devstack
 
 <span class="nv">HOST_IP</span><span class="o">=</span><span class="k">$(</span>hostname -I<span class="k">)</span>
 <span class="nv">ETH</span><span class="o">=(</span><span class="k">${</span><span class="nv">HOST_IP</span><span class="p">//;/ </span><span class="k">}</span><span class="o">)</span>
-ETH1 <span class="o">=</span> <span class="k">${</span><span class="nv">ETH</span><span class="p">[1]</span><span class="k">}</span>
+<span class="nv">ETH1</span> <span class="o">=</span> <span class="k">${</span><span class="nv">ETH</span><span class="p">[1]</span><span class="k">}</span>
 
 <span class="nb">export </span><span class="nv">DEST</span><span class="o">=</span>/opt/stack
 <span class="nb">export </span><span class="nv">ADMIN_PASSWORD</span><span class="o">=</span>quiet
 <span class="nb">export </span><span class="nv">GIT_BASE</span><span class="o">=</span>https://git.openstack.org
 
-sudo cat &gt;&gt; /home/vagrant/devstack/local.conf <span class="sh">&lt;&lt; E-O-L
+sudo cat &gt;&gt; /home/vagrant/devstack/local.conf <span class="s">&lt;&lt; E-O-L</span>
 
-[[local|localrc]]
-#FIXED_RANGE=192.168.20.0/24
-#NETWORK_GATEWAY=192.168.20.1a
-LOGDAYS=1
-LOGFILE=$DEST/logs/stack.sh.log
-SCREEN_LOGDIR=$DEST/logs/screen
-ADMIN_PASSWORD=quiet
-DATABASE_PASSWORD=$ADMIN_PASSWORD
-RABBIT_PASSWORD=$ADMIN_PASSWORD
-SERVICE_PASSWORD=$ADMIN_PASSWORD
-SERVICE_TOKEN=a682f596-76f3-11e3-b3b2-e716f9080d50
+<span class="s">[[local|localrc]]</span>
+<span class="s">#FIXE</span>D_RANGE<span class="o">=</span>192.168.20.0/24
+<span class="c">#NETWORK_GATEWAY=192.168.20.1a</span>
+<span class="nv">LOGDAYS</span><span class="o">=</span>1
+<span class="nv">LOGFILE</span><span class="o">=</span><span class="nv">$DEST</span>/logs/stack.sh.log
+<span class="nv">SCREEN_LOGDIR</span><span class="o">=</span><span class="nv">$DEST</span>/logs/screen
+<span class="nv">ADMIN_PASSWORD</span><span class="o">=</span>quiet
+<span class="nv">DATABASE_PASSWORD</span><span class="o">=</span><span class="nv">$ADMIN_PASSWORD</span>
+<span class="nv">RABBIT_PASSWORD</span><span class="o">=</span><span class="nv">$ADMIN_PASSWORD</span>
+<span class="nv">SERVICE_PASSWORD</span><span class="o">=</span><span class="nv">$ADMIN_PASSWORD</span>
+<span class="nv">SERVICE_TOKEN</span><span class="o">=</span>a682f596-76f3-11e3-b3b2-e716f9080d50
 
-SWIFT_REPLICAS=1
-SWIFT_DATA_DIR=$DEST/data/swift
-SWIFT_HASH=66a3d6b56c1f479c8b4e70ab5c2000f5
+<span class="nv">SWIFT_REPLICAS</span><span class="o">=</span>1
+<span class="nv">SWIFT_DATA_DIR</span><span class="o">=</span><span class="nv">$DEST</span>/data/swift
+<span class="nv">SWIFT_HASH</span><span class="o">=</span>66a3d6b56c1f479c8b4e70ab5c2000f5
 enable_service s-proxy s-object s-container s-account
 
-HOST_IP=$ETH1
+<span class="nv">HOST_IP</span><span class="o">=</span><span class="nv">$ETH1</span>
 E-O-L
 
-cd devstack
+<span class="nb">cd </span>devstack
 
-</span><span class="err">./stack.sh</span></code></pre></figure>
+./stack.sh</code></pre></div>
 
 <p>Set devstack with vagrant ubuntu 14.04</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/env bash</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/env bash</span>
 
 <span class="nb">set</span> -x
 
 <span class="nv">HOST_IPS</span><span class="o">=</span><span class="k">$(</span>hostname -I<span class="k">)</span>
 <span class="nv">HOST_IPS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$HOST_IPS</span><span class="k">)</span>
-<span class="nv">HOST_IPS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$HOST_IPS</span>|sed <span class="s1">'s/ /,/'</span><span class="k">)</span>
+<span class="nv">HOST_IPS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$HOST_IPS</span><span class="p">|</span>sed <span class="s1">&#39;s/ /,/&#39;</span><span class="k">)</span>
 
-<span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"P-R-O-X-Y"</span> <span class="o">]</span>; <span class="k">then
-    </span><span class="nb">exit </span>0;
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;$1&quot;</span> <span class="o">==</span> <span class="s2">&quot;P-R-O-X-Y&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">exit </span>0<span class="p">;</span>
 <span class="k">fi</span>
 
 <span class="c"># Proxy goes here</span>
-<span class="nv">PROXY</span><span class="o">=</span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
+<span class="nv">PROXY</span><span class="o">=</span><span class="s2">&quot;$1&quot;</span>
 
-sudo cat &gt;&gt; /etc/environment <span class="sh">&lt;&lt; E-O-L
-export http_proxy=$PROXY
-export https_proxy=$PROXY
-export HTTP_PROXY=$PROXY
-export HTTPS_PROXY=$PROXY
-export no_proxy=127.0.0.1,localhost,$HOST_IPS
-export NO_PROXY=127.0.0.1,localhost,$HOST_IPS
-E-O-L
+sudo cat &gt;&gt; /etc/environment <span class="s">&lt;&lt; E-O-L</span>
+<span class="s">export http_proxy=$PROXY</span>
+<span class="s">export https_proxy=$PROXY</span>
+<span class="s">export HTTP_PROXY=$PROXY</span>
+<span class="s">export HTTPS_PROXY=$PROXY</span>
+<span class="s">export no_proxy=127.0.0.1,localhost,$HOST_IPS</span>
+<span class="s">export NO_PROXY=127.0.0.1,localhost,$HOST_IPS</span>
+<span class="s">E</span>-O-L
 
-sudo cat &gt; /etc/apt/apt.conf.d/01proxies &lt;&lt; E-O-L
-Acquire::http::proxy "$PROXY";
-Acquire::https::proxy "$PROXY";
-E-O-L
+sudo cat &gt; /etc/apt/apt.conf.d/01proxies <span class="s">&lt;&lt; E-O-L</span>
+<span class="s">Acquire::http::proxy &quot;$PROXY&quot;;</span>
+<span class="s">Acquire::https::proxy &quot;$PROXY&quot;;</span>
+<span class="s">E</span>-O-L
 
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get install git-core -y
 
-git config --global http.proxy $PROXY
-git config --global https.proxy $PROXY
+git config --global http.proxy <span class="nv">$PROXY</span>
+git config --global https.proxy <span class="nv">$PROXY</span>
 
-</span><span class="err">exit 0;</span></code></pre></figure>
+<span class="nb">exit </span>0<span class="p">;</span></code></pre></div>
 
 <p>Vagrantfile</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># -*- mode: ruby -*-</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># -*- mode: ruby -*-</span>
 <span class="c"># vi: set ft=ruby :</span>
-Vagrant.configure<span class="o">(</span>2<span class="o">)</span> <span class="k">do</span> |config|
+Vagrant.configure<span class="o">(</span>2<span class="o">)</span> <span class="k">do</span> <span class="p">|</span>config<span class="p">|</span>
 
-  config.vm.box <span class="o">=</span> <span class="s2">"trusty64"</span>
+  config.vm.box <span class="o">=</span> <span class="s2">&quot;trusty64&quot;</span>
 
-  config.vm.network <span class="s2">"private_network"</span>, ip: <span class="s2">"192.168.33.20"</span>
+  config.vm.network <span class="s2">&quot;private_network&quot;</span>, ip: <span class="s2">&quot;192.168.33.20&quot;</span>
 
-  config.vm.provider <span class="s2">"virtualbox"</span> <span class="k">do</span> |vb|
+  config.vm.provider <span class="s2">&quot;virtualbox&quot;</span> <span class="k">do</span> <span class="p">|</span>vb<span class="p">|</span>
 
-     vb.memory <span class="o">=</span> <span class="s2">"4096"</span>
+     vb.memory <span class="o">=</span> <span class="s2">&quot;4096&quot;</span>
 	   vb.cpus <span class="o">=</span> 2
   end
-  config.vm.provision :shell, path: <span class="s2">"set-proxy.sh"</span>, args: <span class="s2">"http://proxy.com:8080/"</span>, keep_color: <span class="nb">true
-  </span>config.vm.provision :shell, path: <span class="s2">"deploy-elasticsearch.sh"</span>, args: <span class="s2">""</span>, keep_color: <span class="nb">true
-  </span>config.vm.provision :shell, path: <span class="s2">"deploy-devstack.sh"</span>, args: <span class="s2">""</span>, keep_color: <span class="nb">true
+  config.vm.provision :shell, path: <span class="s2">&quot;set-proxy.sh&quot;</span>, args: <span class="s2">&quot;http://proxy.com:8080/&quot;</span>, keep_color: <span class="nb">true</span>
+<span class="nb">  </span>config.vm.provision :shell, path: <span class="s2">&quot;deploy-elasticsearch.sh&quot;</span>, args: <span class="s2">&quot;&quot;</span>, keep_color: <span class="nb">true</span>
+<span class="nb">  </span>config.vm.provision :shell, path: <span class="s2">&quot;deploy-devstack.sh&quot;</span>, args: <span class="s2">&quot;&quot;</span>, keep_color: <span class="nb">true</span>
 
-</span>end</code></pre></figure>
+end</code></pre></div>
 
 
   </article>

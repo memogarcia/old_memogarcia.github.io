@@ -66,35 +66,35 @@
 
 <p>helps encapsulate code and provide public and private methods</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">HTMLChanger</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">contents</span> <span class="o">=</span> <span class="s1">'contents'</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">HTMLChanger</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">contents</span> <span class="o">=</span> <span class="s1">&#39;contents&#39;</span>
 
     <span class="kd">var</span> <span class="nx">changeHTML</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'attribute-to-change'</span><span class="p">);</span>
+      <span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;attribute-to-change&#39;</span><span class="p">);</span>
       <span class="nx">element</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">contents</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="k">return</span> <span class="p">{</span>
       <span class="nx">callChangeHTML</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">changeHTML</span><span class="p">()</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'lol'</span><span class="p">)</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;lol&#39;</span><span class="p">)</span>
       <span class="p">}</span>
     <span class="p">};</span>
 <span class="p">})();</span>
 
-<span class="nx">HTMLChanger</span><span class="p">.</span><span class="nx">callChangeHTML</span><span class="p">()</span></code></pre></figure>
+<span class="nx">HTMLChanger</span><span class="p">.</span><span class="nx">callChangeHTML</span><span class="p">()</span></code></pre></div>
 
 <p>Revealing Design Pattern</p>
 
-<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">Exposer</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">Exposer</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">privateVariable</span> <span class="o">=</span> <span class="mi">10</span>
 
   <span class="kd">var</span> <span class="nx">privateMethod</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'privateMethod'</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;privateMethod&#39;</span><span class="p">)</span>
   <span class="p">}</span>
 
   <span class="kd">var</span> <span class="nx">methodToExpose</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'expose this method'</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;expose this method&#39;</span><span class="p">)</span>
   <span class="p">}</span>
 
   <span class="k">return</span> <span class="p">{</span>
@@ -102,7 +102,7 @@
   <span class="p">};</span>
 <span class="p">})();</span>
 
-<span class="nx">Exposer</span><span class="p">.</span><span class="nx">publicMethod</span><span class="p">()</span></code></pre></figure>
+<span class="nx">Exposer</span><span class="p">.</span><span class="nx">publicMethod</span><span class="p">()</span></code></pre></div>
 
 
   </article>

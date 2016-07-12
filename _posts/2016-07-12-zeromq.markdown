@@ -1,0 +1,105 @@
+---
+layout: post
+title:  "0MQ and python"
+date:   2016-07-12 12:30:00
+categories: zeromq python
+---
+
+## Push/Pull
+
+### Pipeline pattern
+
+Push and Pull sockets let you distribute messages to multiple workers, arranged in a pipeline. A Push socket will distribute sent messages to its Pull clients evenly. This is equivalent to producer/consumer model but the results computed by consumer are not sent upstream but downstream to another pull/consumer socket.
+
+Data always flows down the pipeline, and each stage of the pipeline is connected to at least one node. When a pipeline stage is connected to multiple nodes data is load-balanced among all connected nodes.
+
+
+### Producer
+
+Producers are created with ZMQ.PUSH socket types. Producer is bound to well known port to which consumers can connect too.
+
+{% highlight python %}
+
+import time
+import zmq
+
+def producer():
+    context = zmq.Context()
+    zmq_socket = context.socket(zmq.PUSH)
+    zmq_socket.bind("tcp://127.0.0.1:5557")
+    # Start your result manager and workers before you start your producers
+    for num in xrange(20000):
+        work_message = { 'num' : num }
+        zmq_socket.send_json(work_message)
+
+producer()
+
+
+{% endhighlight %}
+
+### Consumer
+
+Consumer are created with ZMQ.PULL socket types to pull requests from producer and uses a push socket to connect and push result to result collector.
+
+{% highlight python %}
+
+import time
+import zmq
+import random
+
+def consumer():
+    consumer_id = random.randrange(1,10005)
+    print "I am consumer #%s" % (consumer_id)
+    context = zmq.Context()
+    # recieve work
+    consumer_receiver = context.socket(zmq.PULL)
+    consumer_receiver.connect("tcp://127.0.0.1:5557")
+    # send work
+    consumer_sender = context.socket(zmq.PUSH)
+    consumer_sender.connect("tcp://127.0.0.1:5558")
+
+    while True:
+        work = consumer_receiver.recv_json()
+        data = work['num']
+        result = { 'consumer' : consumer_id, 'num' : data}
+        if data%2 == 0:
+            consumer_sender.send_json(result)
+
+consumer()
+
+{% endhighlight %}
+
+
+## Collector
+
+result collector are created with ZMQ.PULL socket type and act as consumer of results from intermediate consumers. They also are bound to well known port so that intermediate consumer can connect to it.
+
+{% highlight python %}
+
+import time
+import zmq
+import pprint
+
+def result_collector():
+    context = zmq.Context()
+    results_receiver = context.socket(zmq.PULL)
+    results_receiver.bind("tcp://127.0.0.1:5558")
+    collecter_data = {}
+    for x in xrange(1000):
+        result = results_receiver.recv_json()
+        if collecter_data.has_key(result['consumer']):
+            collecter_data[result['consumer']] = collecter_data[result['consumer']] + 1
+        else:
+            collecter_data[result['consumer']] = 1
+        if x == 999:
+            pprint.pprint(collecter_data)
+
+result_collector()
+
+{% endhighlight %}
+
+## References
+
+[pyzmq code and examples](http://learning-0mq-with-pyzmq.readthedocs.io/en/latest/pyzmq/patterns/pushpull.html)
+
+[zero mq guide](http://zguide.zeromq.org/page:all)

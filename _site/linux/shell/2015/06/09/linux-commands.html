@@ -64,49 +64,49 @@
   <article class="post-content">
     <h1 id="kernel-and-system-information">Kernel and system information</h1>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">uname -a                           <span class="c"># Get the kernel version (and BSD version)</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">uname -a                           <span class="c"># Get the kernel version (and BSD version)</span>
 uptime                             <span class="c"># Show how long the system has been running + load</span>
-hostname                           <span class="c"># system's host name</span>
+hostname                           <span class="c"># system&#39;s host name</span>
 man hier                           <span class="c"># Description of the file system hierarchy</span>
-last reboot                        <span class="c"># Show system reboot history</span></code></pre></figure>
+last reboot                        <span class="c"># Show system reboot history</span></code></pre></div>
 
 <h1 id="hardware-information">Hardware information</h1>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">dmesg                              <span class="c"># Detected hardware and boot messages</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">dmesg                              <span class="c"># Detected hardware and boot messages</span>
 lsdev                              <span class="c"># information about installed hardware</span>
 cat /proc/cpuinfo                  <span class="c"># CPU model</span>
 cat /proc/meminfo                  <span class="c"># Hardware memory</span>
 grep MemTotal /proc/meminfo        <span class="c"># Display the physical memory</span>
-watch -n1 <span class="s1">'cat /proc/interrupts'</span>   <span class="c"># Watch changeable interrupts continuously</span>
+watch -n1 <span class="s1">&#39;cat /proc/interrupts&#39;</span>   <span class="c"># Watch changeable interrupts continuously</span>
 free -m                            <span class="c"># Used and free memory (-m for MB)</span>
 cat /proc/devices                  <span class="c"># Configured devices</span>
 lspci -tv                          <span class="c"># Show PCI devices</span>
 lsusb -tv                          <span class="c"># Show USB devices</span>
 lshal                              <span class="c"># Show a list of all devices with their properties</span>
-dmidecode                          <span class="c"># Show DMI/SMBIOS: hw info from the BIOS</span></code></pre></figure>
+dmidecode                          <span class="c"># Show DMI/SMBIOS: hw info from the BIOS</span></code></pre></div>
 
 <h1 id="load-statistics-and-messages">Load, statistics and messages</h1>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">top                                <span class="c"># display and update the top cpu processes</span>
-mpstat 1                           <span class="c"># display processors related statistics</span>
-vmstat 2                           <span class="c"># display virtual memory statistics</span>
-iostat 2                           <span class="c"># display I/O statistics (2 s intervals)</span>
-systat -vmstat 1                   <span class="c"># BSD summary of system statistics (1 s intervals)</span>
-systat -tcp 1                      <span class="c"># BSD tcp connections (try also -ip)</span>
-systat -netstat 1                  <span class="c"># BSD active network connections</span>
-systat -ifstat 1                   <span class="c"># BSD network traffic through active interfaces</span>
-systat -iostat 1                   <span class="c"># BSD CPU and and disk throughput</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">top                                <span class="c"># display and update the top cpu processes</span>
+mpstat <span class="m">1</span>                           <span class="c"># display processors related statistics</span>
+vmstat <span class="m">2</span>                           <span class="c"># display virtual memory statistics</span>
+iostat <span class="m">2</span>                           <span class="c"># display I/O statistics (2 s intervals)</span>
+systat -vmstat <span class="m">1</span>                   <span class="c"># BSD summary of system statistics (1 s intervals)</span>
+systat -tcp <span class="m">1</span>                      <span class="c"># BSD tcp connections (try also -ip)</span>
+systat -netstat <span class="m">1</span>                  <span class="c"># BSD active network connections</span>
+systat -ifstat <span class="m">1</span>                   <span class="c"># BSD network traffic through active interfaces</span>
+systat -iostat <span class="m">1</span>                   <span class="c"># BSD CPU and and disk throughput</span>
 ipcs -a                            <span class="c"># information on System V interprocess</span>
-tail -n 500 /var/log/messages      <span class="c"># Last 500 kernel/syslog messages</span>
-tail /var/log/warn                 <span class="c"># System warnings messages see syslog.conf</span></code></pre></figure>
+tail -n <span class="m">500</span> /var/log/messages      <span class="c"># Last 500 kernel/syslog messages</span>
+tail /var/log/warn                 <span class="c"># System warnings messages see syslog.conf</span></code></pre></div>
 
 <h1 id="users">Users</h1>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">id                                 <span class="c"># Show the active user id with login and group</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">id                                 <span class="c"># Show the active user id with login and group</span>
 last                               <span class="c"># Show last logins on the system</span>
 who                                <span class="c"># Show who is logged on the system</span>
-groupadd admin                     <span class="c"># Add group "admin" and user colin (Linux/Solaris)</span>
-useradd -c <span class="s2">"Memo Garcia"</span> -g admin -m memo
+groupadd admin                     <span class="c"># Add group &quot;admin&quot; and user colin (Linux/Solaris)</span>
+useradd -c <span class="s2">&quot;Memo Garcia&quot;</span> -g admin -m memo
 usermod -a -G &lt;group&gt; &lt;user&gt;       <span class="c"># Add existing user to group (Debian)</span>
 groupmod -A &lt;user&gt; &lt;group&gt;         <span class="c"># Add existing user to group (SuSE)</span>
 userdel memo                       <span class="c"># Delete user colin (Linux/Solaris)</span>
@@ -114,35 +114,35 @@ adduser memo                       <span class="c"># FreeBSD add user joe (inter
 rmuser memo                        <span class="c"># FreeBSD delete user joe (interactive)</span>
 pw groupadd admin                  <span class="c"># Use pw on FreeBSD</span>
 pw groupmod admin -m newmember     <span class="c"># Add a new member to a group</span>
-pw useradd memo -c <span class="s2">"Memo Garcia"</span> -g admin -m -s /bin/tcsh
-pw userdel memo; pw groupdel admin
+pw useradd memo -c <span class="s2">&quot;Memo Garcia&quot;</span> -g admin -m -s /bin/tcsh
+pw userdel memo<span class="p">;</span> pw groupdel admin
 
-<span class="nb">echo</span> <span class="s2">"Sorry no login now"</span> &gt; /etc/nologin  <span class="c"># prevent logins in the system but root</span>
+<span class="nb">echo</span> <span class="s2">&quot;Sorry no login now&quot;</span> &gt; /etc/nologin  <span class="c"># prevent logins in the system but root</span>
 
 <span class="c"># Encrypted passwords are stored in /etc/shadow for Linux. </span>
 <span class="c"># If the master.passwd is modified manually (say to delete a password),</span>
 <span class="c"># to rebuild the database run::</span>
-pwd_mkdb -p master.passwd</code></pre></figure>
+pwd_mkdb -p master.passwd</code></pre></div>
 
 <h1 id="limits">Limits</h1>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">ulimit</span> -n 10240                    <span class="c"># This is only valid within the shell</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">ulimit</span> -n <span class="m">10240</span>                    <span class="c"># This is only valid within the shell</span>
 
 cat /etc/security/limits.conf
-<span class="k">*</span>   hard    nproc   250              <span class="c"># Limit user processes</span>
-asterisk hard nofile 409600          <span class="c"># Limit application open files</span>
+*   hard    nproc   <span class="m">250</span>              <span class="c"># Limit user processes</span>
+asterisk hard nofile <span class="m">409600</span>          <span class="c"># Limit application open files</span>
 
 sysctl -a                          <span class="c"># View all system limits</span>
 sysctl fs.file-max                 <span class="c"># View max open files limit</span>
-sysctl fs.file-max<span class="o">=</span>102400          <span class="c"># Change max open files limit</span>
-<span class="nb">echo</span> <span class="s2">"1024 50000"</span> &gt; /proc/sys/net/ipv4/ip_local_port_range  <span class="c"># port range</span>
+sysctl fs.file-max<span class="o">=</span><span class="m">102400</span>          <span class="c"># Change max open files limit</span>
+<span class="nb">echo</span> <span class="s2">&quot;1024 50000&quot;</span> &gt; /proc/sys/net/ipv4/ip_local_port_range  <span class="c"># port range</span>
 cat /etc/sysctl.conf
-fs.file-max<span class="o">=</span>102400                   <span class="c"># Permanent entry in sysctl.conf</span>
-cat /proc/sys/fs/file-nr           <span class="c"># How many file descriptors are in use</span></code></pre></figure>
+fs.file-max<span class="o">=</span><span class="m">102400</span>                   <span class="c"># Permanent entry in sysctl.conf</span>
+cat /proc/sys/fs/file-nr           <span class="c"># How many file descriptors are in use</span></code></pre></div>
 
 <h1 id="reset-root-password">Reset root password</h1>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># At the boot loader (lilo or grub), enter the following boot option:</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># At the boot loader (lilo or grub), enter the following boot option:</span>
 <span class="nv">init</span><span class="o">=</span>/bin/sh
 
 <span class="c"># The kernel will mount the root partition and init will start the </span>
@@ -153,17 +153,17 @@ cat /proc/sys/fs/file-nr           <span class="c"># How many file descriptors a
 
 mount -o remount,rw /
 passwd                             <span class="c"># or delete the root password (/etc/shadow)</span>
-sync; mount -o remount,ro /        <span class="c"># sync before to remount read only</span>
-reboot</code></pre></figure>
+sync<span class="p">;</span> mount -o remount,ro /        <span class="c"># sync before to remount read only</span>
+reboot</code></pre></div>
 
 <h1 id="kernel-modules">Kernel modules</h1>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">lsmod                              <span class="c"># List all modules loaded in the kernel</span>
-modprobe isdn                      <span class="c"># To load a module (here isdn)</span></code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">lsmod                              <span class="c"># List all modules loaded in the kernel</span>
+modprobe isdn                      <span class="c"># To load a module (here isdn)</span></code></pre></div>
 
 <h1 id="compile-kernel">Compile kernel</h1>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /usr/src/linux
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /usr/src/linux
 make mrproper                      <span class="c"># Clean everything, including config files</span>
 make oldconfig                     <span class="c"># Reuse the old .config if existent</span>
 make menuconfig                    <span class="c"># or xconfig (Qt) or gconfig (GTK)</span>
@@ -171,99 +171,99 @@ make                               <span class="c"># Create a compressed kernel 
 make modules                       <span class="c"># Compile the modules</span>
 make modules_install               <span class="c"># Install the modules</span>
 make install                       <span class="c"># Install the kernel</span>
-reboot</code></pre></figure>
+reboot</code></pre></div>
 
 <h1 id="repair-grub">Repair grub</h1>
 
 <p>So you broke grub? Boot from a live cd, [find your linux partition under /dev and use fdisk to find the linux partion] mount the linux partition, add /proc and /dev and use grub-install /dev/xyz. Suppose linux lies on /dev/sda6:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">mount /dev/sda6 /mnt               <span class="c"># mount the linux partition on /mnt</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">mount /dev/sda6 /mnt               <span class="c"># mount the linux partition on /mnt</span>
 mount --bind /proc /mnt/proc       <span class="c"># mount the proc subsystem into /mnt</span>
 mount --bind /dev /mnt/dev         <span class="c"># mount the devices into /mnt</span>
 chroot /mnt                        <span class="c"># change root to the linux partition</span>
-grub-install /dev/sda              <span class="c"># reinstall grub with your old settings</span></code></pre></figure>
+grub-install /dev/sda              <span class="c"># reinstall grub with your old settings</span></code></pre></div>
 
 <h1 id="misc-mac">Misc Mac</h1>
 
 <p>Disable OSX virtual memory (repeat with load to re-enable). Faster system, but a little risky.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.dynamic_pager.plist
-sleep 3600; pmset sleepnow           <span class="c"># go to standby in one hour (OSX)</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.dynamic_pager.plist
+sleep 3600<span class="p">;</span> pmset sleepnow           <span class="c"># go to standby in one hour (OSX)</span>
 defaults write -g com.apple.mouse.scaling -float 8
-                                     <span class="c"># OSX mouse acceleration (use -1 to reverse)</span></code></pre></figure>
+                                     <span class="c"># OSX mouse acceleration (use -1 to reverse)</span></code></pre></div>
 
 <h1 id="processes">Processes</h1>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ps -auxefw                         <span class="c"># Extensive list of all running process</span>
-ps axww | grep cron
-  586  ??  Is     0:01.48 /usr/sbin/cron -s
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ps -auxefw                         <span class="c"># Extensive list of all running process</span>
+ps axww <span class="p">|</span> grep cron
+  <span class="m">586</span>  ??  Is     0:01.48 /usr/sbin/cron -s
 ps axjf                            <span class="c"># All processes in a tree format (Linux)</span>
-ps aux | grep <span class="s1">'ss[h]'</span>              <span class="c"># Find all ssh pids without the grep pid</span>
+ps aux <span class="p">|</span> grep <span class="s1">&#39;ss[h]&#39;</span>              <span class="c"># Find all ssh pids without the grep pid</span>
 pgrep -l sshd                      <span class="c"># Find the PIDs of processes by (part of) name</span>
 <span class="nb">echo</span> <span class="nv">$$</span>                            <span class="c"># The PID of your shell</span>
 fuser -va 22/tcp                   <span class="c"># List processes using port 22 (Linux)</span>
 pmap PID                           <span class="c"># Memory map of process (hunt memory leaks) (Linux)</span>
 fuser -va /home                    <span class="c"># List processes accessing the /home partition</span>
 strace df                          <span class="c"># Trace system calls and signals</span>
-truss df                           <span class="c"># same as above on FreeBSD/Solaris/Unixware</span></code></pre></figure>
+truss df                           <span class="c"># same as above on FreeBSD/Solaris/Unixware</span></code></pre></div>
 
 <h1 id="priority">Priority</h1>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">renice -5 586                      <span class="c"># Stronger priority</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">renice -5 <span class="m">586</span>                      <span class="c"># Stronger priority</span>
 
 <span class="c"># nice changes the CPU scheduler</span>
 nice -n -5 top                     <span class="c"># Stronger priority (/usr/bin/nice)</span>
-nice -n 5 top                      <span class="c"># Weaker priority (/usr/bin/nice)</span>
+nice -n <span class="m">5</span> top                      <span class="c"># Weaker priority (/usr/bin/nice)</span>
 nice +5 top                        <span class="c"># tcsh builtin nice (same as above!)</span>
 
 <span class="c"># ionice changes the IO scheduler</span>
 ionice c3 -p123                    <span class="c"># set idle class for pid 123 (Linux only)</span>
 ionice -c2 -n0 firefox             <span class="c"># Run firefox with best effort and high priority</span>
-ionice -c3 -p<span class="nv">$$</span>                    <span class="c"># Set the actual shell to idle priority</span></code></pre></figure>
+ionice -c3 -p<span class="nv">$$</span>                    <span class="c"># Set the actual shell to idle priority</span></code></pre></div>
 
 <h1 id="background-and-foreground">Background and foreground</h1>
 
 <p>When started from a shell, processes can be brought in the background and back to the foreground with [Ctrl]-[Z] (^Z), bg and fg. List the processes with jobs. When needed detach from the terminal with disown.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ping cb.vu &gt; ping.log
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ping cb.vu &gt; ping.log
 ^Z                                   <span class="c"># ping is suspended (stopped) with [Ctrl]-[Z]</span>
 <span class="nb">bg</span>                                 <span class="c"># put in background and continues running</span>
 <span class="nb">jobs</span> -l                            <span class="c"># List processes in background</span>
-    <span class="o">[</span>1]  - 36232 Running                       ping cb.vu &gt; ping.log
-    <span class="o">[</span>2]  + 36233 Suspended <span class="o">(</span>tty output<span class="o">)</span>        top
+    <span class="o">[</span>1<span class="o">]</span>  - <span class="m">36232</span> Running                       ping cb.vu &gt; ping.log
+    <span class="o">[</span>2<span class="o">]</span>  + <span class="m">36233</span> Suspended <span class="o">(</span>tty output<span class="o">)</span>        top
 <span class="nb">fg</span> %2                              <span class="c"># Bring process 2 back in foreground</span>
 
 make                               <span class="c"># start a long compile job but need to leave the terminal</span>
 ^Z                                   <span class="c"># suspended (stopped) with [Ctrl]-[Z]</span>
 <span class="nb">bg</span>                                 <span class="c"># put in background and continues running</span>
-<span class="nb">disown</span> -h %1                       <span class="c"># detatch process from terminal, won't be killed at logout</span></code></pre></figure>
+<span class="nb">disown</span> -h %1                       <span class="c"># detatch process from terminal, won&#39;t be killed at logout</span></code></pre></div>
 
 <h1 id="top">Top</h1>
 
 <p>The program top displays running information of processes. See also the program htop from htop.sourceforge.net (a more powerful version of top) which runs on Linux.
 While top is running press the key h for a help overview. Useful keys are:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">u <span class="o">[</span>user name] To display only the processes belonging to the user. Use + or blank to see all users
-k <span class="o">[</span>pid] Kill the process with pid.
-1 To display all processors statistics <span class="o">(</span>Linux only<span class="o">)</span>
-R Toggle normal/reverse sort.</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">u <span class="o">[</span>user name<span class="o">]</span> To display only the processes belonging to the user. Use + or blank to see all users
+k <span class="o">[</span>pid<span class="o">]</span> Kill the process with pid.
+<span class="m">1</span> To display all processors statistics <span class="o">(</span>Linux only<span class="o">)</span>
+R Toggle normal/reverse sort.</code></pre></div>
 
 <h1 id="signalskill">Signals/Kill</h1>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ping -i 60 cb.vu &gt; ping.log &amp;
-    <span class="o">[</span>1] 4712
-<span class="nb">kill</span> -s TERM 4712                  <span class="c"># same as kill -15 4712</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ping -i <span class="m">60</span> cb.vu &gt; ping.log <span class="p">&amp;</span>
+    <span class="o">[</span>1<span class="o">]</span> 4712
+<span class="nb">kill</span> -s TERM <span class="m">4712</span>                  <span class="c"># same as kill -15 4712</span>
 killall -1 httpd                   <span class="c"># Kill HUP processes by exact name</span>
 pkill -9 http                      <span class="c"># Kill TERM processes by (part of) name</span>
 pkill -TERM -u www                 <span class="c"># Kill TERM processes owned by www</span>
 fuser -k -TERM -m /home            <span class="c"># Kill every process accessing /home (to umount)</span>
 
 <span class="c"># Important signals are:</span>
-    1       HUP <span class="o">(</span>hang up<span class="o">)</span>
-    2       INT <span class="o">(</span>interrupt<span class="o">)</span>
-    3       QUIT <span class="o">(</span>quit<span class="o">)</span>
-    9       KILL <span class="o">(</span>non-catchable, non-ignorable <span class="nb">kill</span><span class="o">)</span>
-    15     TERM <span class="o">(</span>software termination signal<span class="o">)</span></code></pre></figure>
+    <span class="m">1</span>       HUP <span class="o">(</span>hang up<span class="o">)</span>
+    <span class="m">2</span>       INT <span class="o">(</span>interrupt<span class="o">)</span>
+    <span class="m">3</span>       QUIT <span class="o">(</span>quit<span class="o">)</span>
+    <span class="m">9</span>       KILL <span class="o">(</span>non-catchable, non-ignorable <span class="nb">kill</span><span class="o">)</span>
+    <span class="m">15</span>     TERM <span class="o">(</span>software termination signal<span class="o">)</span></code></pre></div>
 
 <h2 id="file-system">File system</h2>
 
@@ -271,46 +271,46 @@ fuser -k -TERM -m /home            <span class="c"># Kill every process accessin
 
 <p>Change permission and ownership with chmod and chown. The default umask can be changed for all users in /etc/profile for Linux. The default umask is usually 022. The umask is subtracted from 777, thus umask 022 results in a permission 0f 755.</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">1 --x execute                        <span class="c"># Mode 764 = exec/read/write | read/write | read</span>
-2 -w- write                          <span class="c"># For:       |--  Owner  --|   |- Group-|   |Oth|</span>
-4 r-- <span class="nb">read
-  </span><span class="nv">ugo</span><span class="o">=</span>a                              <span class="nv">u</span><span class="o">=</span>user, <span class="nv">g</span><span class="o">=</span>group, <span class="nv">o</span><span class="o">=</span>others, <span class="nv">a</span><span class="o">=</span>everyone
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="m">1</span> --x execute                        <span class="c"># Mode 764 = exec/read/write | read/write | read</span>
+<span class="m">2</span> -w- write                          <span class="c"># For:       |--  Owner  --|   |- Group-|   |Oth|</span>
+<span class="m">4</span> r-- <span class="nb">read</span>
+<span class="nb">  </span><span class="nv">ugo</span><span class="o">=</span>a                              <span class="nv">u</span><span class="o">=</span>user, <span class="nv">g</span><span class="o">=</span>group, <span class="nv">o</span><span class="o">=</span>others, <span class="nv">a</span><span class="o">=</span>everyone
   
-chmod <span class="o">[</span>OPTION] MODE[,MODE] FILE    <span class="c"># MODE is of the form [ugoa]*([-+=]([rwxXst]))</span>
-chmod 640 /var/log/maillog         <span class="c"># Restrict the log -rw-r-----</span>
+chmod <span class="o">[</span>OPTION<span class="o">]</span> MODE<span class="o">[</span>,MODE<span class="o">]</span> FILE    <span class="c"># MODE is of the form [ugoa]*([-+=]([rwxXst]))</span>
+chmod <span class="m">640</span> /var/log/maillog         <span class="c"># Restrict the log -rw-r-----</span>
 chmod <span class="nv">u</span><span class="o">=</span>rw,g<span class="o">=</span>r,o<span class="o">=</span> /var/log/maillog <span class="c"># Same as above</span>
-chmod -R o-r /home/<span class="k">*</span>               <span class="c"># Recursive remove other readable for all users</span>
+chmod -R o-r /home/*               <span class="c"># Recursive remove other readable for all users</span>
 chmod u+s /path/to/prog            <span class="c"># Set SUID bit on executable (know what you do!)</span>
 find / -perm -u+s -print           <span class="c"># Find all programs with the SUID bit</span>
 chown user:group /path/to/file     <span class="c"># Change the user and group ownership of a file</span>
 chgrp group /path/to/file          <span class="c"># Change the group ownership of a file</span>
-chmod 640 <span class="sb">`</span>find ./ -type f -print<span class="sb">`</span> <span class="c"># Change permissions to 640 for all files</span>
-chmod 751 <span class="sb">`</span>find ./ -type d -print<span class="sb">`</span> <span class="c"># Change permissions to 751 for all directories</span></code></pre></figure>
+chmod <span class="m">640</span> <span class="sb">`</span>find ./ -type f -print<span class="sb">`</span> <span class="c"># Change permissions to 640 for all files</span>
+chmod <span class="m">751</span> <span class="sb">`</span>find ./ -type d -print<span class="sb">`</span> <span class="c"># Change permissions to 751 for all directories</span></code></pre></div>
 
 <h1 id="disk-information">Disk information</h1>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">hdparm -I /dev/sda                 <span class="c"># information about the IDE/ATA disk (Linux)</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">hdparm -I /dev/sda                 <span class="c"># information about the IDE/ATA disk (Linux)</span>
 fdisk /dev/ad2                     <span class="c"># Display and manipulate the partition table</span>
-smartctl -a /dev/ad2               <span class="c"># Display the disk SMART info</span></code></pre></figure>
+smartctl -a /dev/ad2               <span class="c"># Display the disk SMART info</span></code></pre></div>
 
 <h2 id="system-mount-pointsdisk-usage">System mount points/Disk usage</h2>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">mount | column -t                  <span class="c"># Show mounted file-systems on the system</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">mount <span class="p">|</span> column -t                  <span class="c"># Show mounted file-systems on the system</span>
 df                                 <span class="c"># display free disk space and mounted devices</span>
-cat /proc/partitions               <span class="c"># Show all registered partitions (Linux)</span></code></pre></figure>
+cat /proc/partitions               <span class="c"># Show all registered partitions (Linux)</span></code></pre></div>
 
 <h1 id="disk-usage">Disk usage</h1>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">du -sh <span class="k">*</span>                           <span class="c"># Directory sizes as listing</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">du -sh *                           <span class="c"># Directory sizes as listing</span>
 du -csh                            <span class="c"># Total directory size of the current directory</span>
-du -ks <span class="k">*</span> | sort -n -r              <span class="c"># Sort everything by size in kilobytes</span>
-ls -lSr                            <span class="c"># Show files, biggest last</span></code></pre></figure>
+du -ks * <span class="p">|</span> sort -n -r              <span class="c"># Sort everything by size in kilobytes</span>
+ls -lSr                            <span class="c"># Show files, biggest last</span></code></pre></div>
 
 <h1 id="who-has-which-files-opened">Who has which files opened</h1>
 
 <p>This is useful to find out which file is blocking a partition which has to be unmounted and gives a typical error of:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">umount /home/
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">umount /home/
 umount: unmount of /home             <span class="c"># umount impossible because a file is locking home</span>
    failed: Device busy
 
@@ -319,48 +319,48 @@ fuser -m /home                     <span class="c"># List processes accessing /h
 lsof /home
 
 COMMAND   PID    USER   FD   TYPE DEVICE    SIZE     NODE NAME
-tcsh    29029 memo    cwd    DIR   0,18   12288  1048587 /home/memo <span class="o">(</span>guam:/home<span class="o">)</span>
-lsof    29140 memo    cwd    DIR   0,18   12288  1048587 /home/memo <span class="o">(</span>guam:/home<span class="o">)</span></code></pre></figure>
+tcsh    <span class="m">29029</span> memo    cwd    DIR   0,18   <span class="m">12288</span>  <span class="m">1048587</span> /home/memo <span class="o">(</span>guam:/home<span class="o">)</span>
+lsof    <span class="m">29140</span> memo    cwd    DIR   0,18   <span class="m">12288</span>  <span class="m">1048587</span> /home/memo <span class="o">(</span>guam:/home<span class="o">)</span></code></pre></div>
 
 <h1 id="mountremount-a-file-system">Mount/remount a file system</h1>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">mount -t auto /dev/cdrom /mnt/cdrom   <span class="c"># typical cdrom mount command</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">mount -t auto /dev/cdrom /mnt/cdrom   <span class="c"># typical cdrom mount command</span>
 mount /dev/hdc -t iso9660 -r /cdrom   <span class="c"># typical IDE</span>
 mount /dev/scd0 -t iso9660 -r /cdrom  <span class="c"># typical SCSI cdrom</span>
-mount /dev/sdc0 -t ntfs-3g /windows   <span class="c"># typical SCSI</span></code></pre></figure>
+mount /dev/sdc0 -t ntfs-3g /windows   <span class="c"># typical SCSI</span></code></pre></div>
 
 <h1 id="remount">remount</h1>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">mount -o remount,ro /              <span class="c"># Linux</span></code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">mount -o remount,ro /              <span class="c"># Linux</span></code></pre></div>
 
 <h1 id="virtualbox">virtualbox</h1>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">VBoxManage 
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">VBoxManage 
 
 <span class="c"># allow share on the host</span>
-VBoxManage sharedfolder add <span class="s2">"GuestName"</span> --name <span class="s2">"share"</span> --hostpath <span class="s2">"C:</span><span class="se">\h</span><span class="s2">ostshare"</span></code></pre></figure>
+VBoxManage sharedfolder add <span class="s2">&quot;GuestName&quot;</span> --name <span class="s2">&quot;share&quot;</span> --hostpath <span class="s2">&quot;C:\hostshare&quot;</span></code></pre></div>
 
 <h1 id="add-swap-on-the-fly">Add swap on the fly</h1>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/swap2gb <span class="nv">bs</span><span class="o">=</span>1024k <span class="nv">count</span><span class="o">=</span>2000
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/swap2gb <span class="nv">bs</span><span class="o">=</span>1024k <span class="nv">count</span><span class="o">=</span>2000
 mkswap /swap2gb                    <span class="c"># create the swap area</span>
 swapon /swap2gb                    <span class="c"># activate the swap. It now in use</span>
 swapoff /swap2gb                   <span class="c"># when done deactivate the swap</span>
-rm /swap2gb</code></pre></figure>
+rm /swap2gb</code></pre></div>
 
 <h1 id="mount-an-image">Mount an image</h1>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">hdiutil mount image.iso                               <span class="c"># OS X</span>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">hdiutil mount image.iso                               <span class="c"># OS X</span>
 mount -t iso9660 -o loop file.iso /mnt                <span class="c"># Mount a CD image</span>
-mount -t ext3 -o loop file.img /mnt                   <span class="c"># Mount an image with ext3 fs</span></code></pre></figure>
+mount -t ext3 -o loop file.img /mnt                   <span class="c"># Mount an image with ext3 fs</span></code></pre></div>
 
 <h1 id="disk-perfomance">Disk perfomance</h1>
 
 <p>Read and write a 1 GB file on partition ad4s3c (/home)</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">time </span>dd <span class="k">if</span><span class="o">=</span>/dev/ad4s3c <span class="nv">of</span><span class="o">=</span>/dev/null <span class="nv">bs</span><span class="o">=</span>1024k <span class="nv">count</span><span class="o">=</span>1000
-<span class="nb">time </span>dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">bs</span><span class="o">=</span>1024k <span class="nv">count</span><span class="o">=</span>1000 <span class="nv">of</span><span class="o">=</span>/home/1Gb.file
-hdparm -tT /dev/hda      <span class="c"># Linux only</span></code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">time </span>dd <span class="k">if</span><span class="o">=</span>/dev/ad4s3c <span class="nv">of</span><span class="o">=</span>/dev/null <span class="nv">bs</span><span class="o">=</span>1024k <span class="nv">count</span><span class="o">=</span>1000
+<span class="nb">time </span>dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">bs</span><span class="o">=</span>1024k <span class="nv">count</span><span class="o">=</span><span class="m">1000</span> <span class="nv">of</span><span class="o">=</span>/home/1Gb.file
+hdparm -tT /dev/hda      <span class="c"># Linux only</span></code></pre></div>
 
 
   </article>

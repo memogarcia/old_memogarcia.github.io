@@ -69,15 +69,15 @@ and <a href="https://www.microsoft.com/en-us/download/details.aspx?id=44266">Mic
 
 <p>Then, use this boilerplate code to run your service.</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">servicemanager</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">servicemanager</span>
 <span class="kn">import</span> <span class="nn">win32event</span>
 <span class="kn">import</span> <span class="nn">win32service</span>
 <span class="kn">import</span> <span class="nn">win32serviceutil</span>
 
 <span class="k">class</span> <span class="nc">PySvc</span><span class="p">(</span><span class="n">win32serviceutil</span><span class="o">.</span><span class="n">ServiceFramework</span><span class="p">):</span>
-    <span class="n">_svc_name_</span> <span class="o">=</span> <span class="s">"YourService"</span>
-    <span class="n">_svc_display_name_</span> <span class="o">=</span> <span class="s">"Your Service"</span>
-    <span class="n">_svc_description_</span> <span class="o">=</span> <span class="s">"Your Service"</span>
+    <span class="n">_svc_name_</span> <span class="o">=</span> <span class="s">&quot;YourService&quot;</span>
+    <span class="n">_svc_display_name_</span> <span class="o">=</span> <span class="s">&quot;Your Service&quot;</span>
+    <span class="n">_svc_description_</span> <span class="o">=</span> <span class="s">&quot;Your Service&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="n">win32serviceutil</span><span class="o">.</span><span class="n">ServiceFramework</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
@@ -85,25 +85,25 @@ and <a href="https://www.microsoft.com/en-us/download/details.aspx?id=44266">Mic
         <span class="bp">self</span><span class="o">.</span><span class="n">hWaitStop</span> <span class="o">=</span> <span class="n">win32event</span><span class="o">.</span><span class="n">CreateEvent</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">SvcDoRun</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="s">"""Run the windows service
-        """</span>
+        <span class="sd">&quot;&quot;&quot;Run the windows service</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">rc</span> <span class="o">=</span> <span class="bp">None</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 
-        <span class="c"># if the stop event hasn't been fired keep looping</span>
+        <span class="c"># if the stop event hasn&#39;t been fired keep looping</span>
         <span class="k">while</span> <span class="n">rc</span> <span class="o">!=</span> <span class="n">win32event</span><span class="o">.</span><span class="n">WAIT_OBJECT_0</span><span class="p">:</span>
             <span class="c"># block for 5 seconds and listen for a stop event</span>
             <span class="n">rc</span> <span class="o">=</span> <span class="n">win32event</span><span class="o">.</span><span class="n">WaitForSingleObject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hWaitStop</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">SvcStop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="s">"""Stop the windows service and stop the scheduler instance
-        """</span>
-        <span class="c"># tell the SCM we're shutting down</span>
+        <span class="sd">&quot;&quot;&quot;Stop the windows service and stop the scheduler instance</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># tell the SCM we&#39;re shutting down</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ReportServiceStatus</span><span class="p">(</span><span class="n">win32service</span><span class="o">.</span><span class="n">SERVICE_STOP_PENDING</span><span class="p">)</span>
 
         <span class="c"># fire the stop event</span>
-        <span class="n">servicemanager</span><span class="o">.</span><span class="n">LogInfoMsg</span><span class="p">(</span><span class="s">"stop event"</span><span class="p">)</span>
+        <span class="n">servicemanager</span><span class="o">.</span><span class="n">LogInfoMsg</span><span class="p">(</span><span class="s">&quot;stop event&quot;</span><span class="p">)</span>
         <span class="n">win32event</span><span class="o">.</span><span class="n">SetEvent</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hWaitStop</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -111,60 +111,60 @@ and <a href="https://www.microsoft.com/en-us/download/details.aspx?id=44266">Mic
         <span class="k">pass</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">servicemanager</span><span class="o">.</span><span class="n">Initialize</span><span class="p">()</span>
         <span class="n">servicemanager</span><span class="o">.</span><span class="n">PrepareToHostSingle</span><span class="p">(</span><span class="n">PySvc</span><span class="p">)</span>
         <span class="n">servicemanager</span><span class="o">.</span><span class="n">StartServiceCtrlDispatcher</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">win32serviceutil</span><span class="o">.</span><span class="n">HandleCommandLine</span><span class="p">(</span><span class="n">PySvc</span><span class="p">)</span></code></pre></figure>
+        <span class="n">win32serviceutil</span><span class="o">.</span><span class="n">HandleCommandLine</span><span class="p">(</span><span class="n">PySvc</span><span class="p">)</span></code></pre></div>
 
 <p>Then install the service:</p>
 
 <p>As a user:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">python win_service.py --username <span class="nv">$pc_name</span> --password <span class="nv">$plain_password</span> install</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">python win_service.py --username <span class="nv">$pc_name</span> --password <span class="nv">$plain_password</span> install</code></pre></div>
 
 <p>As a background service:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">python win_service.py install</code></pre></figure>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">python win_service.py install</code></pre></div>
 
 <p>Manipulate the service in python</p>
 
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">win32serviceutil</span>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">win32serviceutil</span>
 
 <span class="c"># start the service</span>
-<span class="n">win32serviceutil</span><span class="o">.</span><span class="n">StartService</span><span class="p">(</span><span class="s">"service_name"</span><span class="p">)</span>
+<span class="n">win32serviceutil</span><span class="o">.</span><span class="n">StartService</span><span class="p">(</span><span class="s">&quot;service_name&quot;</span><span class="p">)</span>
 
 <span class="c"># stop the service</span>
-<span class="n">win32serviceutil</span><span class="o">.</span><span class="n">StopService</span><span class="p">(</span><span class="s">"service_name"</span><span class="p">)</span>
+<span class="n">win32serviceutil</span><span class="o">.</span><span class="n">StopService</span><span class="p">(</span><span class="s">&quot;service_name&quot;</span><span class="p">)</span>
 <span class="c"># or in case the stop functionality gets blocked like in this case...</span>
-<span class="s">"""Stop the windows service by using sc queryex command, if we use
-  win32serviceutil.StoptService(self.service_name) it never gets stopped
-  because freezer_scheduler.start() blocks the windows service and
-  prevents any new signal to reach the service.
-  """</span>
-  <span class="n">query</span> <span class="o">=</span> <span class="s">'sc queryex {0}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">"service_name"</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;Stop the windows service by using sc queryex command, if we use</span>
+<span class="sd">  win32serviceutil.StoptService(self.service_name) it never gets stopped</span>
+<span class="sd">  because freezer_scheduler.start() blocks the windows service and</span>
+<span class="sd">  prevents any new signal to reach the service.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">query</span> <span class="o">=</span> <span class="s">&#39;sc queryex {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;service_name&quot;</span><span class="p">)</span>
   <span class="n">out</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">create_subprocess</span><span class="p">(</span><span class="n">query</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
   <span class="n">pid</span> <span class="o">=</span> <span class="bp">None</span>
-  <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">out</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">):</span>
-      <span class="k">if</span> <span class="s">'PID'</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-          <span class="n">pid</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">':'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+  <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">out</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">):</span>
+      <span class="k">if</span> <span class="s">&#39;PID&#39;</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+          <span class="n">pid</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;:&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
-  <span class="n">command</span> <span class="o">=</span> <span class="s">'taskkill /f /pid {0}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pid</span><span class="p">)</span>
+  <span class="n">command</span> <span class="o">=</span> <span class="s">&#39;taskkill /f /pid {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pid</span><span class="p">)</span>
   <span class="n">utils</span><span class="o">.</span><span class="n">create_subprocess</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
 
 <span class="c"># status of the service</span>
-<span class="s">"""Return running status of Freezer Service
-by querying win32serviceutil.QueryServiceStatus()
-possible running status:
-    1 == stop
-    4 == running
-"""</span>
-<span class="k">if</span> <span class="n">win32serviceutil</span><span class="o">.</span><span class="n">QueryServiceStatus</span><span class="p">(</span><span class="s">"service_name"</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"{0} is running normally"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">"service_name"</span><span class="p">))</span>
+<span class="sd">&quot;&quot;&quot;Return running status of Freezer Service</span>
+<span class="sd">by querying win32serviceutil.QueryServiceStatus()</span>
+<span class="sd">possible running status:</span>
+<span class="sd">    1 == stop</span>
+<span class="sd">    4 == running</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="k">if</span> <span class="n">win32serviceutil</span><span class="o">.</span><span class="n">QueryServiceStatus</span><span class="p">(</span><span class="s">&quot;service_name&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;{0} is running normally&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;service_name&quot;</span><span class="p">))</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"{0} is *NOT* running"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">"service_name"</span><span class="p">))</span></code></pre></figure>
+    <span class="k">print</span><span class="p">(</span><span class="s">&quot;{0} is *NOT* running&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;service_name&quot;</span><span class="p">))</span></code></pre></div>
 
 
   </article>
