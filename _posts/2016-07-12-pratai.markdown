@@ -2,8 +2,10 @@
 layout: post
 title:  "Pratai, Event driven compute for OpenStack"
 date:   2016-07-12 12:30:00
-categories: zeromq python
+categories: pratai openstack serverless events compute
 ---
+
+**Note** This is a Work-In-Progress Document, source code will be added later.
 
 ### Abstract
 
@@ -56,7 +58,7 @@ then disappear.
 
 #### Control Plane
 
-An API gateway, an database cluster and a load balancer and a scheduler lives
+An API gateway, a database cluster and a load balancer and a scheduler runs
 in the control plane.
 
 For the first version a API gateway built in python using flask will be made,

@@ -64,25 +64,25 @@
   <article class="post-content">
     <p>Install OpenJDK (or java)</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install openjdk-7-jre</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install openjdk-7-jre</code></pre></figure>
 
 <p>Download elasticsearch from:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">https://www.elastic.co/downloads/elasticsearch</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">https://www.elastic.co/downloads/elasticsearch</code></pre></figure>
 
 <p>Install .deb file</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo dpkg -i elasticsearch.deb</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo dpkg -i elasticsearch.deb</code></pre></figure>
 
 <p>Start elasticsearch</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">sudo /etc/init.d/elasticsearch start
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo /etc/init.d/elasticsearch start
 <span class="c"># or</span>
-sudo service elasticsearch start</code></pre></div>
+sudo service elasticsearch start</code></pre></figure>
 
 <p>Simple script to configure elasticsearch</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/env bash</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/env bash</span>
 
 sudo apt-get install openjdk-7-jre -y
 
@@ -90,7 +90,7 @@ wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5
 
 sudo dpkg -i elasticsearch-1.7.5.deb
 
-sudo service elasticsearch start</code></pre></div>
+sudo service elasticsearch start</code></pre></figure>
 
 
   </article>

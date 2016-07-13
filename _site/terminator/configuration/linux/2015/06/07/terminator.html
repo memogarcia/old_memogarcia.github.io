@@ -64,33 +64,33 @@
   <article class="post-content">
     <p>Simple terminator configuration</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">~/.config/terminator/config</code></pre></div>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">~/.config/terminator/config</code></pre></figure>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>global_config<span class="o">]</span>
-<span class="o">[</span>keybindings<span class="o">]</span>
-  <span class="nv">new_tab</span> <span class="o">=</span> &lt;Primary&gt;t
-  <span class="nv">copy</span> <span class="o">=</span> &lt;Primary&gt;c
-  <span class="nv">paste</span> <span class="o">=</span> &lt;Primary&gt;v
-  <span class="nv">next_tab</span> <span class="o">=</span> &lt;Primary&gt;Tab
-<span class="o">[</span>profiles<span class="o">]</span>
-  <span class="o">[[</span>default<span class="o">]]</span>
-    <span class="nv">scrollbar_position</span> <span class="o">=</span> hidden
-    <span class="nv">palette</span> <span class="o">=</span> <span class="s2">&quot;#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3&quot;</span>
-    <span class="nv">background_image</span> <span class="o">=</span> None
-    <span class="nv">foreground_color</span> <span class="o">=</span> <span class="s2">&quot;#d8d3c4&quot;</span>
-    <span class="nv">scroll_on_output</span> <span class="o">=</span> False
-    <span class="nv">show_titlebar</span> <span class="o">=</span> False
-    <span class="nv">background_color</span> <span class="o">=</span> <span class="s2">&quot;#002b36&quot;</span>
-    <span class="nv">scrollback_infinite</span> <span class="o">=</span> True
-<span class="o">[</span>layouts<span class="o">]</span>
-  <span class="o">[[</span>default<span class="o">]]</span>
-    <span class="o">[[[</span>child1<span class="o">]]]</span>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>global_config]
+<span class="o">[</span>keybindings]
+  new_tab <span class="o">=</span> &lt;Primary&gt;t
+  copy <span class="o">=</span> &lt;Primary&gt;c
+  paste <span class="o">=</span> &lt;Primary&gt;v
+  next_tab <span class="o">=</span> &lt;Primary&gt;Tab
+<span class="o">[</span>profiles]
+  <span class="o">[[</span>default]]
+    scrollbar_position <span class="o">=</span> hidden
+    palette <span class="o">=</span> <span class="s2">"#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"</span>
+    background_image <span class="o">=</span> None
+    foreground_color <span class="o">=</span> <span class="s2">"#d8d3c4"</span>
+    scroll_on_output <span class="o">=</span> False
+    show_titlebar <span class="o">=</span> False
+    background_color <span class="o">=</span> <span class="s2">"#002b36"</span>
+    scrollback_infinite <span class="o">=</span> True
+<span class="o">[</span>layouts]
+  <span class="o">[[</span>default]]
+    <span class="o">[[[</span>child1]]]
       <span class="nb">type</span> <span class="o">=</span> Terminal
-      <span class="nv">parent</span> <span class="o">=</span> window0
-    <span class="o">[[[</span>window0<span class="o">]]]</span>
+      parent <span class="o">=</span> window0
+    <span class="o">[[[</span>window0]]]
       <span class="nb">type</span> <span class="o">=</span> Window
-      <span class="nv">parent</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-<span class="o">[</span>plugins<span class="o">]</span></code></pre></div>
+      parent <span class="o">=</span> <span class="s2">""</span>
+<span class="o">[</span>plugins]</code></pre></figure>
 
 
   </article>
