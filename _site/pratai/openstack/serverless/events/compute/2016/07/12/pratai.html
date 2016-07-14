@@ -109,8 +109,8 @@ then disappear.</p>
 
 <h4 id="control-plane">Control Plane</h4>
 
-<p>An API gateway, a database cluster and a load balancer and a scheduler runs
-in the control plane.</p>
+<p>An API gateway, a database cluster and a load balancer, and agent and a scheduler
+runs in the control plane.</p>
 
 <p>For the first version a API gateway built in python using flask will be made,
 in the future I think Golang should be a better option for it.</p>
@@ -178,16 +178,90 @@ running in the pratai nodes, one consumer should be spawned per thread.</p>
 
 <p><img src="/images/pushpull.png" alt="Reference architecture" /></p>
 
+<h3 id="events">Events</h3>
+
+<p>A function can react to any event coming through http/https request or messages
+in a queue, even events that happen in a database can trigger a function, is
+important to notice that a response of a function is an event, so it can trigger
+so chaining functions to build pipelines of data processing is easy with Pratai.</p>
+
+<p>There are 2 kinds of events, <code class="highlighter-rouge">async</code> and <code class="highlighter-rouge">wait_for_response</code></p>
+
+<h4 id="async">Async</h4>
+
+<p>When an async event gets triggered it won’t block the request until the function
+finish the process, instead it will acknowledge the event and response with  a
+<code class="highlighter-rouge">202 status code</code> and a <code class="highlighter-rouge">request_id</code>, you can retrieve the status by getting
+the logs or query the api with the request_id</p>
+
+<h4 id="wait-for-response">Wait For Response</h4>
+
+<p>In the other hand a wait_for_response event will block the request until the
+function finish to process the data. this is great tool to create API’s</p>
+
 <h3 id="components">Components</h3>
 
-<ul>
-  <li>Agent</li>
-  <li>API gateway</li>
-  <li>Client</li>
-  <li>Drivers</li>
-  <li>Runtimes</li>
-  <li>Scheduler</li>
-</ul>
+<h4 id="rest-api">REST API</h4>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">{</span>url<span class="o">}</span>/api
+<span class="o">{</span>url<span class="o">}</span>/api/functions
+<span class="o">{</span>url<span class="o">}</span>/api/functions/<span class="o">{</span>function_id<span class="o">}</span>
+<span class="o">{</span>url<span class="o">}</span>/api/runtimes
+<span class="o">{</span>url<span class="o">}</span>/api/runtimes/<span class="o">{</span>runtime_id<span class="o">}</span>
+<span class="o">{</span>url<span class="o">}</span>/api/events
+<span class="o">{</span>url<span class="o">}</span>/api/events/<span class="o">{</span>event_id<span class="o">}</span>
+<span class="o">{</span>url<span class="o">}</span>/api/status</code></pre></figure>
+
+<p>This are the available endpoints for Pratai, they will be discussed with more
+details in the official documentation, but basically they support CRUD operations
+for all the available endpoints</p>
+
+<h4 id="agent">Agent</h4>
+
+<p>WIP</p>
+
+<h4 id="client">client</h4>
+
+<p>python-prataiclient is the component that allows the user to interact with the
+api from the command line interface, with it you can do stuff like this:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">pratai <span class="k">function</span>-create music_tag --file /path/to/zip --description <span class="se">\</span>
+    <span class="s2">"extract metadata from music files"</span> --memory 128
+
+pratai <span class="k">function</span>-list</code></pre></figure>
+
+<p>Because this is OpenStack you should pass credentials to interact with the
+platform</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">export </span><span class="nv">OS_USERNAME</span><span class="o">=</span>user
+<span class="nb">export </span><span class="nv">OS_PASSWORD</span><span class="o">=</span>password
+<span class="nb">export </span><span class="nv">OS_TENANT_NAME</span><span class="o">=</span>pratai_tenant
+<span class="nb">export </span><span class="nv">OS_PRATAI_URL</span><span class="o">=</span>http://192.168.33.9:9096
+<span class="nb">export </span><span class="nv">OS_IDENTITY_API_VERSION</span><span class="o">=</span>3
+<span class="nb">export </span><span class="nv">OS_AUTH_URL</span><span class="o">=</span>http://192.168.33.9:5000/v3
+<span class="nb">export </span><span class="nv">OS_PROJECT_NAME</span><span class="o">=</span>pratai_tenant
+<span class="nb">export </span><span class="nv">OS_PROJECT_DOMAIN_NAME</span><span class="o">=</span>Default
+<span class="nb">export </span><span class="nv">OS_USER_DOMAIN_NAME</span><span class="o">=</span>Default</code></pre></figure>
+
+<h4 id="drivers">Drivers</h4>
+
+<p>WIP</p>
+
+<h4 id="runtimes">Runtimes</h4>
+
+<p>WIP</p>
+
+<h4 id="scheduler">Scheduler</h4>
+
+<p>WIP</p>
+
+<h3 id="security--secrets">Security &amp; Secrets</h3>
+
+<p>The functions that interact with external services most often that not they
+require to use credentials to connect, for this, Barbican has been proposed to
+help with this scenario.</p>
+
+<p>We definitely recommend using tokens instead of user/passwords when possible.</p>
 
 <h3 id="community">Community</h3>
 

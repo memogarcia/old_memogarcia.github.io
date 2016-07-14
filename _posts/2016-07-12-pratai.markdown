@@ -58,8 +58,8 @@ then disappear.
 
 #### Control Plane
 
-An API gateway, a database cluster and a load balancer and a scheduler runs
-in the control plane.
+An API gateway, a database cluster and a load balancer, and agent and a scheduler
+runs in the control plane.
 
 For the first version a API gateway built in python using flask will be made,
 in the future I think Golang should be a better option for it.
@@ -140,14 +140,103 @@ running in the pratai nodes, one consumer should be spawned per thread.
 
 ![Reference architecture](/images/pushpull.png)
 
+### Events
+
+A function can react to any event coming through http/https request or messages
+in a queue, even events that happen in a database can trigger a function, is
+important to notice that a response of a function is an event, so it can trigger
+so chaining functions to build pipelines of data processing is easy with Pratai.
+
+There are 2 kinds of events, `async` and `wait_for_response`
+
+#### Async
+
+When an async event gets triggered it won't block the request until the function
+finish the process, instead it will acknowledge the event and response with  a
+`202 status code` and a `request_id`, you can retrieve the status by getting
+the logs or query the api with the request_id
+
+#### Wait For Response
+
+In the other hand a wait_for_response event will block the request until the
+function finish to process the data. this is great tool to create API's
+
+
 ### Components
 
- * Agent
- * API gateway
- * Client
- * Drivers
- * Runtimes
- * Scheduler
+#### REST API
+
+{% highlight bash %}
+
+{url}/api
+{url}/api/functions
+{url}/api/functions/{function_id}
+{url}/api/runtimes
+{url}/api/runtimes/{runtime_id}
+{url}/api/events
+{url}/api/events/{event_id}
+{url}/api/status
+
+{% endhighlight %}
+
+This are the available endpoints for Pratai, they will be discussed with more
+details in the official documentation, but basically they support CRUD operations
+for all the available endpoints
+
+#### Agent
+
+WIP
+
+#### client
+
+python-prataiclient is the component that allows the user to interact with the
+api from the command line interface, with it you can do stuff like this:
+
+{% highlight bash %}
+
+pratai function-create music_tag --file /path/to/zip --description \
+    "extract metadata from music files" --memory 128
+
+pratai function-list
+
+{% endhighlight %}
+
+Because this is OpenStack you should pass credentials to interact with the
+platform
+
+{% highlight bash %}
+
+export OS_USERNAME=user
+export OS_PASSWORD=password
+export OS_TENANT_NAME=pratai_tenant
+export OS_PRATAI_URL=http://192.168.33.9:9096
+export OS_IDENTITY_API_VERSION=3
+export OS_AUTH_URL=http://192.168.33.9:5000/v3
+export OS_PROJECT_NAME=pratai_tenant
+export OS_PROJECT_DOMAIN_NAME=Default
+export OS_USER_DOMAIN_NAME=Default
+
+{% endhighlight %}
+
+#### Drivers
+
+WIP
+
+#### Runtimes
+
+WIP
+
+#### Scheduler
+
+WIP
+
+### Security & Secrets
+
+The functions that interact with external services most often that not they
+require to use credentials to connect, for this, Barbican has been proposed to
+help with this scenario.
+
+We definitely recommend using tokens instead of user/passwords when possible.  
 
 ### Community
 

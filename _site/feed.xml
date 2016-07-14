@@ -5,8 +5,8 @@
     <description></description>
     <link>http://memogarcia.me/</link>
     <atom:link href="http://memogarcia.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 13 Jul 2016 16:41:56 +0100</pubDate>
-    <lastBuildDate>Wed, 13 Jul 2016 16:41:56 +0100</lastBuildDate>
+    <pubDate>Thu, 14 Jul 2016 12:16:43 +0100</pubDate>
+    <lastBuildDate>Thu, 14 Jul 2016 12:16:43 +0100</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
@@ -155,8 +155,8 @@ then disappear.&lt;/p&gt;
 
 &lt;h4 id=&quot;control-plane&quot;&gt;Control Plane&lt;/h4&gt;
 
-&lt;p&gt;An API gateway, a database cluster and a load balancer and a scheduler runs
-in the control plane.&lt;/p&gt;
+&lt;p&gt;An API gateway, a database cluster and a load balancer, and agent and a scheduler
+runs in the control plane.&lt;/p&gt;
 
 &lt;p&gt;For the first version a API gateway built in python using flask will be made,
 in the future I think Golang should be a better option for it.&lt;/p&gt;
@@ -224,16 +224,90 @@ running in the pratai nodes, one consumer should be spawned per thread.&lt;/p&gt
 
 &lt;p&gt;&lt;img src=&quot;/images/pushpull.png&quot; alt=&quot;Reference architecture&quot; /&gt;&lt;/p&gt;
 
+&lt;h3 id=&quot;events&quot;&gt;Events&lt;/h3&gt;
+
+&lt;p&gt;A function can react to any event coming through http/https request or messages
+in a queue, even events that happen in a database can trigger a function, is
+important to notice that a response of a function is an event, so it can trigger
+so chaining functions to build pipelines of data processing is easy with Pratai.&lt;/p&gt;
+
+&lt;p&gt;There are 2 kinds of events, &lt;code class=&quot;highlighter-rouge&quot;&gt;async&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;wait_for_response&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;async&quot;&gt;Async&lt;/h4&gt;
+
+&lt;p&gt;When an async event gets triggered it won’t block the request until the function
+finish the process, instead it will acknowledge the event and response with  a
+&lt;code class=&quot;highlighter-rouge&quot;&gt;202 status code&lt;/code&gt; and a &lt;code class=&quot;highlighter-rouge&quot;&gt;request_id&lt;/code&gt;, you can retrieve the status by getting
+the logs or query the api with the request_id&lt;/p&gt;
+
+&lt;h4 id=&quot;wait-for-response&quot;&gt;Wait For Response&lt;/h4&gt;
+
+&lt;p&gt;In the other hand a wait_for_response event will block the request until the
+function finish to process the data. this is great tool to create API’s&lt;/p&gt;
+
 &lt;h3 id=&quot;components&quot;&gt;Components&lt;/h3&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Agent&lt;/li&gt;
-  &lt;li&gt;API gateway&lt;/li&gt;
-  &lt;li&gt;Client&lt;/li&gt;
-  &lt;li&gt;Drivers&lt;/li&gt;
-  &lt;li&gt;Runtimes&lt;/li&gt;
-  &lt;li&gt;Scheduler&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h4 id=&quot;rest-api&quot;&gt;REST API&lt;/h4&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/functions
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/functions/&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;function_id&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/runtimes
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/runtimes/&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;runtime_id&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/events
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/events/&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;event_id&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/status&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This are the available endpoints for Pratai, they will be discussed with more
+details in the official documentation, but basically they support CRUD operations
+for all the available endpoints&lt;/p&gt;
+
+&lt;h4 id=&quot;agent&quot;&gt;Agent&lt;/h4&gt;
+
+&lt;p&gt;WIP&lt;/p&gt;
+
+&lt;h4 id=&quot;client&quot;&gt;client&lt;/h4&gt;
+
+&lt;p&gt;python-prataiclient is the component that allows the user to interact with the
+api from the command line interface, with it you can do stuff like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;pratai &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;-create music_tag --file /path/to/zip --description &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;extract metadata from music files&quot;&lt;/span&gt; --memory 128
+
+pratai &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;-list&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Because this is OpenStack you should pass credentials to interact with the
+platform&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OS_USERNAME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;user
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OS_PASSWORD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;password
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OS_TENANT_NAME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;pratai_tenant
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OS_PRATAI_URL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;http://192.168.33.9:9096
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OS_IDENTITY_API_VERSION&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;3
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OS_AUTH_URL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;http://192.168.33.9:5000/v3
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OS_PROJECT_NAME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;pratai_tenant
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OS_PROJECT_DOMAIN_NAME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;Default
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;OS_USER_DOMAIN_NAME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;Default&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;drivers&quot;&gt;Drivers&lt;/h4&gt;
+
+&lt;p&gt;WIP&lt;/p&gt;
+
+&lt;h4 id=&quot;runtimes&quot;&gt;Runtimes&lt;/h4&gt;
+
+&lt;p&gt;WIP&lt;/p&gt;
+
+&lt;h4 id=&quot;scheduler&quot;&gt;Scheduler&lt;/h4&gt;
+
+&lt;p&gt;WIP&lt;/p&gt;
+
+&lt;h3 id=&quot;security--secrets&quot;&gt;Security &amp;amp; Secrets&lt;/h3&gt;
+
+&lt;p&gt;The functions that interact with external services most often that not they
+require to use credentials to connect, for this, Barbican has been proposed to
+help with this scenario.&lt;/p&gt;
+
+&lt;p&gt;We definitely recommend using tokens instead of user/passwords when possible.&lt;/p&gt;
 
 &lt;h3 id=&quot;community&quot;&gt;Community&lt;/h3&gt;
 
