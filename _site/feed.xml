@@ -5,8 +5,8 @@
     <description></description>
     <link>http://memogarcia.me/</link>
     <atom:link href="http://memogarcia.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 14 Jul 2016 12:16:43 +0100</pubDate>
-    <lastBuildDate>Thu, 14 Jul 2016 12:16:43 +0100</lastBuildDate>
+    <pubDate>Thu, 14 Jul 2016 14:33:01 +0100</pubDate>
+    <lastBuildDate>Thu, 14 Jul 2016 14:33:01 +0100</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
@@ -242,7 +242,8 @@ the logs or query the api with the request_id&lt;/p&gt;
 
 &lt;h4 id=&quot;wait-for-response&quot;&gt;Wait For Response&lt;/h4&gt;
 
-&lt;p&gt;In the other hand a wait_for_response event will block the request until the
+&lt;p&gt;&lt;strong&gt;This wont be included in the first release&lt;/strong&gt;
+In the other hand a wait_for_response event will block the request until the
 function finish to process the data. this is great tool to create API’s&lt;/p&gt;
 
 &lt;h3 id=&quot;components&quot;&gt;Components&lt;/h3&gt;
