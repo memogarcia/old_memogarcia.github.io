@@ -159,6 +159,7 @@ the logs or query the api with the request_id
 #### Wait For Response
 
 **This wont be included in the first release**
+
 In the other hand a wait_for_response event will block the request until the
 function finish to process the data. this is great tool to create API's
 
@@ -169,14 +170,14 @@ function finish to process the data. this is great tool to create API's
 
 {% highlight bash %}
 
-{url}/api
-{url}/api/functions
-{url}/api/functions/{function_id}
-{url}/api/runtimes
-{url}/api/runtimes/{runtime_id}
-{url}/api/events
-{url}/api/events/{event_id}
-{url}/api/status
+http://{url}/api
+http://{url}/api/functions
+http://{url}/api/functions/{function_id}
+http://{url}/api/runtimes
+http://{url}/api/runtimes/{runtime_id}
+http://{url}/api/events
+http://{url}/api/events/{event_id}
+http://{url}/api/status
 
 {% endhighlight %}
 

@@ -5,9 +5,71 @@
     <description></description>
     <link>http://memogarcia.me/</link>
     <atom:link href="http://memogarcia.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 14 Jul 2016 14:33:01 +0100</pubDate>
-    <lastBuildDate>Thu, 14 Jul 2016 14:33:01 +0100</lastBuildDate>
+    <pubDate>Thu, 14 Jul 2016 17:08:53 +0100</pubDate>
+    <lastBuildDate>Thu, 14 Jul 2016 17:08:53 +0100</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Building docker clusters</title>
+        <description>&lt;p&gt;The main idea is to create an elasticsearch cluster using docker and a python
+web server cluster with a load balancer&lt;/p&gt;
+
+&lt;h1 id=&quot;web-servers--load-balancer&quot;&gt;Web servers + Load balancer&lt;/h1&gt;
+
+&lt;h2 id=&quot;nginx&quot;&gt;Nginx&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;FROM nginx
+
+COPY nginx.conf /etc/nginx/nginx.conf&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;nginx.conf&lt;/code&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;events &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  worker_connections  1024;  &lt;span class=&quot;c&quot;&gt;## Default: 1024&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+http &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    upstream api &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        least_conn;
+        &lt;span class=&quot;c&quot;&gt;# or ip_hash;&lt;/span&gt;
+        server 192.168.1.186:9991;
+        server 192.168.1.186:9992;
+        server 192.168.1.186:9993;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    server &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        listen 80;
+        server_name 0.0.0.0;
+        location / &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            proxy_pass http://api;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://nginx.org/en/docs/http/load_balancing.html&quot;&gt;Reference&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Deploy the server as normally.&lt;/p&gt;
+
+&lt;h2 id=&quot;elasticsearch&quot;&gt;Elasticsearch&lt;/h2&gt;
+</description>
+        <pubDate>Thu, 14 Jul 2016 13:30:00 +0100</pubDate>
+        <link>http://memogarcia.me/docker/python/elasticsearch/nginx/go/2016/07/14/clusters-docker.html</link>
+        <guid isPermaLink="true">http://memogarcia.me/docker/python/elasticsearch/nginx/go/2016/07/14/clusters-docker.html</guid>
+        
+        
+        <category>docker</category>
+        
+        <category>python</category>
+        
+        <category>elasticsearch</category>
+        
+        <category>nginx</category>
+        
+        <category>go</category>
+        
+      </item>
     
       <item>
         <title>0MQ and python</title>
@@ -242,22 +304,23 @@ the logs or query the api with the request_id&lt;/p&gt;
 
 &lt;h4 id=&quot;wait-for-response&quot;&gt;Wait For Response&lt;/h4&gt;
 
-&lt;p&gt;&lt;strong&gt;This wont be included in the first release&lt;/strong&gt;
-In the other hand a wait_for_response event will block the request until the
+&lt;p&gt;&lt;strong&gt;This wont be included in the first release&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In the other hand a wait_for_response event will block the request until the
 function finish to process the data. this is great tool to create API’s&lt;/p&gt;
 
 &lt;h3 id=&quot;components&quot;&gt;Components&lt;/h3&gt;
 
 &lt;h4 id=&quot;rest-api&quot;&gt;REST API&lt;/h4&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api
-&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/functions
-&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/functions/&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;function_id&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/runtimes
-&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/runtimes/&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;runtime_id&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/events
-&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/events/&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;event_id&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/status&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;http://&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api
+http://&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/functions
+http://&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/functions/&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;function_id&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+http://&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/runtimes
+http://&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/runtimes/&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;runtime_id&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+http://&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/events
+http://&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/events/&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;event_id&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+http://&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;url&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;/api/status&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;This are the available endpoints for Pratai, they will be discussed with more
 details in the official documentation, but basically they support CRUD operations
@@ -780,29 +843,6 @@ possible running status:
         <category>python</category>
         
         <category>windows</category>
-        
-      </item>
-    
-      <item>
-        <title>Elasticsearch notes</title>
-        <description>&lt;p&gt;Delete data from a specific type&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;curl -XDELETE &lt;span class=&quot;s1&quot;&gt;&#39;http://localhost:9200/freezer/backups/&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Force an index to write data in all replicas&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;curl -XPOST &lt;span class=&quot;s1&quot;&gt;&#39;http://localhost:9200/freezer/_refresh&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;# python&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;es&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indices&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;refresh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;freezer&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-</description>
-        <pubDate>Sat, 23 Apr 2016 13:30:00 +0100</pubDate>
-        <link>http://memogarcia.me/elasticsearch/2016/04/23/elasticsearch-notes.html</link>
-        <guid isPermaLink="true">http://memogarcia.me/elasticsearch/2016/04/23/elasticsearch-notes.html</guid>
-        
-        
-        <category>elasticsearch</category>
         
       </item>
     

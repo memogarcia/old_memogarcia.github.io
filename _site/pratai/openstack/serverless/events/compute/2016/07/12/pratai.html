@@ -196,22 +196,23 @@ the logs or query the api with the request_id</p>
 
 <h4 id="wait-for-response">Wait For Response</h4>
 
-<p><strong>This wont be included in the first release</strong>
-In the other hand a wait_for_response event will block the request until the
+<p><strong>This wont be included in the first release</strong></p>
+
+<p>In the other hand a wait_for_response event will block the request until the
 function finish to process the data. this is great tool to create API’s</p>
 
 <h3 id="components">Components</h3>
 
 <h4 id="rest-api">REST API</h4>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">{</span>url<span class="o">}</span>/api
-<span class="o">{</span>url<span class="o">}</span>/api/functions
-<span class="o">{</span>url<span class="o">}</span>/api/functions/<span class="o">{</span>function_id<span class="o">}</span>
-<span class="o">{</span>url<span class="o">}</span>/api/runtimes
-<span class="o">{</span>url<span class="o">}</span>/api/runtimes/<span class="o">{</span>runtime_id<span class="o">}</span>
-<span class="o">{</span>url<span class="o">}</span>/api/events
-<span class="o">{</span>url<span class="o">}</span>/api/events/<span class="o">{</span>event_id<span class="o">}</span>
-<span class="o">{</span>url<span class="o">}</span>/api/status</code></pre></figure>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">http://<span class="o">{</span>url<span class="o">}</span>/api
+http://<span class="o">{</span>url<span class="o">}</span>/api/functions
+http://<span class="o">{</span>url<span class="o">}</span>/api/functions/<span class="o">{</span>function_id<span class="o">}</span>
+http://<span class="o">{</span>url<span class="o">}</span>/api/runtimes
+http://<span class="o">{</span>url<span class="o">}</span>/api/runtimes/<span class="o">{</span>runtime_id<span class="o">}</span>
+http://<span class="o">{</span>url<span class="o">}</span>/api/events
+http://<span class="o">{</span>url<span class="o">}</span>/api/events/<span class="o">{</span>event_id<span class="o">}</span>
+http://<span class="o">{</span>url<span class="o">}</span>/api/status</code></pre></figure>
 
 <p>This are the available endpoints for Pratai, they will be discussed with more
 details in the official documentation, but basically they support CRUD operations
