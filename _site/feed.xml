@@ -5,8 +5,8 @@
     <description></description>
     <link>http://memogarcia.me/</link>
     <atom:link href="http://memogarcia.me/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 25 Jul 2016 15:03:13 +0100</pubDate>
-    <lastBuildDate>Mon, 25 Jul 2016 15:03:13 +0100</lastBuildDate>
+    <pubDate>Mon, 25 Jul 2016 15:05:12 +0100</pubDate>
+    <lastBuildDate>Mon, 25 Jul 2016 15:05:12 +0100</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
@@ -623,7 +623,37 @@ possible running status:
     
       <item>
         <title>Elasticsearch notes</title>
-        <description>&lt;p&gt;Delete data from a specific type&lt;/p&gt;
+        <description>&lt;p&gt;Install OpenJDK (or java)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo apt-get install openjdk-7-jre&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Download elasticsearch from:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;https://www.elastic.co/downloads/elasticsearch&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Install .deb file&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo dpkg -i elasticsearch.deb&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Start elasticsearch&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo /etc/init.d/elasticsearch start
+&lt;span class=&quot;c&quot;&gt;# or&lt;/span&gt;
+sudo service elasticsearch start&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Simple script to configure elasticsearch&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
+
+sudo apt-get install openjdk-7-jre -y
+
+wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5.deb
+
+sudo dpkg -i elasticsearch-1.7.5.deb
+
+sudo service elasticsearch start&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Delete data from a specific type&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;curl -XDELETE &lt;span class=&quot;s1&quot;&gt;&#39;http://localhost:9200/freezer/backups/&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 

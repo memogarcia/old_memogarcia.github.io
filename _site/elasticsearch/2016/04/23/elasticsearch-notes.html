@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Elasticsearch notes</title>
-  <meta name="description" content="Delete data from a specific type">
+  <meta name="description" content="Install OpenJDK (or java)">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://memogarcia.me/elasticsearch/2016/04/23/elasticsearch-notes.html">
@@ -62,7 +62,37 @@
   </header>
 
   <article class="post-content">
-    <p>Delete data from a specific type</p>
+    <p>Install OpenJDK (or java)</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install openjdk-7-jre</code></pre></figure>
+
+<p>Download elasticsearch from:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">https://www.elastic.co/downloads/elasticsearch</code></pre></figure>
+
+<p>Install .deb file</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo dpkg -i elasticsearch.deb</code></pre></figure>
+
+<p>Start elasticsearch</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo /etc/init.d/elasticsearch start
+<span class="c"># or</span>
+sudo service elasticsearch start</code></pre></figure>
+
+<p>Simple script to configure elasticsearch</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/usr/bin/env bash</span>
+
+sudo apt-get install openjdk-7-jre -y
+
+wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5.deb
+
+sudo dpkg -i elasticsearch-1.7.5.deb
+
+sudo service elasticsearch start</code></pre></figure>
+
+<p>Delete data from a specific type</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">curl -XDELETE <span class="s1">'http://localhost:9200/freezer/backups/'</span></code></pre></figure>
 
