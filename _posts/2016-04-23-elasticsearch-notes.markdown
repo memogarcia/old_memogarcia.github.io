@@ -32,7 +32,7 @@ sudo service elasticsearch start
 {% endhighlight %}
 
 
-Simple script to configure elasticsearch
+Simple script to install elasticsearch
 
 {% highlight bash %}
 
