@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Snapshots on Windows using VSSAdmin"
+title:  "Snapshots on Windows using VSSAdmin and Python"
 date:   2015-06-08 15:23:00
 categories: python windows snapshots powershell
 ---
