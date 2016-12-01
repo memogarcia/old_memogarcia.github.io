@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Python profiling"
+title:  "[Snippet] Python profiling"
 date:   2015-06-08 15:23:00
 categories: python profiling debug
 ---

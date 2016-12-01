@@ -1,10 +1,10 @@
 # Site settings
 title: Memo Garcia
-email: sirmemogarcia@gmail.com
+email: root@memogarcia.mx
 description: > # this means to ignore newlines until "baseurl:"
   
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://memogarcia.me" # the base hostname & protocol for your site
+url: "http://memogarcia.mx" # the base hostname & protocol for your site
 twitter_username: memowinchester
 github_username:  memogarcia
 

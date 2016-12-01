@@ -1,7 +1,6 @@
 # memogarcia.github.com
 
-This blog posts are meant to be reference only. some sort of snippet
-directory
+This is my personal blog.
 
 ## License
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Javascript patterns"
+title:  "[Snippet] Javascript patterns"
 date:   2016-01-05 19:55:11
 categories: javascript patterns
 ---

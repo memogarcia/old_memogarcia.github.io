@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Spawn threads in python"
+title:  "[Snippet] Spawn threads in python"
 date:   2015-06-07 19:55:11
 categories: python threads snippets
 ---

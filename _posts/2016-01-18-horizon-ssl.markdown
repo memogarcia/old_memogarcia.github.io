@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Running horizon under SSL"
+title:  "[Snippet] Running horizon under SSL"
 date:   2016-01-18 19:55:11
 categories: horizon ssl
 ---

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Disable FileSystem redirection on Windows"
+title:  "[Snippet] Disable FileSystem redirection on Windows"
 date:   2015-06-09 15:23:00
 categories: python windows
 ---

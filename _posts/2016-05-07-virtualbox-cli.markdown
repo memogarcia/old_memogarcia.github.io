@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Virtualbox CLI"
+title:  "[Snippet] Virtualbox CLI"
 date:   2016-06-05 12:30:00
 categories: Virtualbox cli configuration
 ---

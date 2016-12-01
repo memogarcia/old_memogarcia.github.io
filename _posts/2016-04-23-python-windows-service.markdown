@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Python windows service"
+title:  "[Snippet] Python windows service"
 date:   2016-04-23 12:30:00
 categories: python windows
 ---

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Devstack notes"
+title:  "[Snippet] Devstack notes"
 date:   2015-06-08 10:45:00
 categories: devstack
 ---

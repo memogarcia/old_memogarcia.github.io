@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Jquery show and hide items"
+title:  "[Snippet] Jquery show and hide items"
 date:   2015-06-11 15:23:00
 categories: js jquery
 ---
