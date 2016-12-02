@@ -5,9 +5,110 @@
     <description></description>
     <link>http://memogarcia.mx/</link>
     <atom:link href="http://memogarcia.mx/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 01 Dec 2016 17:06:50 +0000</pubDate>
-    <lastBuildDate>Thu, 01 Dec 2016 17:06:50 +0000</lastBuildDate>
+    <pubDate>Fri, 02 Dec 2016 11:30:18 +0000</pubDate>
+    <lastBuildDate>Fri, 02 Dec 2016 11:30:18 +0000</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Writing a MMORPG video game part 1: The basics</title>
+        <description>&lt;p&gt;This is the first part of a series of posts about writing a MMORPG game.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/mmorpg/2016/12/01/writing-mmorpg.html&quot;&gt;The basics&lt;/a&gt; - you are here.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;Writing a video game is hard. Before I started I had to ask myself why should I write a video game instead of just playing one. 
+And a couple of answers came into my mind:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Learning new development stacks.&lt;/li&gt;
+  &lt;li&gt;Improve my development and management skills.&lt;/li&gt;
+  &lt;li&gt;This is a good challenge.&lt;/li&gt;
+  &lt;li&gt;And most important, just for the lolz.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;But there was something missing, and for that matter, something quite important. What’s the motivation behind writing a game?&lt;/p&gt;
+
+&lt;p&gt;And for me was uniqueness of items, consequences after every dead or decision and commerce 
+between players using a blockchain technology like bitcoin as a backend for this.&lt;/p&gt;
+
+&lt;h3 id=&quot;uniqueness&quot;&gt;Uniqueness&lt;/h3&gt;
+&lt;p&gt;In every major video game the mechanics are very simple: kill a monster, collect the drop, use it or sell it. But then you realise that you’ve been playing 
+this game for a long time and your stats and gear are no different than someone elses because the game has a fix set of items than can be used at a given level, so, 
+there is no distinction at all And yes, you can say but Memo, my character has a very cool golden armor (I’m looking at you Diablo 3) 
+and it’s different than yours. Well no, it looks different but it has the same stats.&lt;/p&gt;
+
+&lt;p&gt;What this game proposes is a different way to build your gear, every drop is no longer a weapon or gear (unless is specified by a quest), instead, you get items to make
+your weapons or armor magical or level them up and for that, you get to name that piece. 1) because is yours, 2) because when you level up an item it depends on the level of
+your NPC’s. And of course you can sell this items in the market or to individuals and gain some bitcoins in the process :)&lt;/p&gt;
+
+&lt;h3 id=&quot;consequences&quot;&gt;Consequences&lt;/h3&gt;
+&lt;p&gt;When you die there a couple of actions that can happen according to the difficulty of the level:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A random item you are wearing gets dropped&lt;/li&gt;
+  &lt;li&gt;Half of your money gets dropped&lt;/li&gt;
+  &lt;li&gt;And according to specific zones, if you die, you die.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So please don’t die, instead try to play with others as parties and make sure to balance the team.&lt;/p&gt;
+
+&lt;h3 id=&quot;commerce&quot;&gt;Commerce&lt;/h3&gt;
+&lt;p&gt;Because every one has its own NPC’s there are items that you can’t make because you don’t have the level or your NPC does not have the skill or you don’t have the items
+to make them, but if someone is willing to sell you can definetly buy them. Every player has access to some slots in an online market where you can sell/buy items in gold 
+(game currency) or in bitcoins and I hope this motivate people to create a healthy market where your time can be recompensate IRL.&lt;/p&gt;
+
+&lt;p&gt;Let’s dive into it.&lt;/p&gt;
+
+&lt;h2 id=&quot;d-over-3d&quot;&gt;2D over 3D&lt;/h2&gt;
+
+&lt;p&gt;This decision affects heavily the looks of the game, take for instance Super Mario 64 and its 3D graphics:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/mario.jpg&quot; alt=&quot;Super Mario 64&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;and compare it with a 2D game like Pokemon for game boy.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/pokemon.jpg&quot; alt=&quot;Pokemon&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The difference is clear, but then why 2D?&lt;/p&gt;
+
+&lt;p&gt;I’m not lazy, well yes, but creating a 2D game is difficult as it is when you are solo developer, that’s why I chose 2D for this game.
+It’s simple and we can acomplish excelent game play using this approach, there are a lot of games doing (or were doing) this like Tibia online.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/tibia.jpg&quot; alt=&quot;Tibia&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;fat-client-and-thin-server&quot;&gt;Fat client and Thin server&lt;/h2&gt;
+&lt;p&gt;The client should do the heavy lifting of the game while the server should only save the status of the game and provide additional information as well as security.&lt;/p&gt;
+
+&lt;h3 id=&quot;client-stack&quot;&gt;Client stack&lt;/h3&gt;
+&lt;p&gt;The client should focus on:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Rendering the graphics&lt;/li&gt;
+  &lt;li&gt;AI&lt;/li&gt;
+  &lt;li&gt;I/O&lt;/li&gt;
+  &lt;li&gt;Multiplatform&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;server-stack&quot;&gt;Server stack&lt;/h3&gt;
+&lt;p&gt;The key word here is concurrency, your server should be able to handle massive ammount of concurrent requests without sweating 
+and this is because in theory your server is only doing CRUD operations most of the times. Other operations should be:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Experience multiplier given at log in.&lt;/li&gt;
+  &lt;li&gt;Drop probability given after each kill.&lt;/li&gt;
+  &lt;li&gt;Hash validation (on every request) to avoid hickjacking of the service.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 01 Dec 2016 12:30:00 +0000</pubDate>
+        <link>http://memogarcia.mx/mmorpg/2016/12/01/writing-mmorpg.html</link>
+        <guid isPermaLink="true">http://memogarcia.mx/mmorpg/2016/12/01/writing-mmorpg.html</guid>
+        
+        
+        <category>mmorpg</category>
+        
+      </item>
     
       <item>
         <title>0MQ and python</title>
@@ -738,51 +839,6 @@ python manage.py runserver_plus --cert cert&lt;/code&gt;&lt;/pre&gt;&lt;/figure&
         <category>maps</category>
         
         <category>js</category>
-        
-      </item>
-    
-      <item>
-        <title>[Snippet] Disable FileSystem redirection on Windows</title>
-        <description>&lt;p&gt;When a 32 bit program runs on a 64 bit operating system the paths
-to C:/Windows/System32 automatically get redirected to the 32 bit
-version (C:/Windows/SysWow64), if you really do need to access the
-contents of System32, you need to disable the file system redirector first.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;ctypes&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DisableFileSystemRedirection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
-    When a 32 bit program runs on a 64 bit operating system the paths
-    to C:/Windows/System32 automatically get redirected to the 32 bit
-    version (C:/Windows/SysWow64), if you really do need to access the
-    contents of System32, you need to disable the file system redirector first.
-    &quot;&quot;&quot;&lt;/span&gt;
-
-    &lt;span class=&quot;n&quot;&gt;_disable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctypes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;windll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kernel32&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Wow64DisableWow64FsRedirection&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;_revert&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctypes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;windll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kernel32&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Wow64RevertWow64FsRedirection&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__enter__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;old_value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctypes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c_long&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;success&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_disable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctypes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;byref&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;old_value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__exit__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;traceback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_revert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;old_value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;usage:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DisableFileSystemRedirection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-</description>
-        <pubDate>Tue, 09 Jun 2015 16:23:00 +0100</pubDate>
-        <link>http://memogarcia.mx/python/windows/2015/06/09/disable-filesystem-redirection-windows.html</link>
-        <guid isPermaLink="true">http://memogarcia.mx/python/windows/2015/06/09/disable-filesystem-redirection-windows.html</guid>
-        
-        
-        <category>python</category>
-        
-        <category>windows</category>
         
       </item>
     
