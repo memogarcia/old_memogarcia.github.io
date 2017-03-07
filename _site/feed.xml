@@ -5,20 +5,21 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 06 Jan 2017 11:47:11 -0500</pubDate>
-    <lastBuildDate>Fri, 06 Jan 2017 11:47:11 -0500</lastBuildDate>
+    <pubDate>Tue, 07 Mar 2017 12:41:29 +0000</pubDate>
+    <lastBuildDate>Tue, 07 Mar 2017 12:41:29 +0000</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
-        <title>Writing a MMORPG video game part 1: The basics</title>
+        <title>Writing a MMORPG video game part 1: Motivation</title>
         <description>&lt;p&gt;This is the first part of a series of posts about writing a MMORPG game.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/mmorpg/2016/12/01/writing-mmorpg.html&quot;&gt;The basics&lt;/a&gt; - you are here.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/mmorpg/2016/12/01/writing-mmorpg.html&quot;&gt;Motivation&lt;/a&gt; - you are here.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;/h2&gt;
-&lt;p&gt;Writing a video game is hard. Before I started I had to ask myself why should I write a video game instead of just playing one. 
+
+&lt;p&gt;Writing a video game is hard. Before I started I had to ask myself why should I write a video game instead of just playing one.
 And a couple of answers came into my mind:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -30,20 +31,21 @@ And a couple of answers came into my mind:&lt;/p&gt;
 
 &lt;p&gt;But there was something missing, and for that matter, something quite important. What’s the motivation behind writing a game?&lt;/p&gt;
 
-&lt;p&gt;And for me was uniqueness of items, consequences after every dead or decision and commerce 
-between players using a blockchain technology like bitcoin as a backend for this.&lt;/p&gt;
+&lt;p&gt;And for me was uniqueness of items, consequences after every dead or decision and commerce
+between players using blockchain technologies like ethereum as a backend for this.&lt;/p&gt;
 
 &lt;h3 id=&quot;uniqueness&quot;&gt;Uniqueness&lt;/h3&gt;
-&lt;p&gt;In every major video game the mechanics are very simple: kill a monster, collect the drop, use it or sell it. But then you realise that you’ve been playing 
-this game for a long time and your stats and gear are no different than someone elses because the game has a fix set of items than can be used at a given level, so, 
-there is no distinction at all And yes, you can say but Memo, my character has a very cool golden armor (I’m looking at you Diablo 3) 
-and it’s different than yours. Well no, it looks different but it has the same stats.&lt;/p&gt;
+
+&lt;p&gt;In every major video game the mechanics are very simple: kill a monster, collect the drop, use it or sell it. But then you realise that you’ve been playing
+this game for a long time and your stats and gear are no different than someone elses because the game has a fix set of items than can be used at a given level, so,
+there is no distinction at all.&lt;/p&gt;
 
 &lt;p&gt;What this game proposes is a different way to build your gear, every drop is no longer a weapon or gear (unless is specified by a quest), instead, you get items to make
-your weapons or armor magical or level them up and for that, you get to name that piece. 1) because is yours, 2) because when you level up an item it depends on the level of
-your NPC’s. And of course you can sell this items in the market or to individuals and gain some bitcoins in the process :)&lt;/p&gt;
+your weapons or magical armors and for that you get to name that piece. 1) because is yours, 2) because when you create an item it depends on the your level.
+So, in theory is a unique item that you can only make. And of course you can sell this items in the market or to individuals and gain some ethereum in the process :)&lt;/p&gt;
 
 &lt;h3 id=&quot;consequences&quot;&gt;Consequences&lt;/h3&gt;
+
 &lt;p&gt;When you die there a couple of actions that can happen according to the difficulty of the level:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -55,9 +57,10 @@ your NPC’s. And of course you can sell this items in the market or to individu
 &lt;p&gt;So please don’t die, instead try to play with others as parties and make sure to balance the team.&lt;/p&gt;
 
 &lt;h3 id=&quot;commerce&quot;&gt;Commerce&lt;/h3&gt;
-&lt;p&gt;Because every one has its own NPC’s there are items that you can’t make because you don’t have the level or your NPC does not have the skill or you don’t have the items
-to make them, but if someone is willing to sell you can definetly buy them. Every player has access to some slots in an online market where you can sell/buy items in gold 
-(game currency) or in bitcoins and I hope this motivate people to create a healthy market where your time can be recompensate IRL.&lt;/p&gt;
+
+&lt;p&gt;Because every one has its own NPC’s, there are items that you can’t make because you don’t have the level or your NPC does not have the skill nor the items
+to make them, but if someone is willing to sell you can definetly buy them. Every player has access to some slots in an online market where you can sell/buy items in gold
+(game currency) or in ethereum and I hope this motivate people to create a healthy market where your time can be compensate IRL.&lt;/p&gt;
 
 &lt;p&gt;Let’s dive into it.&lt;/p&gt;
 
@@ -79,9 +82,11 @@ It’s simple and we can acomplish excelent game play using this approach, there
 &lt;p&gt;&lt;img src=&quot;/images/tibia.jpg&quot; alt=&quot;Tibia&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;fat-client-and-thin-server&quot;&gt;Fat client and Thin server&lt;/h2&gt;
+
 &lt;p&gt;The client should do the heavy lifting of the game while the server should only save the status of the game and provide additional information as well as security.&lt;/p&gt;
 
 &lt;h3 id=&quot;client-stack&quot;&gt;Client stack&lt;/h3&gt;
+
 &lt;p&gt;The client should focus on:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -92,7 +97,8 @@ It’s simple and we can acomplish excelent game play using this approach, there
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;server-stack&quot;&gt;Server stack&lt;/h3&gt;
-&lt;p&gt;The key word here is concurrency, your server should be able to handle massive ammount of concurrent requests without sweating 
+
+&lt;p&gt;The key word here is concurrency, your server should be able to handle massive ammount of concurrent requests without sweating
 and this is because in theory your server is only doing CRUD operations most of the times. Other operations should be:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -101,7 +107,7 @@ and this is because in theory your server is only doing CRUD operations most of 
   &lt;li&gt;Hash validation (on every request) to avoid hickjacking of the service.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-        <pubDate>Thu, 01 Dec 2016 07:30:00 -0500</pubDate>
+        <pubDate>Thu, 01 Dec 2016 12:30:00 +0000</pubDate>
         <link>http://localhost:4000/mmorpg/2016/12/01/writing-mmorpg.html</link>
         <guid isPermaLink="true">http://localhost:4000/mmorpg/2016/12/01/writing-mmorpg.html</guid>
         
@@ -196,7 +202,7 @@ and this is because in theory your server is only doing CRUD operations most of 
 
 &lt;p&gt;&lt;a href=&quot;http://zguide.zeromq.org/page:all&quot;&gt;zero mq guide&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>Tue, 12 Jul 2016 08:30:00 -0400</pubDate>
+        <pubDate>Tue, 12 Jul 2016 13:30:00 +0100</pubDate>
         <link>http://localhost:4000/zeromq/python/2016/07/12/zeromq.html</link>
         <guid isPermaLink="true">http://localhost:4000/zeromq/python/2016/07/12/zeromq.html</guid>
         
@@ -446,7 +452,7 @@ help with this scenario.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://msdn.microsoft.com/en-us/library/dn600223.aspx&quot;&gt;Cloud Design Patterns&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>Tue, 12 Jul 2016 08:30:00 -0400</pubDate>
+        <pubDate>Tue, 12 Jul 2016 13:30:00 +0100</pubDate>
         <link>http://localhost:4000/pratai/openstack/serverless/events/compute/2016/07/12/pratai.html</link>
         <guid isPermaLink="true">http://localhost:4000/pratai/openstack/serverless/events/compute/2016/07/12/pratai.html</guid>
         
@@ -510,7 +516,7 @@ vboxmanage modifyvm efb10300-2995-11e6-b5c1-0002a5d5c51b --nic1 bridged --bridge
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;vboxmanage startvm hlinux --type headless&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 </description>
-        <pubDate>Sun, 05 Jun 2016 08:30:00 -0400</pubDate>
+        <pubDate>Sun, 05 Jun 2016 13:30:00 +0100</pubDate>
         <link>http://localhost:4000/virtualbox/cli/configuration/2016/06/05/virtualbox-cli.html</link>
         <guid isPermaLink="true">http://localhost:4000/virtualbox/cli/configuration/2016/06/05/virtualbox-cli.html</guid>
         
@@ -630,7 +636,7 @@ possible running status:
     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{0} is *NOT* running&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;service_name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 </description>
-        <pubDate>Sat, 23 Apr 2016 08:30:00 -0400</pubDate>
+        <pubDate>Sat, 23 Apr 2016 13:30:00 +0100</pubDate>
         <link>http://localhost:4000/python/windows/2016/04/23/python-windows-service.html</link>
         <guid isPermaLink="true">http://localhost:4000/python/windows/2016/04/23/python-windows-service.html</guid>
         
@@ -652,7 +658,7 @@ possible running status:
 python manage.py runserver_plus --cert cert&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 </description>
-        <pubDate>Mon, 18 Jan 2016 14:55:11 -0500</pubDate>
+        <pubDate>Mon, 18 Jan 2016 19:55:11 +0000</pubDate>
         <link>http://localhost:4000/horizon/ssl/2016/01/18/horizon-ssl.html</link>
         <guid isPermaLink="true">http://localhost:4000/horizon/ssl/2016/01/18/horizon-ssl.html</guid>
         
@@ -708,7 +714,7 @@ python manage.py runserver_plus --cert cert&lt;/code&gt;&lt;/pre&gt;&lt;/figure&
 &lt;span class=&quot;nx&quot;&gt;Exposer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;publicMethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 </description>
-        <pubDate>Tue, 05 Jan 2016 14:55:11 -0500</pubDate>
+        <pubDate>Tue, 05 Jan 2016 19:55:11 +0000</pubDate>
         <link>http://localhost:4000/javascript/patterns/2016/01/05/javascript-patterns.html</link>
         <guid isPermaLink="true">http://localhost:4000/javascript/patterns/2016/01/05/javascript-patterns.html</guid>
         
@@ -749,7 +755,7 @@ python manage.py runserver_plus --cert cert&lt;/code&gt;&lt;/pre&gt;&lt;/figure&
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </description>
-        <pubDate>Thu, 11 Jun 2015 11:23:00 -0400</pubDate>
+        <pubDate>Thu, 11 Jun 2015 16:23:00 +0100</pubDate>
         <link>http://localhost:4000/js/jquery/2015/06/11/jquery-hide-items.html</link>
         <guid isPermaLink="true">http://localhost:4000/js/jquery/2015/06/11/jquery-hide-items.html</guid>
         
@@ -788,7 +794,7 @@ python manage.py runserver_plus --cert cert&lt;/code&gt;&lt;/pre&gt;&lt;/figure&
     &lt;span class=&quot;nx&quot;&gt;navigator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;geolocation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getCurrentPosition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </description>
-        <pubDate>Wed, 10 Jun 2015 06:00:00 -0400</pubDate>
+        <pubDate>Wed, 10 Jun 2015 11:00:00 +0100</pubDate>
         <link>http://localhost:4000/geolocation/js/2015/06/10/geo-js.html</link>
         <guid isPermaLink="true">http://localhost:4000/geolocation/js/2015/06/10/geo-js.html</guid>
         
@@ -831,7 +837,7 @@ python manage.py runserver_plus --cert cert&lt;/code&gt;&lt;/pre&gt;&lt;/figure&
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 </description>
-        <pubDate>Wed, 10 Jun 2015 05:00:00 -0400</pubDate>
+        <pubDate>Wed, 10 Jun 2015 10:00:00 +0100</pubDate>
         <link>http://localhost:4000/maps/js/2015/06/10/maps-js.html</link>
         <guid isPermaLink="true">http://localhost:4000/maps/js/2015/06/10/maps-js.html</guid>
         
