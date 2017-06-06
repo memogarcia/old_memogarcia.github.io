@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Writing a MMORPG video game part 1: Motivation</title>
-  <meta name="description" content="This is the first part of a series of posts about writing a MMORPG game.">
+  <meta name="description" content="This is the first part of a series of posts about writing an MMORPG game.">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://localhost:4000/mmorpg/2016/12/01/writing-mmorpg.html">
@@ -62,7 +62,7 @@
   </header>
 
   <article class="post-content">
-    <p>This is the first part of a series of posts about writing a MMORPG game.</p>
+    <p>This is the first part of a series of posts about writing an MMORPG game.</p>
 
 <ul>
   <li><a href="/mmorpg/2016/12/01/writing-mmorpg.html">Motivation</a> - you are here.</li>
@@ -87,13 +87,13 @@ between players using blockchain technologies like ethereum as a backend for thi
 
 <h3 id="uniqueness">Uniqueness</h3>
 
-<p>In every major video game the mechanics are very simple: kill a monster, collect the drop, use it or sell it. But then you realise that you’ve been playing
-this game for a long time and your stats and gear are no different than someone elses because the game has a fix set of items than can be used at a given level, so,
+<p>In every major video game the mechanics are very simple: kill a monster, collect the drop, use it or sell it. But then you realize that you’ve been playing
+this game for a long time and your stats and gear are no different than someone else because the game has a fixed set of items than can be used at a given level, so,
 there is no distinction at all.</p>
 
 <p>What this game proposes is a different way to build your gear, every drop is no longer a weapon or gear (unless is specified by a quest), instead, you get items to make
-your weapons or magical armors and for that you get to name that piece. 1) because is yours, 2) because when you create an item it depends on the your level.
-So, in theory is a unique item that you can only make. And of course you can sell this items in the market or to individuals and gain some ethereum in the process :)</p>
+your weapons or magical armors and for that, you get to name that piece. 1) because is yours, 2) because when you create an item it depends on your level.
+So, in theory, is a unique item that you can only make. And of course, you can sell this item in the market or to individuals and gain some ethereum in the process :)</p>
 
 <h3 id="consequences">Consequences</h3>
 
@@ -109,9 +109,9 @@ So, in theory is a unique item that you can only make. And of course you can sel
 
 <h3 id="commerce">Commerce</h3>
 
-<p>Because every one has its own NPC’s, there are items that you can’t make because you don’t have the level or your NPC does not have the skill nor the items
-to make them, but if someone is willing to sell you can definetly buy them. Every player has access to some slots in an online market where you can sell/buy items in gold
-(game currency) or in ethereum and I hope this motivate people to create a healthy market where your time can be compensate IRL.</p>
+<p>Because everyone has its own NPC’s, there are items that you can’t make because you don’t have the level or your NPC does not have the skill nor the items
+to make them, but if someone is willing to sell you can definitely buy them. Every player has access to some slots in an online market where you can sell/buy items in gold
+(game currency) or in ethereum and I hope this motivate people to create a healthy market where your time can be compensated IRL.</p>
 
 <p>Let’s dive into it.</p>
 
@@ -127,8 +127,8 @@ to make them, but if someone is willing to sell you can definetly buy them. Ever
 
 <p>The difference is clear, but then why 2D?</p>
 
-<p>I’m not lazy, well yes, but creating a 2D game is difficult as it is when you are solo developer, that’s why I chose 2D for this game.
-It’s simple and we can acomplish excelent game play using this approach, there are a lot of games doing (or were doing) this like Tibia online.</p>
+<p>I’m not lazy, well yes, but creating a 2D game is difficult as it is when you are a solo developer, that’s why I chose 2D for this game.
+It’s simple and we can accomplish excellent gameplay using this approach, there are a lot of games doing (or were doing) this like Tibia online.</p>
 
 <p><img src="/images/tibia.jpg" alt="Tibia" /></p>
 
@@ -149,13 +149,13 @@ It’s simple and we can acomplish excelent game play using this approach, there
 
 <h3 id="server-stack">Server stack</h3>
 
-<p>The key word here is concurrency, your server should be able to handle massive ammount of concurrent requests without sweating
-and this is because in theory your server is only doing CRUD operations most of the times. Other operations should be:</p>
+<p>The key word here is concurrency, your server should be able to handle a massive amount of concurrent requests without sweating
+and this is because, in theory, your server is only doing CRUD operations most of the times. Other operations should be:</p>
 
 <ul>
-  <li>Experience multiplier given at log in.</li>
+  <li>Experience multiplier is given at login.</li>
   <li>Drop probability given after each kill.</li>
-  <li>Hash validation (on every request) to avoid hickjacking of the service.</li>
+  <li>Hash validation (on every request) to avoid hijacking of the service.</li>
 </ul>
 
   </article>

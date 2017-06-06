@@ -66,13 +66,13 @@
 
 <h3 id="pipeline-pattern">Pipeline pattern</h3>
 
-<p>Push and Pull sockets let you distribute messages to multiple workers, arranged in a pipeline. A Push socket will distribute sent messages to its Pull clients evenly. This is equivalent to producer/consumer model but the results computed by consumer are not sent upstream but downstream to another pull/consumer socket.</p>
+<p>Push and Pull sockets let you distribute messages to multiple workers, arranged in a pipeline. A Push socket will distribute sent messages to its Pull clients evenly. This is equivalent to producer/consumer model but the results computed by a consumer are not sent upstream but downstream to another pull/consumer socket.</p>
 
 <p>Data always flows down the pipeline, and each stage of the pipeline is connected to at least one node. When a pipeline stage is connected to multiple nodes data is load-balanced among all connected nodes.</p>
 
 <h3 id="producer">Producer</h3>
 
-<p>Producers are created with ZMQ.PUSH socket types. Producer is bound to well known port to which consumers can connect too.</p>
+<p>Producers are created with ZMQ.PUSH socket types. The producer is bound to well-known port to which consumers can connect too.</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">zmq</span>
@@ -90,7 +90,7 @@
 
 <h3 id="consumer">Consumer</h3>
 
-<p>Consumer are created with ZMQ.PULL socket types to pull requests from producer and uses a push socket to connect and push result to result collector.</p>
+<p>The consumer is created with ZMQ.PULL socket types to pull requests from producer and uses a push socket to connect and push result in a collector.</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">zmq</span>
@@ -118,7 +118,7 @@
 
 <h2 id="collector">Collector</h2>
 
-<p>result collector are created with ZMQ.PULL socket type and act as consumer of results from intermediate consumers. They also are bound to well known port so that intermediate consumer can connect to it.</p>
+<p>Result collector is created with ZMQ.PULL socket type and act as a consumer of results from intermediate consumers. They also are bound to well-known port so that intermediate consumer can connect to it.</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">zmq</span>

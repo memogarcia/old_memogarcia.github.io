@@ -5,7 +5,7 @@ date:   2016-12-01 12:30:00
 categories: mmorpg
 ---
 
-This is the first part of a series of posts about writing a MMORPG game.
+This is the first part of a series of posts about writing an MMORPG game.
 
 * [Motivation]({{site.baseurl}}/mmorpg/2016/12/01/writing-mmorpg.html) - you are here.
 
@@ -26,13 +26,13 @@ between players using blockchain technologies like ethereum as a backend for thi
 
 ### Uniqueness
 
-In every major video game the mechanics are very simple: kill a monster, collect the drop, use it or sell it. But then you realise that you've been playing
-this game for a long time and your stats and gear are no different than someone elses because the game has a fix set of items than can be used at a given level, so,
+In every major video game the mechanics are very simple: kill a monster, collect the drop, use it or sell it. But then you realize that you've been playing
+this game for a long time and your stats and gear are no different than someone else because the game has a fixed set of items than can be used at a given level, so,
 there is no distinction at all.
 
 What this game proposes is a different way to build your gear, every drop is no longer a weapon or gear (unless is specified by a quest), instead, you get items to make
-your weapons or magical armors and for that you get to name that piece. 1) because is yours, 2) because when you create an item it depends on the your level.
-So, in theory is a unique item that you can only make. And of course you can sell this items in the market or to individuals and gain some ethereum in the process :)
+your weapons or magical armors and for that, you get to name that piece. 1) because is yours, 2) because when you create an item it depends on your level.
+So, in theory, is a unique item that you can only make. And of course, you can sell this item in the market or to individuals and gain some ethereum in the process :)
 
 ### Consequences
 
@@ -46,9 +46,9 @@ So please don't die, instead try to play with others as parties and make sure to
 
 ### Commerce
 
-Because every one has its own NPC's, there are items that you can't make because you don't have the level or your NPC does not have the skill nor the items
-to make them, but if someone is willing to sell you can definetly buy them. Every player has access to some slots in an online market where you can sell/buy items in gold
-(game currency) or in ethereum and I hope this motivate people to create a healthy market where your time can be compensate IRL.
+Because everyone has its own NPC's, there are items that you can't make because you don't have the level or your NPC does not have the skill nor the items
+to make them, but if someone is willing to sell you can definitely buy them. Every player has access to some slots in an online market where you can sell/buy items in gold
+(game currency) or in ethereum and I hope this motivate people to create a healthy market where your time can be compensated IRL.
 
 
 Let's dive into it.
@@ -65,8 +65,8 @@ and compare it with a 2D game like Pokemon for game boy.
 
 The difference is clear, but then why 2D?
 
-I'm not lazy, well yes, but creating a 2D game is difficult as it is when you are solo developer, that's why I chose 2D for this game.
-It's simple and we can acomplish excelent game play using this approach, there are a lot of games doing (or were doing) this like Tibia online.
+I'm not lazy, well yes, but creating a 2D game is difficult as it is when you are a solo developer, that's why I chose 2D for this game.
+It's simple and we can accomplish excellent gameplay using this approach, there are a lot of games doing (or were doing) this like Tibia online.
 
 ![Tibia](/images/tibia.jpg)
 
@@ -86,9 +86,9 @@ The client should focus on:
 
 ### Server stack
 
-The key word here is concurrency, your server should be able to handle massive ammount of concurrent requests without sweating
-and this is because in theory your server is only doing CRUD operations most of the times. Other operations should be:
+The key word here is concurrency, your server should be able to handle a massive amount of concurrent requests without sweating
+and this is because, in theory, your server is only doing CRUD operations most of the times. Other operations should be:
 
-* Experience multiplier given at log in.
+* Experience multiplier is given at login.
 * Drop probability given after each kill.
-* Hash validation (on every request) to avoid hickjacking of the service.
+* Hash validation (on every request) to avoid hijacking of the service.
