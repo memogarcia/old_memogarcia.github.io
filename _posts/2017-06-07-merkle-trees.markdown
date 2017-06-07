@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  "Merkle Trees in python"
-date:   2017-06-07 12:30:00
+date:   2017-06-06 12:31:00
 categories: blockchain
 ---
+
 Merkle trees are data structures in which each leaf contains a piece of data and each node has a hash computed from its leafs.
 
 
