@@ -3,11 +3,11 @@
   <channel>
     <title>Memo Garcia</title>
     <description></description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 07 Jun 2017 13:26:43 +0100</pubDate>
-    <lastBuildDate>Wed, 07 Jun 2017 13:26:43 +0100</lastBuildDate>
-    <generator>Jekyll v3.3.1</generator>
+    <link>http://memogarcia.mx/</link>
+    <atom:link href="http://memogarcia.mx/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 11 Jun 2017 18:23:06 +0100</pubDate>
+    <lastBuildDate>Sun, 11 Jun 2017 18:23:06 +0100</lastBuildDate>
+    <generator>Jekyll v3.2.1</generator>
     
       <item>
         <title>Merkle Trees in python</title>
@@ -94,8 +94,8 @@
 
 </description>
         <pubDate>Tue, 06 Jun 2017 13:31:00 +0100</pubDate>
-        <link>http://localhost:4000/blockchain/2017/06/06/merkle-trees.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blockchain/2017/06/06/merkle-trees.html</guid>
+        <link>http://memogarcia.mx/blockchain/2017/06/06/merkle-trees.html</link>
+        <guid isPermaLink="true">http://memogarcia.mx/blockchain/2017/06/06/merkle-trees.html</guid>
         
         
         <category>blockchain</category>
@@ -139,11 +139,24 @@
 in a public blockchain everyone can participate and agree upon the next block, in a consortium consensus only a trusted set of nodes are allowed to agree on the next block.&lt;/p&gt;
 </description>
         <pubDate>Tue, 06 Jun 2017 13:30:00 +0100</pubDate>
-        <link>http://localhost:4000/blockchain/2017/06/06/understanding-blockchains.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blockchain/2017/06/06/understanding-blockchains.html</guid>
+        <link>http://memogarcia.mx/blockchain/2017/06/06/understanding-blockchains.html</link>
+        <guid isPermaLink="true">http://memogarcia.mx/blockchain/2017/06/06/understanding-blockchains.html</guid>
         
         
         <category>blockchain</category>
+        
+      </item>
+    
+      <item>
+        <title>Querying Elasticsearch</title>
+        <description>
+</description>
+        <pubDate>Mon, 27 Feb 2017 19:55:11 +0000</pubDate>
+        <link>http://memogarcia.mx/elasticsearch/2017/02/27/elasticsearch.html</link>
+        <guid isPermaLink="true">http://memogarcia.mx/elasticsearch/2017/02/27/elasticsearch.html</guid>
+        
+        
+        <category>elasticsearch</category>
         
       </item>
     
@@ -202,7 +215,7 @@ to make them, but if someone is willing to sell you can definitely buy them. Eve
 
 &lt;p&gt;Let’s dive into it.&lt;/p&gt;
 
-&lt;h2 id=&quot;2d-over-3d&quot;&gt;2D over 3D&lt;/h2&gt;
+&lt;h2 id=&quot;d-over-3d&quot;&gt;2D over 3D&lt;/h2&gt;
 
 &lt;p&gt;This decision affects heavily the looks of the game, take for instance Super Mario 64 and its 3D graphics:&lt;/p&gt;
 
@@ -246,8 +259,8 @@ and this is because, in theory, your server is only doing CRUD operations most o
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 01 Dec 2016 12:30:00 +0000</pubDate>
-        <link>http://localhost:4000/mmorpg/2016/12/01/writing-mmorpg.html</link>
-        <guid isPermaLink="true">http://localhost:4000/mmorpg/2016/12/01/writing-mmorpg.html</guid>
+        <link>http://memogarcia.mx/mmorpg/2016/12/01/writing-mmorpg.html</link>
+        <guid isPermaLink="true">http://memogarcia.mx/mmorpg/2016/12/01/writing-mmorpg.html</guid>
         
         
         <category>mmorpg</category>
@@ -341,8 +354,8 @@ and this is because, in theory, your server is only doing CRUD operations most o
 &lt;p&gt;&lt;a href=&quot;http://zguide.zeromq.org/page:all&quot;&gt;zero mq guide&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 12 Jul 2016 13:30:00 +0100</pubDate>
-        <link>http://localhost:4000/zeromq/python/2016/07/12/zeromq.html</link>
-        <guid isPermaLink="true">http://localhost:4000/zeromq/python/2016/07/12/zeromq.html</guid>
+        <link>http://memogarcia.mx/zeromq/python/2016/07/12/zeromq.html</link>
+        <guid isPermaLink="true">http://memogarcia.mx/zeromq/python/2016/07/12/zeromq.html</guid>
         
         
         <category>zeromq</category>
@@ -591,8 +604,8 @@ help with this scenario.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://msdn.microsoft.com/en-us/library/dn600223.aspx&quot;&gt;Cloud Design Patterns&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 12 Jul 2016 13:30:00 +0100</pubDate>
-        <link>http://localhost:4000/pratai/openstack/serverless/events/compute/2016/07/12/pratai.html</link>
-        <guid isPermaLink="true">http://localhost:4000/pratai/openstack/serverless/events/compute/2016/07/12/pratai.html</guid>
+        <link>http://memogarcia.mx/pratai/openstack/serverless/events/compute/2016/07/12/pratai.html</link>
+        <guid isPermaLink="true">http://memogarcia.mx/pratai/openstack/serverless/events/compute/2016/07/12/pratai.html</guid>
         
         
         <category>pratai</category>
@@ -655,8 +668,8 @@ vboxmanage modifyvm efb10300-2995-11e6-b5c1-0002a5d5c51b --nic1 bridged --bridge
 
 </description>
         <pubDate>Sun, 05 Jun 2016 13:30:00 +0100</pubDate>
-        <link>http://localhost:4000/virtualbox/cli/configuration/2016/06/05/virtualbox-cli.html</link>
-        <guid isPermaLink="true">http://localhost:4000/virtualbox/cli/configuration/2016/06/05/virtualbox-cli.html</guid>
+        <link>http://memogarcia.mx/virtualbox/cli/configuration/2016/06/05/virtualbox-cli.html</link>
+        <guid isPermaLink="true">http://memogarcia.mx/virtualbox/cli/configuration/2016/06/05/virtualbox-cli.html</guid>
         
         
         <category>Virtualbox</category>
@@ -775,8 +788,8 @@ possible running status:
 
 </description>
         <pubDate>Sat, 23 Apr 2016 13:30:00 +0100</pubDate>
-        <link>http://localhost:4000/python/windows/2016/04/23/python-windows-service.html</link>
-        <guid isPermaLink="true">http://localhost:4000/python/windows/2016/04/23/python-windows-service.html</guid>
+        <link>http://memogarcia.mx/python/windows/2016/04/23/python-windows-service.html</link>
+        <guid isPermaLink="true">http://memogarcia.mx/python/windows/2016/04/23/python-windows-service.html</guid>
         
         
         <category>python</category>
@@ -797,8 +810,8 @@ python manage.py runserver_plus --cert cert&lt;/code&gt;&lt;/pre&gt;&lt;/figure&
 
 </description>
         <pubDate>Mon, 18 Jan 2016 19:55:11 +0000</pubDate>
-        <link>http://localhost:4000/horizon/ssl/2016/01/18/horizon-ssl.html</link>
-        <guid isPermaLink="true">http://localhost:4000/horizon/ssl/2016/01/18/horizon-ssl.html</guid>
+        <link>http://memogarcia.mx/horizon/ssl/2016/01/18/horizon-ssl.html</link>
+        <guid isPermaLink="true">http://memogarcia.mx/horizon/ssl/2016/01/18/horizon-ssl.html</guid>
         
         
         <category>horizon</category>
@@ -853,54 +866,13 @@ python manage.py runserver_plus --cert cert&lt;/code&gt;&lt;/pre&gt;&lt;/figure&
 
 </description>
         <pubDate>Tue, 05 Jan 2016 19:55:11 +0000</pubDate>
-        <link>http://localhost:4000/javascript/patterns/2016/01/05/javascript-patterns.html</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript/patterns/2016/01/05/javascript-patterns.html</guid>
+        <link>http://memogarcia.mx/javascript/patterns/2016/01/05/javascript-patterns.html</link>
+        <guid isPermaLink="true">http://memogarcia.mx/javascript/patterns/2016/01/05/javascript-patterns.html</guid>
         
         
         <category>javascript</category>
         
         <category>patterns</category>
-        
-      </item>
-    
-      <item>
-        <title>[Snippet] Jquery show and hide items</title>
-        <description>&lt;p&gt;Hide and show items according to dropdown selection&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;action&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;option&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;backup&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Backup&lt;span class=&quot;nt&quot;&gt;&amp;lt;/option&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;option&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;restore&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Restore&lt;span class=&quot;nt&quot;&gt;&amp;lt;/option&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;backup_input&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;backup_input&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;backup&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;restore_input&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;restore_input&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;restore&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://code.jquery.com/jquery-1.11.3.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ready&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-	&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#action&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;change&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#action&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'backup'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-			&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#restore_input&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hide&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-			&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#restore_input&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-		&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-	&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#action&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;change&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-</description>
-        <pubDate>Thu, 11 Jun 2015 16:23:00 +0100</pubDate>
-        <link>http://localhost:4000/js/jquery/2015/06/11/jquery-hide-items.html</link>
-        <guid isPermaLink="true">http://localhost:4000/js/jquery/2015/06/11/jquery-hide-items.html</guid>
-        
-        
-        <category>js</category>
-        
-        <category>jquery</category>
         
       </item>
     
