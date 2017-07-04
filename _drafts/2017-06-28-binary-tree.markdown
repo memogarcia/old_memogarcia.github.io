@@ -100,6 +100,26 @@ class BinaryTree(object):
         return parent
 
 
+def balanced_tree(ordered_elements):
+    """Create a balanced tree from an ordered list"""
+
+    bt = BinaryTree()
+
+    add_range_to_tree(bt, ordered_elements, low=0, high=len(ordered_elements)-1)
+
+    return bt
+
+
+def add_range_to_tree(binary_tree, ordered_elements, low=0, high=1):
+    """Add a range to a binary tree in a way that the tree remains balanced"""
+    if low <= high:
+        mid = (low+high)/2
+
+        binary_tree.add(mid)
+        add_range_to_tree(binary_tree, ordered_elements, low=low, high=mid-1)
+        add_range_to_tree(binary_tree, ordered_elements, low=mid+1, high=high)
+
+
 if __name__ == '__main__':
     bt = BinaryTree()
     bt.add(5)
@@ -108,6 +128,12 @@ if __name__ == '__main__':
     print(bt.contains(7))
     bt.remove(7)
     print(bt.contains(7))
+
+    # create a balanced tree from an ordered collection
+    ordered = range(10)
+    bt = balanced_tree(ordered)
+    print(bt.contains(5))
+
 
 
 {% endhighlight %}
