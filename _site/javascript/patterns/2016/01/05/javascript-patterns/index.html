@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[Snippet] Javascript patterns - Memo Garcia</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/javascript/patterns/2016/01/05/javascript-patterns/">
+  <link rel="alternate" type="application/rss+xml" title="Memo Garcia" href="http://localhost:4000/feed.xml">
+</head>
+
+  <body>
+    <div class="page-content">
+      <section class="site-header">
+		<h1 class="smallcap"><a class="site-title" href="/">Memo Garcia</a></h1>
+  </section>
+  
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">[Snippet] Javascript patterns</h1>
+    <p class="post-meta">
+      <time datetime="2016-01-05T19:55:11+00:00" itemprop="datePublished">Jan 05, 2016</time>
+      
+
+      
+  		
+
+    </p>
+  </header>
+  <div class="post-content" itemprop="articleBody">
+    <p>Module Design Pattern</p>
+
+<p>helps encapsulate code and provide public and private methods</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">HTMLChanger</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">contents</span> <span class="o">=</span> <span class="s1">'contents'</span>
+
+    <span class="kd">var</span> <span class="nx">changeHTML</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'attribute-to-change'</span><span class="p">);</span>
+      <span class="nx">element</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">contents</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">callChangeHTML</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">changeHTML</span><span class="p">()</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'lol'</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">};</span>
+<span class="p">})();</span>
+
+<span class="nx">HTMLChanger</span><span class="p">.</span><span class="nx">callChangeHTML</span><span class="p">()</span></code></pre></figure>
+
+<p>Revealing Design Pattern</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">Exposer</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">privateVariable</span> <span class="o">=</span> <span class="mi">10</span>
+
+  <span class="kd">var</span> <span class="nx">privateMethod</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'privateMethod'</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="kd">var</span> <span class="nx">methodToExpose</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'expose this method'</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">publicMethod</span> <span class="o">=</span> <span class="nx">methodToExpose</span>
+  <span class="p">};</span>
+<span class="p">})();</span>
+
+<span class="nx">Exposer</span><span class="p">.</span><span class="nx">publicMethod</span><span class="p">()</span></code></pre></figure>
+
+
+  </div>
+  <hr>
+  
+</article>
+
+      <div class="copyright">
+        <p>&copy; 2017 <a href="http://localhost:4000" title=""><strong>Memo Garcia</strong></a></p>
+      </div>
+    </div>
+    
+  </body>
+</html>

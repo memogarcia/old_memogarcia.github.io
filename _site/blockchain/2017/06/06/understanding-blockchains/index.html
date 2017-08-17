@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Understanding Blockchains - Memo Garcia</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/blockchain/2017/06/06/understanding-blockchains/">
+  <link rel="alternate" type="application/rss+xml" title="Memo Garcia" href="http://localhost:4000/feed.xml">
+</head>
+
+  <body>
+    <div class="page-content">
+      <section class="site-header">
+		<h1 class="smallcap"><a class="site-title" href="/">Memo Garcia</a></h1>
+  </section>
+  
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Understanding Blockchains</h1>
+    <p class="post-meta">
+      <time datetime="2017-06-06T13:30:00+01:00" itemprop="datePublished">Jun 06, 2017</time>
+      
+
+      
+  		
+
+    </p>
+  </header>
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="what-is-a-blockchain">What is a blockchain?</h2>
+
+<p>A blockchain is a decentralized ledger that stores transactions.</p>
+
+<h3 id="transactions">Transactions</h3>
+<p>Transactions are atomic events approved by the ledger, which means that an invalid transaction will never get stored in the blockchain as blocks.</p>
+
+<h3 id="blocks">Blocks</h3>
+
+<p>Blocks are data structures stored in sequence (in a chain) that stores a certain amount of transactions.</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>  block 1
+    ref block 0
+    transaction 1
+    transaction 2
+
+  block 2
+    ref block 1
+    transaction 3
+    transaction 4
+</code></pre>
+</div>
+
+<h3 id="fork">Fork</h3>
+
+<p>A new block holds a reference to its previous block and it is possible for more than one block to claim to be the new successor in which case a <strong>fork</strong> occurs.</p>
+
+<p>When a fork occurs the blockchain agrees upon the right block the be added to the chain through a consensus.</p>
+
+<h3 id="consensus">Consensus</h3>
+
+<p>Consensus can be public or by a consortium.
+in a public blockchain everyone can participate and agree upon the next block, in a consortium consensus only a trusted set of nodes are allowed to agree on the next block.</p>
+
+  </div>
+  <hr>
+  
+</article>
+
+      <div class="copyright">
+        <p>&copy; 2017 <a href="http://localhost:4000" title=""><strong>Memo Garcia</strong></a></p>
+      </div>
+    </div>
+    
+  </body>
+</html>

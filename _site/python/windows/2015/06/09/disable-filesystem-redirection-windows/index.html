@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[Snippet] Disable FileSystem redirection on Windows - Memo Garcia</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/python/windows/2015/06/09/disable-filesystem-redirection-windows/">
+  <link rel="alternate" type="application/rss+xml" title="Memo Garcia" href="http://localhost:4000/feed.xml">
+</head>
+
+  <body>
+    <div class="page-content">
+      <section class="site-header">
+		<h1 class="smallcap"><a class="site-title" href="/">Memo Garcia</a></h1>
+  </section>
+  
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">[Snippet] Disable FileSystem redirection on Windows</h1>
+    <p class="post-meta">
+      <time datetime="2015-06-09T16:23:00+01:00" itemprop="datePublished">Jun 09, 2015</time>
+      
+
+      
+  		
+
+    </p>
+  </header>
+  <div class="post-content" itemprop="articleBody">
+    <p>When a 32 bit program runs on a 64 bit operating system the paths
+to C:/Windows/System32 automatically get redirected to the 32 bit
+version (C:/Windows/SysWow64), if you really do need to access the
+contents of System32, you need to disable the file system redirector first.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">ctypes</span>
+
+
+<span class="k">class</span> <span class="nc">DisableFileSystemRedirection</span><span class="p">:</span>
+    <span class="s">"""
+    When a 32 bit program runs on a 64 bit operating system the paths
+    to C:/Windows/System32 automatically get redirected to the 32 bit
+    version (C:/Windows/SysWow64), if you really do need to access the
+    contents of System32, you need to disable the file system redirector first.
+    """</span>
+
+    <span class="n">_disable</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">kernel32</span><span class="o">.</span><span class="n">Wow64DisableWow64FsRedirection</span>
+    <span class="n">_revert</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">kernel32</span><span class="o">.</span><span class="n">Wow64RevertWow64FsRedirection</span>
+
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">old_value</span> <span class="o">=</span> <span class="n">ctypes</span><span class="o">.</span><span class="n">c_long</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_disable</span><span class="p">(</span><span class="n">ctypes</span><span class="o">.</span><span class="n">byref</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">old_value</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_revert</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">old_value</span><span class="p">)</span></code></pre></figure>
+
+<p>usage:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">with</span> <span class="n">DisableFileSystemRedirection</span><span class="p">():</span>
+	<span class="k">pass</span></code></pre></figure>
+
+  </div>
+  <hr>
+  
+</article>
+
+      <div class="copyright">
+        <p>&copy; 2017 <a href="http://localhost:4000" title=""><strong>Memo Garcia</strong></a></p>
+      </div>
+    </div>
+    
+  </body>
+</html>

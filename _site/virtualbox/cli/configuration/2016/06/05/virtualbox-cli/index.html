@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[Snippet] Virtualbox CLI - Memo Garcia</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/virtualbox/cli/configuration/2016/06/05/virtualbox-cli/">
+  <link rel="alternate" type="application/rss+xml" title="Memo Garcia" href="http://localhost:4000/feed.xml">
+</head>
+
+  <body>
+    <div class="page-content">
+      <section class="site-header">
+		<h1 class="smallcap"><a class="site-title" href="/">Memo Garcia</a></h1>
+  </section>
+  
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">[Snippet] Virtualbox CLI</h1>
+    <p class="post-meta">
+      <time datetime="2016-06-05T13:30:00+01:00" itemprop="datePublished">Jun 05, 2016</time>
+      
+
+      
+  		
+
+    </p>
+  </header>
+  <div class="post-content" itemprop="articleBody">
+    <p>Install linux headers</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo apt-get install linux-headers-<span class="k">$(</span>uname -r<span class="k">)</span></code></pre></figure>
+
+<p>Download Virtualbox</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">wget http://download.virtualbox.org/virtualbox/5.0.20/VirtualBox-5.0.20-106931-Linux_amd64.run</code></pre></figure>
+
+<p>Install Virtualbox</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo sh VirtualBox-5.0.20-106931-Linux_amd64.run</code></pre></figure>
+
+<p>Create a Virtual Drive</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">vboxmanage createmedium disk --filename hd/hlinux.vdi --size 100000 --format VDI --variant Standard</code></pre></figure>
+
+<p>Check the list of OS_Types</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">VBoxManage list ostypes</code></pre></figure>
+
+<p>Create the vm</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">vboxmanage createvm --name hlinux --ostype Debian_64 --uuid efb10300-2995-11e6-b5c1-0002a5d5c51b --basefolder hd --register</code></pre></figure>
+
+<p>Register the vm</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">vboxmanage registervm /home/stack/.config/VirtualBox/hd/hlinux/hlinux.vbox</code></pre></figure>
+
+<p>Modify the vm</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">VBoxManage storagectl efb10300-2995-11e6-b5c1-0002a5d5c51b --name <span class="s2">"IDE Controller"</span> --add ide
+
+VBoxManage storageattach efb10300-2995-11e6-b5c1-0002a5d5c51b --storagectl <span class="s2">"IDE Controller"</span> --port 0 --device 0 --type hdd --medium hlinux.vdi
+
+VBoxManage storageattach efb10300-2995-11e6-b5c1-0002a5d5c51b --storagectl <span class="s2">"IDE Controller"</span> --port 1 --device 0 --type dvddrive --medium /home/stack/Helion-Openstack-2.1.0.iso
+
+vboxmanage modifyvm efb10300-2995-11e6-b5c1-0002a5d5c51b --memory 8096 --cpus 4
+
+vboxmanage modifyvm efb10300-2995-11e6-b5c1-0002a5d5c51b --nic1 bridged --bridgeadapter1 eth0</code></pre></figure>
+
+<p>Start the vm</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">vboxmanage startvm hlinux --type headless</code></pre></figure>
+
+
+  </div>
+  <hr>
+  
+</article>
+
+      <div class="copyright">
+        <p>&copy; 2017 <a href="http://localhost:4000" title=""><strong>Memo Garcia</strong></a></p>
+      </div>
+    </div>
+    
+  </body>
+</html>

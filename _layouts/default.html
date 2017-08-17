@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html>
-
   {% include head.html %}
-
   <body>
-
-    {% include header.html %}
-
     <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
+      {{ content }}
+      <div class="copyright">
+        <p>&copy; {{ site.time | date: '%Y' }} <a href="{{ site.baseurl | prepend: site.url }}" title="{{ site.description }}"><strong>{{ site.title }}</strong></a></p>
       </div>
     </div>
-
-    {% include footer.html %}
-
+    {% include google_analytics.html %}
   </body>
-
 </html>

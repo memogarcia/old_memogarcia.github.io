@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 04 Jul 2017 14:09:47 +0100</pubDate>
-    <lastBuildDate>Tue, 04 Jul 2017 14:09:47 +0100</lastBuildDate>
+    <pubDate>Thu, 17 Aug 2017 14:19:42 +0100</pubDate>
+    <lastBuildDate>Thu, 17 Aug 2017 14:19:42 +0100</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
@@ -94,8 +94,8 @@
 
 </description>
         <pubDate>Tue, 06 Jun 2017 13:31:00 +0100</pubDate>
-        <link>http://localhost:4000/blockchain/2017/06/06/merkle-trees.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blockchain/2017/06/06/merkle-trees.html</guid>
+        <link>http://localhost:4000/blockchain/2017/06/06/merkle-trees/</link>
+        <guid isPermaLink="true">http://localhost:4000/blockchain/2017/06/06/merkle-trees/</guid>
         
         
         <category>blockchain</category>
@@ -139,8 +139,8 @@
 in a public blockchain everyone can participate and agree upon the next block, in a consortium consensus only a trusted set of nodes are allowed to agree on the next block.&lt;/p&gt;
 </description>
         <pubDate>Tue, 06 Jun 2017 13:30:00 +0100</pubDate>
-        <link>http://localhost:4000/blockchain/2017/06/06/understanding-blockchains.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blockchain/2017/06/06/understanding-blockchains.html</guid>
+        <link>http://localhost:4000/blockchain/2017/06/06/understanding-blockchains/</link>
+        <guid isPermaLink="true">http://localhost:4000/blockchain/2017/06/06/understanding-blockchains/</guid>
         
         
         <category>blockchain</category>
@@ -246,8 +246,8 @@ and this is because, in theory, your server is only doing CRUD operations most o
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 01 Dec 2016 12:30:00 +0000</pubDate>
-        <link>http://localhost:4000/mmorpg/2016/12/01/writing-mmorpg.html</link>
-        <guid isPermaLink="true">http://localhost:4000/mmorpg/2016/12/01/writing-mmorpg.html</guid>
+        <link>http://localhost:4000/mmorpg/2016/12/01/writing-mmorpg/</link>
+        <guid isPermaLink="true">http://localhost:4000/mmorpg/2016/12/01/writing-mmorpg/</guid>
         
         
         <category>mmorpg</category>
@@ -341,8 +341,8 @@ and this is because, in theory, your server is only doing CRUD operations most o
 &lt;p&gt;&lt;a href=&quot;http://zguide.zeromq.org/page:all&quot;&gt;zero mq guide&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 12 Jul 2016 13:30:00 +0100</pubDate>
-        <link>http://localhost:4000/zeromq/python/2016/07/12/zeromq.html</link>
-        <guid isPermaLink="true">http://localhost:4000/zeromq/python/2016/07/12/zeromq.html</guid>
+        <link>http://localhost:4000/zeromq/python/2016/07/12/zeromq/</link>
+        <guid isPermaLink="true">http://localhost:4000/zeromq/python/2016/07/12/zeromq/</guid>
         
         
         <category>zeromq</category>
@@ -591,8 +591,8 @@ help with this scenario.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://msdn.microsoft.com/en-us/library/dn600223.aspx&quot;&gt;Cloud Design Patterns&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 12 Jul 2016 13:30:00 +0100</pubDate>
-        <link>http://localhost:4000/pratai/openstack/serverless/events/compute/2016/07/12/pratai.html</link>
-        <guid isPermaLink="true">http://localhost:4000/pratai/openstack/serverless/events/compute/2016/07/12/pratai.html</guid>
+        <link>http://localhost:4000/pratai/openstack/serverless/events/compute/2016/07/12/pratai/</link>
+        <guid isPermaLink="true">http://localhost:4000/pratai/openstack/serverless/events/compute/2016/07/12/pratai/</guid>
         
         
         <category>pratai</category>
@@ -655,8 +655,8 @@ vboxmanage modifyvm efb10300-2995-11e6-b5c1-0002a5d5c51b --nic1 bridged --bridge
 
 </description>
         <pubDate>Sun, 05 Jun 2016 13:30:00 +0100</pubDate>
-        <link>http://localhost:4000/virtualbox/cli/configuration/2016/06/05/virtualbox-cli.html</link>
-        <guid isPermaLink="true">http://localhost:4000/virtualbox/cli/configuration/2016/06/05/virtualbox-cli.html</guid>
+        <link>http://localhost:4000/virtualbox/cli/configuration/2016/06/05/virtualbox-cli/</link>
+        <guid isPermaLink="true">http://localhost:4000/virtualbox/cli/configuration/2016/06/05/virtualbox-cli/</guid>
         
         
         <category>Virtualbox</category>
@@ -775,8 +775,8 @@ possible running status:
 
 </description>
         <pubDate>Sat, 23 Apr 2016 13:30:00 +0100</pubDate>
-        <link>http://localhost:4000/python/windows/2016/04/23/python-windows-service.html</link>
-        <guid isPermaLink="true">http://localhost:4000/python/windows/2016/04/23/python-windows-service.html</guid>
+        <link>http://localhost:4000/python/windows/2016/04/23/python-windows-service/</link>
+        <guid isPermaLink="true">http://localhost:4000/python/windows/2016/04/23/python-windows-service/</guid>
         
         
         <category>python</category>
@@ -797,8 +797,8 @@ python manage.py runserver_plus --cert cert&lt;/code&gt;&lt;/pre&gt;&lt;/figure&
 
 </description>
         <pubDate>Mon, 18 Jan 2016 19:55:11 +0000</pubDate>
-        <link>http://localhost:4000/horizon/ssl/2016/01/18/horizon-ssl.html</link>
-        <guid isPermaLink="true">http://localhost:4000/horizon/ssl/2016/01/18/horizon-ssl.html</guid>
+        <link>http://localhost:4000/horizon/ssl/2016/01/18/horizon-ssl/</link>
+        <guid isPermaLink="true">http://localhost:4000/horizon/ssl/2016/01/18/horizon-ssl/</guid>
         
         
         <category>horizon</category>
@@ -853,8 +853,8 @@ python manage.py runserver_plus --cert cert&lt;/code&gt;&lt;/pre&gt;&lt;/figure&
 
 </description>
         <pubDate>Tue, 05 Jan 2016 19:55:11 +0000</pubDate>
-        <link>http://localhost:4000/javascript/patterns/2016/01/05/javascript-patterns.html</link>
-        <guid isPermaLink="true">http://localhost:4000/javascript/patterns/2016/01/05/javascript-patterns.html</guid>
+        <link>http://localhost:4000/javascript/patterns/2016/01/05/javascript-patterns/</link>
+        <guid isPermaLink="true">http://localhost:4000/javascript/patterns/2016/01/05/javascript-patterns/</guid>
         
         
         <category>javascript</category>
@@ -894,8 +894,8 @@ python manage.py runserver_plus --cert cert&lt;/code&gt;&lt;/pre&gt;&lt;/figure&
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </description>
         <pubDate>Thu, 11 Jun 2015 16:23:00 +0100</pubDate>
-        <link>http://localhost:4000/js/jquery/2015/06/11/jquery-hide-items.html</link>
-        <guid isPermaLink="true">http://localhost:4000/js/jquery/2015/06/11/jquery-hide-items.html</guid>
+        <link>http://localhost:4000/js/jquery/2015/06/11/jquery-hide-items/</link>
+        <guid isPermaLink="true">http://localhost:4000/js/jquery/2015/06/11/jquery-hide-items/</guid>
         
         
         <category>js</category>
